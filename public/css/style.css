@@ -1,0 +1,212 @@
+/* =============================================================
+                        GENERAL
+============================================================= */
+html {
+    height: 100%;
+}
+body {
+    font-family: "Quicksand", sans-serif;
+    position: relative;
+    height: 100%;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2.2rem;  
+}
+
+h3 {
+    font-size: 1.9rem; 
+}
+
+h4 {
+    font-size: 1.6rem;  
+}
+
+h5 {
+    font-size: 1.3rem;  
+}
+
+h6 {
+    font-size: 1rem; 
+}
+
+p {
+    font-size: .975rem;
+}
+
+.p-lg {
+    font-size: 1.25rem;
+}
+
+.p-mid {
+    font-size: 1.1rem;
+}
+
+.h1-bold {
+    font-weight: 800;
+}
+
+
+
+
+
+/* =============================================================
+                        NAVIGATION
+============================================================= */
+
+.nav-container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-navigation ul {
+    display: flex;
+}
+
+.site-navigation ul li {
+    list-style: none;
+    padding: 0 15px;
+}
+
+.nav-inner {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-button {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-bar {
+    background-color: black;
+    width: 23px;
+    border: 2px solid black;
+    margin: 3px 0;
+}
+
+.menu-fscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    animation-name: right-to-left;
+    animation-duration: 1s;
+    display: none;
+}
+
+.menu-fscreen-wrap {
+    background-color: black;
+    width: 50%;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+
+.menu-list {
+    position: absolute;
+    top: 15%;
+    list-style: none;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.menu-list-item {
+    margin: 10px 0;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-close {
+    cursor: pointer;
+}
+
+.bar-2 {
+    width: 20px;
+}
+
+.bar-3 {
+    width: 17px;
+}
+
+.menu-close {
+    right: 10%;
+    position: absolute;
+    top: 15%;
+    width: 23px;
+    display: none;
+}
+
+.menu-bar-white {
+    background-color: white;
+    padding: 3px;
+    width: 23px;
+}
+
+.menu-close-bar-1 {
+    transform: rotate(45deg);
+    position: absolute;
+}
+.menu-close-bar-2 {
+    transform: rotate(135deg);
+    position: absolute;
+}
+/* .bar-2:hover, 
+.bar-3:hover {
+    width: 23px;
+} */
+
+/* =============================================================
+                        PAGE SECTION
+============================================================= */
+
+.section--white {
+    background-color: white;
+}
+
+.section-container {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.section-flex {
+    justify-content: space-between;
+    display: flex;
+}
+
+.get-started-wrap {
+    height: fit-content;
+    margin: auto 0;
+}
+
+/* =============================================================
+                        BUTTON
+============================================================= */
+
+.btn-spred {
+    background-color: #424ac6;
+    border: none;
+} 
+
+/* =============================================================
+                       ANIMATIONS
+============================================================= */
+
+@keyframes right-to-left {
+    0% { left: 100%; }
+    100% { left: 0; }
+}
