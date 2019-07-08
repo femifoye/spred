@@ -1,56 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{asset("css/app.css")}}">
-        <link rel="stylesheet" href="{{asset("css/style.css")}}">
-        <link href="https://fonts.googleapis.com/css?family=Quicksand:500&display=swap" rel="stylesheet">
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-    </head>
+   @include('includes.head')
     <body>
-        <header role="navigation">
-            <section id="navigation">
-                <div class="nav-inner">
-                    <div class="nav-container">
-                        <div class="nav-flex">
-                            <div class="site-logo">
-                                <h2>SPRED</h2>
-                            </div>
-                            <nav class="site-navigation">
-                                <div class="menu-button">
-                                    <div class="menu-bar bar-1"></div>
-                                    <div class="menu-bar bar-2"></div>
-                                    <div class="menu-bar bar-3"></div>
-                                </div>
-                                
-                            </nav>  
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="menu-fscreen">
-                <div class="menu-fscreen-wrap">
-                    <div class="container menu-fscreen-inner">
-                        <div class="menu-close">
-                            <div class="menu-bar-white menu-close-bar-1"></div>
-                            <div class="menu-bar-white menu-close-bar-2"></div>
-                        </div>
-                        <ul class="menu-list">
-                            <li class="menu-list-item">Home</li>
-                            <li class="menu-list-item">Articles</li>
-                            <li class="menu-list-item">Videos</li>
-                            <li class="menu-list-item">Forums</li>
-                            <li class="menu-list-item">Polls</li>    
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </header>
+    @include('includes.navigation')   
 
         <section class="section--white get-started">
             <div class="section-container">
@@ -77,10 +29,287 @@
                 </div>
             </div>
         </section>
+
+        <!-- Articles Section -->
+        <section class="articles-featured">
+            <div class="section-container">
+                <div class="section-inner">
+                    <div class="section-heading">
+                        <h3>Featured Articles</h3>
+                    </div>
+                    <div class="section-body">
+                        <div class="articles-carousel-wrapper">
+                            <div class="articles-carousel-controls">
+                                <div class="articles-carousel-left">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                </div>
+                                <div class="articles-carousel-right">
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="article-items">
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 5th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 6th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 7th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 8th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 9th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 10th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 11th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 12th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 13th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 14th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 15th</h4>
+                                    </div>
+                                </div>
+                                <div class="article-item">
+                                    <div class="article-item-image">
+                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                    </div>
+                                    <div class="article-item-text">
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                    </div>
+                                    <div class="article-item-date">
+                                        <h4>July 16th</h4>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Articles Section End -->
+
+        <!-- Featured Videos Section -->
+        <section class="featured-videos">
+           <div class="section-container">
+               <div class="section-inner">
+                   <div class="section-heading white-heading">
+                       <h3>Featured Videos</h3>
+                   </div>
+                   <div class="section-body">
+                       <div class="featured-video-grid">
+                           <div class="video-container-lg">
+                           <iframe width="560" height="315" src="https://www.youtube.com/embed/InIeez-2WIs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                           </div>
+                           <div class="video-container-md-fx">
+                               <div class="video-container-md">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BxHLZMeb7-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                               </div>
+                               <div class="video-container-md">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BxHLZMeb7-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div> 
+        
+        
+        </section>
+
+        <!-- Featured Videos Section End -->
+
+        <!-- Featured Polls -->
+
+        <section class="featured-polls">
+            <div class="section-container">
+                <div class="section-inner">
+                    <div class="section-heading">
+                        <h3>Featured Polls</h3>
+                    </div>
+                    <div class="section-body">
+                        <div class="section-polls-grid">
+                            <div class="section-polls">
+                               <div class="section-poll">
+                                   <div class="section-poll-image">
+                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
+                                   </div>
+                                   <div class="section-poll-title">
+                                       <h6>Messi Vs Ronaldo. Who is Better</h6>
+                                   </div>
+                               </div> 
+                               <div class="section-poll">
+                                   <div class="section-poll-image">
+                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
+                                   </div>
+                                   <div class="section-poll-title">
+                                       <h6>Who will win in a fight? Batman or Ironman</h6>
+                                   </div>
+                               </div>
+                               <div class="section-poll">
+                                   <div class="section-poll-image">
+                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
+                                   </div>
+                                   <div class="section-poll-title">
+                                       <h6>Best city in Nigeria? Lagos Vs Abuja</h6>
+                                   </div>
+                               </div>
+                               <div class="section-poll">
+                                   <div class="section-poll-image">
+                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
+                                   </div>
+                                   <div class="section-poll-title">
+                                       <h6>Naija Jollof or Ghana Jollof. U decide!</h6>
+                                   </div>
+                               </div>
+                            </div>
+                            <div class="section-polls-explore-more">
+                                <p>Want to know if you share the same opinions as the majority? Take some
+                                    of our polls and share with your friends!
+                                </p>
+                                <h6 class="blue-link">Explore More >></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Polls End -->
+
+        <!-- Featured Newesletter -->
+        
+        <section class="featured-newsletter">
+            <div class="section-container">
+                <div class="section-inner">
+                    <div class="section-body">
+                        <div class="section-newsletter-grid">
+                            <div class="section-newsletter-text">
+                                <h4>It would suck to miss an update from us</h4>
+                                 <p>Join our mailing list to receive new posts from the Spred team.</p>
+                            </div>
+                            <div class="section-newsletter-form">
+                                <form action="" method="POST" class="subscribe-form">
+                                    <div class="control-form">
+                                        <input class="subscribe-input" type="email" placeholder="Enter your email address" required>
+                                    </div>
+                                    <div class="control-form">
+                                        <button class="subscribe-button" type="submit" value="Subscribe">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Newesletter End -->
         
         <!-- <div class="flex-center position-ref full-height">
             <h2>Spred Test View</h2>
         </div> -->
-        <script src="{{asset("js/main.js")}}"></script>
+
+    @include('includes.footer')
+
     </body>
 </html>

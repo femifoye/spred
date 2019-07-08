@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('landing_page');
 });
+Route::get('/articles', function () {
+    return view('articles_page');
+});
 Route::resource('/forum', '\App\ForumController');
 Auth::routes();
 

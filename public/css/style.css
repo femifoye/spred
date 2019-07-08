@@ -50,6 +50,16 @@ p {
     font-weight: 800;
 }
 
+.blue-link {
+    color: #424ac6;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-gap: 2rem;
+}
+
 
 
 
@@ -96,7 +106,7 @@ p {
 }
 
 .menu-fscreen {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -105,6 +115,7 @@ p {
     animation-name: right-to-left;
     animation-duration: 1s;
     display: none;
+    z-index: 10;
 }
 
 .menu-fscreen-wrap {
@@ -128,6 +139,7 @@ p {
     margin: 10px 0;
     color: white;
     cursor: pointer;
+    padding: 0 15px;
 }
 
 .menu-close {
@@ -170,7 +182,7 @@ p {
 } */
 
 /* =============================================================
-                        PAGE SECTION
+                        LANDING PAGE SECTION
 ============================================================= */
 
 .section--white {
@@ -193,14 +205,295 @@ p {
     margin: auto 0;
 }
 
+.bg-invert {
+    background-color: white;
+    color: black;
+    animation-name: background-width;
+    animation-duration: 0.1s;
+  
+}
+
+.articles-carousel-wrapper {
+    position: relative;
+}
+
+.article-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.article-item {
+    width: fit-content;
+    padding: 5px;
+    background-color: white;
+    margin: 5px;
+    border: 1px solid #e0e0e0;
+    display: none;
+}
+
+.article-active {
+    display: block;
+}
+
+
+.article-item-image img {
+    height: 180px;
+}
+
+.article-item-text {
+    width: 230px;
+    color: #525252;
+    margin: 10px 0 0 0;
+    padding: 5px;
+}
+
+.fa-arrow-left, 
+.fa-arrow-right {
+    position: absolute;
+    cursor: pointer;
+    top: 25%;
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-radius: 100%;
+}
+
+.fa-arrow-left {
+    left: -5%;
+}
+
+.fa-arrow-right {
+    right: 0;
+}
+
+.featured-videos {
+    background-color: black;
+    padding-bottom: 10px;
+}
+
+.white-heading {
+    color: white;
+    padding: 10px 0;
+}
+
+.featured-video-grid {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-gap: 2rem;
+}
+.video-container-md-fx {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section-polls-grid {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.section-polls {
+    display: flex;
+    justify-content: space-around;
+}
+
+.section-poll {
+    margin: 0 10px 0 0;
+}
+
+.section-poll-image img  {
+    border-radius: 10px;
+    border: 1px solid #dadada;
+}
+
+.section-poll-title {
+    margin: 10px 0;
+    width: 200px;
+    font-weight: bold;
+}
+
+.section-poll-title h6{
+    font-weight: 800;
+}
+
+.featured-newsletter {
+    background-color: #424ac6;
+    padding: 3rem 0;
+}
+
+.section-newsletter-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-newsletter-text {
+    text-align: center;
+    color: white;
+}
+
+
+/* =============================================================
+                        FORMS
+============================================================= */
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+}
+
+.subscribe-input {
+    width: 300px;
+    padding: 5px 20px;
+}
+
+.sidebar-subscribe-form {
+    flex-direction: column;
+    display: flex;
+    /* width: 100%; */
+}
+
+.sidebar-subscribe-form .control-form input {
+    width: 100%;
+    padding: 5px 7px;
+    text-align: center;
+}
+
+.sidebar-subscribe-form .control-form button {
+    width: 100%;
+}
+/* =============================================================
+                        ARTICLES 
+============================================================= */
+
+.all-articles-view {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.article-featured-image img {
+    width: 300px;
+}
+
+.article-thumb-title {
+    width: 300px;
+    padding: 0 10px;
+    color: #424ac6;
+}
+
+.article-excerpt p {
+    width: 300px;
+    color: #424242;
+    padding: 0 10px 0 10px;
+    font-size: 0.9rem;
+}
+
+.article-thumb {  
+    margin: 0 15px 15px 0;
+    border: 1px solid #d6d6d6;
+    background-color: white;
+}
+
+.article-category {
+    background-color: #424ac6;
+    color: white;
+    padding: 5px 10px;
+    width: fit-content;
+}
+
+
+.page-heading {
+    border-bottom: 3px solid #424ac6;
+    margin: 10px 0;
+    width: 80%;
+}
+
+.page-heading h3 {
+    background-color: #424ac6;
+    width: 28%;
+    color: white;
+    margin: 0;
+    padding: 0 10px;
+}
+
+/* =============================================================
+                        SIDEBAR
+============================================================= */
+.sidebar {
+    padding: 20px 0;
+}
+
+.sidebar-grid {
+    display: grid;
+    grid-gap: 2rem;
+}
+
+.sidebar-subscribe {
+    background-color: #424ac6;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar-box {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+}
+
+.sidebar-heading {
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.sidebar-heading-h6  {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    margin: 0;
+    width: 40%;
+}
+
+.sidebar-categories-ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.sidebar-categories-ul li {
+    margin: 0 10px;
+}
+
+.sidebar-popular-post-ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-popular-post-ul li{
+    margin: 0 0 10px 0;
+}
+
 /* =============================================================
                         BUTTON
 ============================================================= */
 
 .btn-spred {
     background-color: #424ac6;
-    border: none;
+    border: none; 
 } 
+
+.subscribe-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 7px 10px;
+}
+
+.sidebar-subscribe-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+}
 
 /* =============================================================
                        ANIMATIONS
@@ -209,4 +502,9 @@ p {
 @keyframes right-to-left {
     0% { left: 100%; }
     100% { left: 0; }
+}
+
+@keyframes background-width {
+    0% { width: 0; }
+    100% { width: 100%; }
 }
