@@ -20,6 +20,8 @@ class CreateArticlesTable extends Migration
             $table->string('content');
             $table->string('category');
             $table->string('featured_image')->nullable();
+            $table->string('creator_type');
+            $table->string('creator_id');
             $table->timestamps();
         });
     }
