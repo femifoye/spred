@@ -14,13 +14,11 @@
 Route::get('/', function () {
     return view('landing_page');
 });
-Route::resource('/articles', function () {
-    return view('articles_page');
-});
+Route::resource('/articles', 'ArticleController');
 Route::get('/article/:id', function () {
     return view('article_page');
 });
-Route::resource('/forum', '\App\ForumController');
+Route::resource('/forum', 'ForumController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

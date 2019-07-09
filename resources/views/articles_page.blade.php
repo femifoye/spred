@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    @include('includes.head')
     <body>
-    @include('includes.navigation')   
+    @include('includes.navigation')
         <section class="articles-page">
             <section class="section-container">
                 <div class="page-grid">
@@ -21,10 +21,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -41,10 +41,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -61,10 +61,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -81,10 +81,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -101,10 +101,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -121,10 +121,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -141,10 +141,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -161,10 +161,10 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
@@ -181,17 +181,17 @@
                                     </div>
                                     <div class="article-excerpt">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur 
-                                            adipisicing elit. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
-                                            doloremque quisquam. Vel vitae molestiae 
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
+                                            doloremque quisquam. Vel vitae molestiae
                                             doloremque quisquam... <a href="">Read More</a>
                                         </p>
                                     </div>
                                     <div class="article-category">
                                         <h6>ENTERTAINMENT</h6>
                                     </div>
-                                </div>  
+                                </div>
                             </div>
                         </div>
                     </section> <!-- MAIN CONTENT SECTION -->
@@ -199,7 +199,7 @@
                 </div>
             </section>
         </section>
-   
-    @include('includes.footer')   
+
+    @include('includes.footer')
     </body>
 </html>
