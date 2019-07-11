@@ -12,8 +12,8 @@
                                     <div class="menu-bar bar-2"></div>
                                     <div class="menu-bar bar-3"></div>
                                 </div>
-                                
-                            </nav>  
+
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -26,11 +26,11 @@
                             <div class="menu-bar-white menu-close-bar-2"></div>
                         </div>
                         <ul class="menu-list">
-                            <li class="menu-list-item">Home</li>
-                            <li class="menu-list-item">Articles</li>
-                            <li class="menu-list-item">Videos</li>
-                            <li class="menu-list-item">Forums</li>
-                            <li class="menu-list-item">Polls</li>    
+                            <li class="menu-list-item"><a href="{{url('/')}}">Home</a></li>
+                            <li class="menu-list-item"><a href="{{url('/articles')}}">Articles</a></li>
+                            <li class="menu-list-item"><a href="{{url('/videos')}}">Videos</li>
+                            <li class="menu-list-item"><a href="{{url('/forum')}}">Forums</a></li>
+                            <li class="menu-list-item"><a href="{{url('/poll')}}">Polls</a></li>
                         </ul>
                     </div>
                 </div>

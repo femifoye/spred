@@ -2,7 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    @include('includes.head')
     <body>
+<<<<<<< HEAD
     @include('includes.navigation') 
+=======
+    @include('includes.navigation')
+>>>>>>> 78a8cf2fa8776905b599b2734b17fe8a450a8596
 
         <section class="section--white get-started">
             <div class="section-container">
@@ -180,7 +184,7 @@
                                         <h4>July 16th</h4>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,15 +209,15 @@
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/BxHLZMeb7-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                </div>
                                <div class="video-container-md">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BxHLZMeb7-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BxHLZMeb7-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                </div>
                            </div>
                        </div>
                    </div>
                </div>
-           </div> 
-        
-        
+           </div>
+
+
         </section>
 
         <!-- Featured Videos Section End -->
@@ -236,7 +240,7 @@
                                    <div class="section-poll-title">
                                        <h6>Messi Vs Ronaldo. Who is Better</h6>
                                    </div>
-                               </div> 
+                               </div>
                                <div class="section-poll">
                                    <div class="section-poll-image">
                                         <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
@@ -277,16 +281,16 @@
         <!-- Featured Polls End -->
 
         <!-- Featured Newesletter -->
-        
-        @include('includes.subscribe');
+
+        @include('includes.subscribe')
 
         <!-- Featured Newesletter End -->
-        
+
         <!-- <div class="flex-center position-ref full-height">
             <h2>Spred Test View</h2>
         </div> -->
 
-    @include('includes.footer');
+    @include('includes.footer')
 
     </body>
 </html>

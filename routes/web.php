@@ -24,7 +24,7 @@ Route::get('/admi/add-article', function () {
 Route::get('/', function () {
     return view('landing_page');
 });
-Route::get('/articles', function () {
+Route::resource('/articles', function () {
     return view('articles_page');
 });
 Route::get('/article/:id', function () {
