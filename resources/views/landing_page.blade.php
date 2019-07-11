@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-   @include('includes.head');
+   @include('includes.head')
     <body>
-    @include('includes.navigation');  
+    @include('includes.navigation') 
 
         <section class="section--white get-started">
             <div class="section-container">

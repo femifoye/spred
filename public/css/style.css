@@ -451,7 +451,7 @@ p {
 .more-content-inner {
     background-color: black;
     color: white;
-    padding: 30px 40px;
+    padding: 30px 40px 40px;
 }
 
 .more-content-body {
