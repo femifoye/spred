@@ -6,4 +6,6 @@ Spred Web Application
 2. You can then go to the `admin/categories/create` to add articles category
 3. Then navigate to `articles/create` to publish an article
 
-Note: Search and Sort features have been added for articles model
+Note:
+1. Article has support for complete CRUD
+2. Search and Sort features have been added for articles model
