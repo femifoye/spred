@@ -1,0 +1,142 @@
+html, section, .admin-page, .page-wrap, .page-content-grid, .navigation-wrap {
+    height: 100%;
+}
+
+
+ul {
+    list-style: none;
+}
+
+
+.page-header {
+    background-color: #f1f1f1;
+    box-shadow: rgba(0,0,0,0.3) 4px 5px 9px;
+    padding: 10px 0;
+}
+
+.page-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-menu
+ul {
+    display: flex;
+}
+
+.header-menu
+ul
+li {
+    padding: 0 15px;
+    height: fit-content;
+    margin: auto 0;
+}
+
+.avatar {
+    max-width: 40px;
+    border-radius: 100%;
+    display: flex;
+}
+
+.page-content-grid {
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.dropdown-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-btn:focus {
+    background-color: #1d1d1d;
+}
+
+button:focus {
+    outline: 1px transparent dotted !important;
+}
+
+.navigation-wrap {
+    background-color: black;
+    border-top: 1px solid #cccccc;
+    height: 100%;
+    color: white;
+    padding: 40px 0;
+}
+
+.navigation-list {
+    padding: 0;
+}
+
+.navigation-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.page-content {
+    padding-top: 40px;
+}
+
+.content-header {
+    text-align: center;
+}
+
+.article-form-wrap {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+.article-form {
+    width: 120%;
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.11) 0px 5px 15px;
+}
+
+.control-form {
+    margin: 20px 0;
+}
+
+.article-form
+input, select, textarea {
+    width: 100%;
+    padding: 0 10px;
+}
+
+
+
+.navigation-item .dropdown .drop-menu {
+    font-family: inherit;
+    width: 100%;
+    border-radius: 0;
+    background-color: #1d1d1d;
+}
+
+.navigation-item .dropdown .drop-menu .dropdown-item {
+    color: white;
+    cursor: pointer;
+}
+
+.navigation-item .dropdown .drop-menu .dropdown-item:hover {
+    background-color: black;
+}
+
+textarea {
+    padding: 10px;
+}
+
+.admin-btn {
+    display: flex !important;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+}

@@ -11,6 +11,16 @@
 |
 */
 
+// ADMIN ROUTES
+Route::get('/admi', function () {
+    return view('admin-home');
+});
+Route::get('/admi/add-article', function () {
+    return view('admin-add-article');
+});
+
+// USER ROUTES
+
 Route::get('/', function () {
     return view('landing_page');
 });
