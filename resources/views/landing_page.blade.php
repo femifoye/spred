@@ -2,11 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    @include('includes.head')
     <body>
-<<<<<<< HEAD
-    @include('includes.navigation') 
-=======
     @include('includes.navigation')
->>>>>>> 78a8cf2fa8776905b599b2734b17fe8a450a8596
 
         <section class="section--white get-started">
             <div class="section-container">

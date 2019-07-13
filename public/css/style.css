@@ -15,23 +15,23 @@ h1 {
 }
 
 h2 {
-    font-size: 2.2rem;  
+    font-size: 2.2rem;
 }
 
 h3 {
-    font-size: 1.9rem; 
+    font-size: 1.9rem;
 }
 
 h4 {
-    font-size: 1.6rem;  
+    font-size: 1.6rem;
 }
 
 h5 {
-    font-size: 1.3rem;  
+    font-size: 1.3rem;
 }
 
 h6 {
-    font-size: 1rem; 
+    font-size: 1rem;
 }
 
 p {
@@ -69,9 +69,8 @@ p {
 ============================================================= */
 
 .nav-container {
-    width: 1200px;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 10px 10px;
 }
 
 .nav-flex {
@@ -176,7 +175,7 @@ p {
     transform: rotate(135deg);
     position: absolute;
 }
-/* .bar-2:hover, 
+/* .bar-2:hover,
 .bar-3:hover {
     width: 23px;
 } */
@@ -210,7 +209,7 @@ p {
     color: black;
     animation-name: background-width;
     animation-duration: 0.1s;
-  
+
 }
 
 .articles-carousel-wrapper {
@@ -247,7 +246,7 @@ p {
     padding: 5px;
 }
 
-.fa-arrow-left, 
+.fa-arrow-left,
 .fa-arrow-right {
     position: absolute;
     cursor: pointer;
@@ -363,7 +362,7 @@ p {
     width: 100%;
 }
 /* =============================================================
-                        ARTICLES 
+                        ARTICLES
 ============================================================= */
 
 .all-articles-view {
@@ -388,7 +387,7 @@ p {
     font-size: 0.9rem;
 }
 
-.article-thumb {  
+.article-thumb {
     margin: 0 15px 15px 0;
     border: 1px solid #d6d6d6;
     background-color: white;
@@ -549,8 +548,8 @@ p {
 
 .btn-spred {
     background: linear-gradient(to right, #1d2156, #424ac6);
-    border: none; 
-} 
+    border: none;
+}
 
 .subscribe-button {
     background-color: black;
@@ -578,4 +577,49 @@ p {
 @keyframes background-width {
     0% { width: 0; }
     100% { width: 100%; }
+}
+
+/*
+    ADDED STYLES
+*/
+.img{
+    max-width: 100%;
+}
+.page-heading{
+    width: 100%;
+}
+.m-t-5{
+    padding-top: 5px;
+}
+.m-t-10{
+    padding-top: 10px;
+}
+.m-t-15{
+    padding-top: 15px;
+}
+.m-t-20{
+    padding-top: 20px;
+}
+.m-t-25{
+    padding-top: 25px;
+}
+.m-t-30{
+    padding-top: 30px;
+}
+
+.p-l-5{
+    padding-left: 5px;
+}
+.p-l-10{
+    padding-left: 10px;
+}
+.p-l-15{
+    padding-left: 15px;
+}
+.p-l-20{
+    padding-left: 20px;
+}
+.p-s-10{
+    padding-left: 10px;
+    padding-right: 10px;
 }

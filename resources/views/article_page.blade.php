@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                                 <div class="article_full-body">
-                                    {{$article->content}}
+                                    {!!html_entity_decode($article->content)!!}
                                 </div>
 
                                 <div class="breadcrumb">

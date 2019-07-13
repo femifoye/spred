@@ -1,4 +1,4 @@
-<section class="sidebar">
+<section class="sidebar p-t-20">
     <div class="sidebar-inner">
         <div class="sidebar-grid">
             <div class="sidebar-subscribe">
@@ -21,18 +21,10 @@
                         @isset($categories)
                         @foreach($categories as $category)
                         <li>
-                            <a href="{{route('sort', str_slug($category))}}">{{str_title($category)}}</a>
+                            <a href="{{route('sort', str_slug($category->name))}}">{{title_case($category->name)}}</a>
                         </li>
                         @endforeach
                         @endisset
-                        <li>Entertainment</li>
-                        <li>Sports</li>
-                        <li>Politics</li>
-                        <li>Technology</li>
-                        <li>Music</li>
-                        <li>Events</li>
-                        <li>Celebrity</li>
-                        <li>Movies/Television</li>
                     </ul>
                 </div>
             </div>

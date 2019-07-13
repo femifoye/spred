@@ -34,7 +34,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
-        return view('article_create_form')->with([ 'categories' => Category::all()]);
+        return view('article_create_form');
     }
 
     /**
@@ -102,7 +102,7 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         //
-        return view('article_create_form')->with(['article'=>$article, 'categories' => Category::all(), 'edit'=>true]);
+        return view('article_create_form')->with(['article'=>$article, 'edit'=>true]);
     }
 
     /**

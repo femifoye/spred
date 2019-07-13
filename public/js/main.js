@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //EVENT LISTENERS
     menuButton.addEventListener('click', () => {
-        
+
         menuFullScreen.style.display = "block";
         setTimeout(() => {
             menuClose.style.display = "block";
@@ -39,6 +39,5 @@ document.addEventListener('DOMContentLoaded', () => {
     mediumFrame.forEach((frame) => {
         frame.children[0].style.width = "100%";
         frame.children[0].style.height = "auto";
-    })
-    
+    });
 })

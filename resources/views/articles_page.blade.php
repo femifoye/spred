@@ -3,24 +3,32 @@
    @include('includes.head')
     <body>
     @include('includes.navigation')
-        <section class="articles-page">
-            <section class="section-container">
-                <div class="page-grid">
-                    <section class="main-content">
-                        <div class="main-content-inner">
+        <section class="">
+            <section class="container">
+                <div class="row">
+                    <section class="col-sm-8">
+                        <div class=" m-t-20">
                             <div class="breadcrumb row">
-
-                                <div class="col-sm-9">
+                                <div class="col-12 no-padding">
                                     <form method="POST" action="{{route('search')}}" class="row">
                                         @csrf
-                                        <input name="seek" required type="text" placeholder="Search for an article here" class="form-control col-sm-8">
-                                        <div class="col-sm-4">
-                                            <input class="btn btn-success" value="Search" type="submit">
-                                            <a class="btn btn-info text-white" href="{{route('articles.index')}}">All</a>
+                                        <div class="col-10">
+                                            <div class="row input-group">
+                                                <input name="seek" required type="text" placeholder="Search for an article here" class="form-control">
+                                                <input class="btn btn-success" value="Search" type="submit">
+                                            </div>
                                         </div>
+                                        <div class="col-2">
+                                            <div class="row btn-group">
+                                                <a class="btn btn-outline-secondary" href="{{route('articles.index')}}">All</a>
+                                            </div>
+                                        </div>
+
                                     </form>
                                 </div>
-                                <div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
                                 <a class="btn btn-secondary" href="{{route('articles.create')}}">Publish Article</a>
                                 </div>
                             </div>
@@ -32,21 +40,23 @@
                                 <h4>{{$message}}</h4>
                             </div>
                             @else
-                            <div class="all-articles-view">
+                            <div class="row">
                                 @foreach($articles as $article)
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{Storage::url($article->featured_image)}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>{{$article->title}}</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        {{str_limit($article->content, 50)}}
-                                        <a href="{{route('single.article', [str_slug($article->title), $article->id])}}">Read More</a>
-                                    </div>
-                                    <div class="article-category">
-                                        <a href="{{route('sort', str_slug($article->category->name))}}"><h6 class="text-light">{{strtoupper($article->category->name)}}</h6></a>
+                                <div class="col-sm-6">
+                                    <div class="bg-white">
+                                        <div class="">
+                                            <img class="img" src="{{Storage::url($article->featured_image)}}" alt="">
+                                        </div>
+                                        <div class="article-thumb-title">
+                                            <h4>{{$article->title}}</h4>
+                                        </div>
+                                        <div class="article-excerpt p-s-10">
+                                            {{str_limit($article->content, 50)}}
+                                            <a href="{{route('single.article', [str_slug($article->title), $article->id])}}">Read More</a>
+                                        </div>
+                                        <div class="article-category">
+                                            <a href="{{route('sort', str_slug($article->category->name))}}"><h6 class="text-light">{{strtoupper($article->category->name)}}</h6></a>
+                                        </div>
                                     </div>
                                 </div>
                                 @endforeach
@@ -54,7 +64,9 @@
                             @endisset
                         </div>
                     </section> <!-- MAIN CONTENT SECTION -->
+                    <section class="col-sm-4">
                     @include('includes.sidebar')
+                    </section>
                 </div>
             </section>
         </section>
