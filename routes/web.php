@@ -15,10 +15,13 @@ Route::get('/', function () {
     return view('landing_page');
 });
 Route::resource('/articles', 'ArticleController');
-Route::get('/article/:id', function () {
-    return view('article_page');
-});
+Route::get('/articles/view/{slug}/{id}', 'ArticleController@single')->name('single.article');
+Route::post('articles/search', 'ArticleController@search')->name('search');
+Route::get('articles/sort/{sort}', 'ArticleController@sort')->name('sort');
 Route::resource('/forum', 'ForumController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//ADMIN ROUTES
+Route::resource('/admin/categories', 'Admin\CategoryController');

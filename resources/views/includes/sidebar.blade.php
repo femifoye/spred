@@ -15,10 +15,16 @@
             <div class="sidebar-categories sidebar-box">
                 <div class="sidebar-heading">
                     <h6 class="sidebar-heading-h6">Categories</h6>
-                </div>  
+                </div>
                 <div class="sidebar-categories-group">
                     <ul class="sidebar-categories-ul">
-                        <li>Food</li>
+                        @isset($categories)
+                        @foreach($categories as $category)
+                        <li>
+                            <a href="{{route('sort', str_slug($category))}}">{{str_title($category)}}</a>
+                        </li>
+                        @endforeach
+                        @endisset
                         <li>Entertainment</li>
                         <li>Sports</li>
                         <li>Politics</li>
@@ -32,9 +38,9 @@
             </div>
             <div class="sidebar-popular-posts sidebar-box">
                 <div class="sidebar-heading">
-                    <h6 class="sidebar-heading-h6">Popular Posts</h6> 
+                    <h6 class="sidebar-heading-h6">Popular Posts</h6>
                 </div>
-            
+
             <ul class="sidebar-popular-post-ul">
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
@@ -43,7 +49,7 @@
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing.</li>
                     <li>Lorem ipsum dolor, sit amet consectetur.</li>
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-            </ul>    
+            </ul>
             </div>
         </div>
     </div>

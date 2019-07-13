@@ -8,191 +8,50 @@
                 <div class="page-grid">
                     <section class="main-content">
                         <div class="main-content-inner">
+                            <div class="breadcrumb row">
+
+                                <div class="col-sm-9">
+                                    <form method="POST" action="{{route('search')}}" class="row">
+                                        @csrf
+                                        <input name="seek" required type="text" placeholder="Search for an article here" class="form-control col-sm-8">
+                                        <div class="col-sm-4">
+                                            <input class="btn btn-success" value="Search" type="submit">
+                                            <a class="btn btn-info text-white" href="{{route('articles.index')}}">All</a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                <a class="btn btn-secondary" href="{{route('articles.create')}}">Publish Article</a>
+                                </div>
+                            </div>
                             <div class="page-heading">
                                 <h3>All Articles</h3>
                             </div>
-                            <div class="all-articles-view">
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>ENTERTAINMENT</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>SPORTS</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>MOVIES / TELEVISION</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>SPORTS</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>EVENTS</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>MUSIC</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>POLITICS</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>MUSIC</h6>
-                                    </div>
-                                </div>
-                                <div class="article-thumb">
-                                    <div class="article-featured-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-thumb-title">
-                                        <h4>Lorem ipsum dolor sit amet consectetur</h4>
-                                    </div>
-                                    <div class="article-excerpt">
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam. Vel vitae molestiae
-                                            doloremque quisquam... <a href="">Read More</a>
-                                        </p>
-                                    </div>
-                                    <div class="article-category">
-                                        <h6>ENTERTAINMENT</h6>
-                                    </div>
-                                </div>
+                            @isset($message)
+                            <div class="breadcrumb">
+                                <h4>{{$message}}</h4>
                             </div>
+                            @else
+                            <div class="all-articles-view">
+                                @foreach($articles as $article)
+                                <div class="article-thumb">
+                                    <div class="article-featured-image">
+                                        <img src="{{Storage::url($article->featured_image)}}" alt="">
+                                    </div>
+                                    <div class="article-thumb-title">
+                                        <h4>{{$article->title}}</h4>
+                                    </div>
+                                    <div class="article-excerpt">
+                                        {{str_limit($article->content, 50)}}
+                                        <a href="{{route('single.article', [str_slug($article->title), $article->id])}}">Read More</a>
+                                    </div>
+                                    <div class="article-category">
+                                        <a href="{{route('sort', str_slug($article->category->name))}}"><h6 class="text-light">{{strtoupper($article->category->name)}}</h6></a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            @endisset
                         </div>
                     </section> <!-- MAIN CONTENT SECTION -->
                     @include('includes.sidebar')
