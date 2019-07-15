@@ -1,5 +1,5 @@
 <section class="featured-newsletter">
-            <div class="section-container">
+            <div class="container">
                 <div class="section-inner">
                     <div class="section-body">
                         <div class="section-newsletter-grid">

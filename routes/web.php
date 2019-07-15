@@ -21,17 +21,19 @@ Route::get('/admi/add-article', function () {
 
 // USER ROUTES
 
-Route::get('/', function () {
-    return view('landing_page');
-});
+// Route::get('/', function () {
+//     return view('landing_page');
+// });
 Route::resource('/articles', 'ArticleController');
 Route::get('/articles/view/{slug}/{id}', 'ArticleController@single')->name('single.article');
 Route::post('articles/search', 'ArticleController@search')->name('search');
+Route::get('article/post', 'ArticleController@create')->name('create');
 Route::get('articles/sort/{sort}', 'ArticleController@sort')->name('sort');
 Route::resource('/forum', 'ForumController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@landing')->name('landing');
 
 //ADMIN ROUTES
 Route::resource('/admin/categories', 'Admin\CategoryController');

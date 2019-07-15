@@ -48,11 +48,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             let lastArticleIndex = currentActive[currentActiveLength - 1].dataset.articleindex;
             let articlesToShow = 4;
             let checkEnd = (articleItems.length - 1) - lastArticleIndex;
-            if(checkEnd >= articlesToShow) {
+            if(checkEnd > 0) {
                 for(let i = 0; i <= articlesToShow - 1; i++){
                     articleItems[parseInt(firstArticleIndex) + i].classList.remove('article-active');
                 }
-                 for(let i = 1; i <= articlesToShow; i++){
+                 for(let i = 1; i <= (checkEnd > 4 ? articlesToShow : checkEnd); i++){
                     articleItems[parseInt(lastArticleIndex) + i].classList.add('article-active', 'animated', 'fadeIn');
                  }
             }     
@@ -69,13 +69,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             let lastArticleIndex = currentActive[currentActiveLength - 1].dataset.articleindex;
             let articlesToShow = 4;
             let checkEnd = (articleItems.length - 1) - lastArticleIndex;
-            if(checkEnd <= articlesToShow) {
-                for(let i = 0; i <= articlesToShow - 1; i++){
+            let loopTimes = (lastArticleIndex - firstArticleIndex) ;
+            if(firstArticleIndex > 0) {
+                for(let i = 0; i <= loopTimes ; i++){
                     currentActive[i].classList.remove('article-active', 'animated', 'fadeIn');
                 }
                  for(let i = 1; i <= articlesToShow; i++){
                     articleItems[parseInt(firstArticleIndex) - i].classList.add('article-active', 'animated', 'fadeIn');
-                 }
+                }
             }
         }
     })

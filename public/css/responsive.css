@@ -1,0 +1,116 @@
+@media screen and (min-width: 320px) {
+    /* =============================================================
+                        ARTICLES
+============================================================= */
+    .article-excerpt p,
+    .article-thumb-title
+    {
+        width: 100%;
+    }
+
+    .article-featured-image img {
+        width: 100%;
+    }
+
+    .page-heading h3 {
+        width: 60%;
+    }
+
+    .sidebar-heading-h6{
+        width: 100%;
+    }
+
+    .page-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .more-content-inner{
+        padding: 10px;
+    }
+
+    .more-content_single {
+        flex-wrap: nowrap;
+    }
+
+    .more-content-body {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .subscribe-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+   
+  }
+  @media screen and (min-width: 480px) {
+  
+  }
+  @media screen and (min-width: 576px) {
+  
+  }
+  @media screen and (min-width: 768px) {
+
+    .page-grid {
+        grid-template-columns: 66% 34%;
+    }
+
+    .more-content-inner{
+        padding: 30px 40px 40px;
+    }
+
+    .more-content_single {
+        flex-wrap: wrap;
+    }
+
+    .more-content-body {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .subscribe-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    /* =============================================================
+                        ARTICLES
+    ============================================================= */
+    .article-thumb {
+        width: unset;
+    }
+
+    .article-featured-image img {
+        width: 320px;
+    }
+
+    .page-heading h3 {
+        width: 28%;
+    }
+
+    .sidebar-heading-h6{
+        width: 40%;
+    }
+
+    .article-excerpt p,
+    .article-thumb-title
+    {
+        width: 300px;
+    }
+  
+  }
+
+  @media screen and (min-width: 1200px) {
+    /* =============================================================
+                        ARTICLES
+    ============================================================= */
+    .article-thumb {
+        margin: 0 15px 15px 0;
+    }
+
+    
+  
+  }
+  
+  

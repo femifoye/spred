@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $category = new Category;
         $category->name = $validated['name'];
         $category->save();
-        return redirect('/');
+        return redirect('/admin/categories/create');
     }
 
     /**

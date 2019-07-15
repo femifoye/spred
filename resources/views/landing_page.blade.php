@@ -48,18 +48,20 @@
                                 </div>
                             </div>
                             <div class="article-items">
+                                @foreach($articles as $article)
                                 <div class="article-item">
                                     <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
+                                        <img src="{{Storage::url($article->featured_image)}}" alt="{{str_limit($article->title, 38)}}">
                                     </div>
                                     <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
+                                        <p>{{str_limit($article->content, 50)}}</p>
                                     </div>
                                     <div class="article-item-date">
-                                        <h4>July 5th</h4>
+                                        <h4>{{$article->created_at}}</h4>
                                     </div>
                                 </div>
-                                <div class="article-item">
+                                @endforeach
+                                <!-- <div class="article-item">
                                     <div class="article-item-image">
                                         <img src="{{asset("images/fa-image.png")}}" alt="">
                                     </div>
@@ -179,7 +181,7 @@
                                     <div class="article-item-date">
                                         <h4>July 16th</h4>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
