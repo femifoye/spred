@@ -51,10 +51,13 @@
                                 @foreach($articles as $article)
                                 <div class="article-item">
                                     <div class="article-item-image">
+                                    <a href="{{route('single.article', [str_slug($article->title), $article->id])}}">
                                         <img src="{{Storage::url($article->featured_image)}}" alt="{{str_limit($article->title, 38)}}">
+                                    </a>
+
                                     </div>
                                     <div class="article-item-text">
-                                        <p>{{str_limit($article->content, 50)}}</p>
+                                        <p>{{str_limit(strip_tags($article->content), 50)}}</p>
                                     </div>
                                     <div class="article-item-date">
                                         <h4>{{$article->created_at}}</h4>

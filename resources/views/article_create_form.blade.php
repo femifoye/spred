@@ -1,109 +1,139 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        @if(@isset($edit))
-            @php $requestRoute = 'articles.update';
-                $id = $article->id;
-                $process = 'Edit Article';
-                $action = 'Update Article';
-            @endphp
-        @else
-            @php $requestRoute = 'articles.store';
-                $id = '';
-                $action = 'Publish Article';
-                $process = $action;
-            @endphp
-        @endif
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-            <div class="card">
-                <div class="card-header">{{ __($process) }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{route($requestRoute, $id)}}" enctype="multipart/form-data">
-                        @csrf
-                        @isset($edit)
-                        {{@method_field('PUT')}}
-                        @endisset
-                        <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="title" type="text" class="form-control @error('name') is-invalid @enderror" name="title" value="@isset($edit){{ $article->title }}@endisset" required autocomplete="title" autofocus>
-
-                                @error('title')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category_id" required autocomplete="category">
-                                    <option value=null hidden>Choose Category</option>
-                                    <option disabled value=null>Choose Category</option>
-                                    @foreach($categories as $category)
-                                    <option @isset($article) @if($article->category_id == $category->id) selected @endif @endisset value="{{$category->id}}">{{$category->name}}</option>
+@include('includes.admin-head')
+<body>
+    <section class="admin-page">
+        <div class="page-wrap">
+            @include('includes.admin-header-nav')
+            
+            <div class="page-content">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                        @if(@isset($edit))
+                            @php $requestRoute = 'articles.update';
+                                $id = $article->id;
+                                $process = 'Edit Article';
+                                $action = 'Update Article';
+                            @endphp
+                        @else
+                            @php $requestRoute = 'articles.store';
+                                $id = '';
+                                $action = 'Publish Article';
+                                $process = $action;
+                            @endphp
+                        @endif
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
                                     @endforeach
-                                </select>
-                                @error('category')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                </ul>
+                            </div>
+                        @endif
+                            <div class="card">
+                                <div class="card-header">{{ __($process) }}</div>
+
+                                <div class="card-body">
+                                    <form method="POST" action="{{route($requestRoute, $id)}}" enctype="multipart/form-data">
+                                        @csrf
+                                        @isset($edit)
+                                        {{@method_field('PUT')}}
+                                        @endisset
+                                        <div class="control-form">
+                                            <input id="title" type="text" placeholder = "Enter article title" class="form-control @error('name') is-invalid @enderror" name="title" value="@isset($edit){{ $article->title }}@endisset" required autocomplete="title" autofocus>
+                                            @error('title')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="control-form">
+                                            <select id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category_id" required autocomplete="category">
+                                                <option value="null" hidden>Choose Category</option>
+                                                <option disabled value=null>Choose Category</option>
+                                                @foreach($categories as $category)
+                                                <option @isset($article) @if($article->category_id == $category->id) selected @endif @endisset value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('category')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="control-form">
+                                            <textarea id="content" type="text" class="form-control @error('password') is-invalid @enderror" name="content" autocomplete="content" placeholder="Enter article body here">@isset($edit){{ $article->content}}@endisset</textarea>
+                                            @error('content')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="feature_image" class="col-md-4 col-form-label text-md-right">{{ __('Featured Image') }}</label>
+
+                                            <div class="col-md-6 custom-file">
+                                                <input id="featured_image" type="file" class="custom-file-input" name="featured_image">
+                                                <label class="custom-file-label" for="customFile">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-0">
+                                            <div class="col-md-6 offset-md-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                    {{ __($action) }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript" charset="utf-8">
+                                            $(prettyPrint);
+                                        </script>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="content" class="col-md-4 col-form-label text-md-right">{{ __('Article Body') }}</label>
-
-                            <div class="col-md-6">
-                            <textarea class="textarea" placeholder="Enter text ..." style="width: 810px; height: 200px"></textarea>
-                                <textarea id="content" type="text" class="form-control @error('password') is-invalid @enderror" name="content" required autocomplete="content" placeholder="Enter article body here">@isset($edit){{ $article->content}}@endisset</textarea>
-                                @error('content')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="feature_image" class="col-md-4 col-form-label text-md-right">{{ __('Featured Image') }}</label>
-
-                            <div class="col-md-6 custom-file">
-                                <input id="featured_image" type="file" class="custom-file-input" name="featured_image">
-                                <label class="custom-file-label" for="customFile">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __($action) }}
-                                </button>
-                            </div>
-                        </div>
-                        <script type="text/javascript" charset="utf-8">
-                            $(prettyPrint);
-                        </script>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-@endsection
+        </div>        
+    </section> 
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let editor = new ClassicEditor;
+        console.log(editor.config)
+        ClassicEditor
+            .create( document.querySelector( '#content' ), {
+        toolbar: [ 
+            'heading', 
+            '|', 
+            'bold', 
+            'italic', 
+            'link', 
+            'bulletedList', 
+            'numberedList',
+            'imageUpload',
+            'mediaEmbed',
+            'blockQuote',
+            'undo',
+            'redo'
+         ],
+        heading: {
+            options: [
+                { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+            ]
+        }
+    })
+        .catch( error => {
+        console.error( error );
+        } );
+    })
+   
+ </script> 
+    @include('includes.admin-footer'); 
+    <!-- CK EDITOR 5 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+</body>
+</html>
+   

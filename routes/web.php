@@ -21,9 +21,6 @@ Route::get('/admi/add-article', function () {
 
 // USER ROUTES
 
-// Route::get('/', function () {
-//     return view('landing_page');
-// });
 Route::resource('/articles', 'ArticleController');
 Route::get('/articles/view/{slug}/{id}', 'ArticleController@single')->name('single.article');
 Route::post('articles/search', 'ArticleController@search')->name('search');
