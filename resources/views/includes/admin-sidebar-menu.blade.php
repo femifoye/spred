@@ -10,7 +10,7 @@
                         <h3 class="nav-lbl">Articles</h3>
                     </button>
                     <div class="dropdown-menu drop-menu">
-                        <div class="dropdown-item">New Article</div>
+                        <a href="/articles/create"><div class="dropdown-item">New Article</div></a>
                         <div class="dropdown-item">View Articles</div>
                     </div>
                 </div>

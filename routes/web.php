@@ -20,6 +20,13 @@ Route::get('/admi/add-article', function () {
 });
 
 // USER ROUTES
+Route::get('/polls', function() {
+    return view('polls_page');
+});
+
+Route::get('/poll/single', function() {
+    return view('poll_page');
+});
 
 Route::resource('/articles', 'ArticleController');
 Route::get('/articles/view/{slug}/{id}', 'ArticleController@single')->name('single.article');

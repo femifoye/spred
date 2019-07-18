@@ -40,27 +40,6 @@
                                 <h4>{{$message}}</h4>
                             </div>
                             @else
-                            <!-- <div class="row">
-                                @foreach($articles as $article)
-                                <div class="col-sm-6">
-                                    <div class="bg-white">
-                                        <div class="article-featured-image">
-                                            <img class="img" src="{{Storage::url($article->featured_image)}}" alt="">
-                                        </div>
-                                        <div class="article-thumb-title">
-                                            <h4>{{$article->title}}</h4>
-                                        </div>
-                                        <div class="article-excerpt p-s-10">
-                                            {{str_limit($article->content, 50)}}
-                                            <a href="{{route('single.article', [str_slug($article->title), $article->id])}}">Read More</a>
-                                        </div>
-                                        <div class="article-category">
-                                            <a href="{{route('sort', str_slug($article->category->name))}}"><h6 class="text-light">{{strtoupper($article->category->name)}}</h6></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div> -->
                             <div class="all-articles-view">
                                 @foreach($articles as $article)
                                 <div class="article-thumb">

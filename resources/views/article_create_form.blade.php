@@ -54,6 +54,7 @@
                                                 @foreach($categories as $category)
                                                 <option @isset($article) @if($article->category_id == $category->id) selected @endif @endisset value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
+                                                <option value="null" class="option-add-category" data-linked="true"><a href="/">+ Add New Category</a></option>
                                             </select>
                                             @error('category')
                                                 <span class="invalid-feedback" role="alert">
@@ -100,7 +101,6 @@
     <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         let editor = new ClassicEditor;
-        console.log(editor.config)
         ClassicEditor
             .create( document.querySelector( '#content' ), {
         toolbar: [ 
