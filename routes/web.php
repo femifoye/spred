@@ -41,3 +41,7 @@ Route::get('/', 'HomeController@landing')->name('landing');
 
 //ADMIN ROUTES
 Route::resource('/admin/categories', 'Admin\CategoryController');
+
+Route::get('admin/poll/create', function() {
+    return view('poll_create_form');
+});
