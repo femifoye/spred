@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Category;
+use App\Admin\Category;
 
 class ArticleComposerProvider extends ServiceProvider
 {
@@ -29,6 +29,7 @@ class ArticleComposerProvider extends ServiceProvider
         View::composer(
             [
                 'articles_page',
+                'article_page',
                 'article_create_form'
             ],
             function($view){

@@ -85,10 +85,9 @@ class ArticleController extends Controller
     public function single(Article $article, $slug='', $id)
     {
         //
-        //$str_unslug = str_replace('-', ' ', $slug);
-        //$str_unslug = str_replace("'", "/'", $str_unslug);
-        $article = Article::find($id);
-        $related = Article::where('category_id', '=', $article->category_id)
+        $str_unslug = str_replace('-', ' ', $slug);
+        $article = Article::where('title', '=', "{$str_unslug}")->first();
+        $related = Article::where('category_id', '=', "{$article->category_id}")
                         ->whereNotIn('id', [$article->id])->paginate(10);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
     }

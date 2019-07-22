@@ -16,8 +16,8 @@ class CreatePollResponsesTable extends Migration
         Schema::create('poll_responses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
-            $table->string('poll_id');
-            $table->string('picked');
+            $table->integer('poll_id')->unsigned();
+            $table->string('response_key');
             $table->timestamps();
         });
     }

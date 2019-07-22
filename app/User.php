@@ -37,7 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function creator(){
+    public function articleCreator(){
         return $this->morphMany('App\Article', 'creator');
     }
+
+    public function pollResponses(){
+        return $this->hasMany('App\PollResponse');
+    }
+
 }

@@ -35,3 +35,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //ADMIN ROUTES
 Route::resource('/admin/categories', 'Admin\CategoryController');
+
+
+//Test Route
+Route::post('/respond-to-poll', 'PollResponseController@store')->name('respond_to_poll');
+Route::get('/respond-to-poll', 'PollResponseController@create');
+Route::get('/poll-count/{id}', 'PollResponseController@computePollPercentages');
+

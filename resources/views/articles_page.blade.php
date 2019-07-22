@@ -42,17 +42,17 @@
                             @else
                             <div class="row">
                                 @foreach($articles as $article)
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 m-t-20">
                                     <div class="bg-white">
                                         <div class="">
-                                            <img class="img" src="{{Storage::url($article->featured_image)}}" alt="">
+                                            <img class="img" src="@if($article->featured_image !== NULL){{Storage::url($article->featured_image)}} @else images/spred-illustration.jpg @endif" alt="">
                                         </div>
                                         <div class="article-thumb-title">
                                             <h4>{{$article->title}}</h4>
                                         </div>
                                         <div class="article-excerpt p-s-10">
                                             {{str_limit($article->content, 50)}}
-                                            <a href="{{route('single.article', [str_slug($article->title), $article->id])}}">Read More</a>
+                                            <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}">Read More</a>
                                         </div>
                                         <div class="article-category">
                                             <a href="{{route('sort', str_slug($article->category->name))}}"><h6 class="text-light">{{strtoupper($article->category->name)}}</h6></a>

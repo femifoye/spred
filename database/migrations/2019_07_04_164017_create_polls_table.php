@@ -16,7 +16,7 @@ class CreatePollsTable extends Migration
         Schema::create('polls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('question');
-            $table->string('options');
+            $table->string('options');  //options should be in JSON format
             $table->timestamps();
         });
     }

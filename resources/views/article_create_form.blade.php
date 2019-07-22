@@ -71,7 +71,6 @@
                             <label for="content" class="col-md-4 col-form-label text-md-right">{{ __('Article Body') }}</label>
 
                             <div class="col-md-6">
-                            <textarea class="textarea" placeholder="Enter text ..." style="width: 810px; height: 200px"></textarea>
                                 <textarea id="content" type="text" class="form-control @error('password') is-invalid @enderror" name="content" required autocomplete="content" placeholder="Enter article body here">@isset($edit){{ $article->content}}@endisset</textarea>
                                 @error('content')
                                     <span class="invalid-feedback" role="alert">
