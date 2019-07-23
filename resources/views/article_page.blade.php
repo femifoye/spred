@@ -5,7 +5,7 @@
     @include('includes.navigation')
         <section class="page-section">
             <section class="section-inner">
-                <div class="section-container">
+                <div class="container">
                     <div class="page-grid">
                         <article class="main-content">
                             <div class="btn-group breadcrumb">
@@ -23,8 +23,7 @@
                                         <h6>BY: {{$article->creator->name}}</h6>
                                     </div>
                                     <div class="article_full-date">
-                                        <h6>Published @ : {{$article->created_at}}</h6>
-                                        <h6>Modified @ : {{$article->updated_at}}</h6>
+                                        <h6>{{$article->created_at}}</h6>
                                     </div>
                                 </div>
                                 <div class="article_full-body">

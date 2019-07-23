@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +21,7 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::latest()->paginate(20);
+        $articles = Article::latest()->paginate(5);
         return view('articles_page')->with(['articles' => $articles]);
     }
 
@@ -57,13 +56,13 @@ class ArticleController extends Controller
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
         if($request['featured_image']){
-            Auth::user()->creator()->save($article);
+            Auth::user()->articleCreator()->save($article);
             $image = $validated['featured_image'];
             $image_url = $image->store('public/images');
             $article->featured_image = $image_url;
             $article->save();
         }else{
-            Auth::user()->creator()->save($article);
+            Auth::user()->articleCreator()->save($article);
         }
 
         return redirect()->route('single.article', [str_slug($article->title), $article->id])->with(['article' => $article, 'message' => 'article was uploaded successfully']);

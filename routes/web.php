@@ -20,25 +20,33 @@ Route::get('/admi/add-article', function () {
 });
 
 // USER ROUTES
-
-Route::get('/', function () {
-    return view('landing_page');
+Route::get('/polls', function() {
+    return view('polls_page');
 });
+
+Route::get('/poll/single', function() {
+    return view('poll_page');
+});
+
 Route::resource('/articles', 'ArticleController');
 Route::get('/articles/view/{slug}/{id}', 'ArticleController@single')->name('single.article');
 Route::post('articles/search', 'ArticleController@search')->name('search');
+Route::get('article/post', 'ArticleController@create')->name('create');
 Route::get('articles/sort/{sort}', 'ArticleController@sort')->name('sort');
 Route::resource('/forum', 'ForumController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@landing')->name('landing');
 
 //ADMIN ROUTES
 Route::resource('/admin/categories', 'Admin\CategoryController');
-
 
 //Test Route
 Route::post('/respond-to-poll', 'PollResponseController@store')->name('respond_to_poll');
 Route::get('/respond-to-poll', 'PollResponseController@create');
 Route::get('/poll-count/{id}', 'PollResponseController@computePollPercentages');
 
+Route::get('admin/poll/create', function() {
+    return view('poll_create_form');
+});

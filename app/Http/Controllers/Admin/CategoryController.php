@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Admin\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $category = new Category;
         $category->name = $validated['name'];
         $category->save();
-        return redirect('/');
+        return redirect()->action('ArticleController@create')->with(['success' => 'Successfully added a category']);
     }
 
     /**

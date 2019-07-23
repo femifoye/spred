@@ -8,6 +8,7 @@
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
     <link href="{{asset("admin/css/main.css")}}" rel="stylesheet">
+    <link href="{{asset("admin/css/responsive.css")}}" rel="stylesheet">
     <link href="{{asset("css/style.css")}}" rel="stylesheet">
     <link href="{{asset("css/app.css")}}" rel="stylesheet">
 
