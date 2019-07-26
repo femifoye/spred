@@ -1,3 +1,4 @@
+@guest
 <section class="featured-newsletter">
             <div class="container">
                 <div class="section-inner">
@@ -8,9 +9,10 @@
                                  <p>Join our mailing list to receive new posts from the Spred team.</p>
                             </div>
                             <div class="section-newsletter-form">
-                                <form action="" method="POST" class="subscribe-form">
+                                <form action="{{route('subscribe')}}" method="POST" class="subscribe-form">
+                                    @csrf
                                     <div class="control-form">
-                                        <input class="subscribe-input" type="email" placeholder="Enter your email address" required>
+                                        <input class="subscribe-input" name="email" type="email" placeholder="Enter your email address" required>
                                     </div>
                                     <div class="control-form">
                                         <button class="subscribe-button" type="submit" value="Subscribe">Subscribe</button>
@@ -22,3 +24,4 @@
                 </div>
             </div>
         </section>
+@endguest

@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         })
     }
-  
+
     //POLL ADD OPTION FEATURE
     let addOption = document.getElementById('btn-add-option');
     addOption.addEventListener('click', (event) => {
         event.preventDefault();
         let pollOptions = document.getElementById('poll-options');
         let pollOptionsLength = pollOptions.children.length;
-        
+
         let lastChild = pollOptions.children[pollOptionsLength - 1];
         let lastDataValue = lastChild.children[0].dataset.option;
         let newDataValue = parseInt(lastDataValue) + 1;
@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         controlForm.classList.add('control-form');
         let formOption = document.createElement('input');
         formOption.setAttribute('type', 'text');
-        formOption.setAttribute('name', `poll_option_title_${newDataValue}`);
+        //Isaiah added this class for consistency of UI/UX
+        formOption.classList.add('form-control');
+        formOption.setAttribute('name', `poll_options[${newDataValue-1}]`);
         formOption.setAttribute('id', `poll_option_title_${newDataValue}`);
         formOption.setAttribute('placeholder', `Enter Option ${newDataValue}`);
         formOption.setAttribute('data-option', `${newDataValue}`);

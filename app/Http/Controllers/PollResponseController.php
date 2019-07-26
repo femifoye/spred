@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\PollResponse;
-use App\User;
+use Illuminate\Validation\Rule;
 use App\Admin\Poll;
 use Illuminate\Http\Request;
-use Illuminat;
 use Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass;
 
 class PollResponseController extends Controller
 {
+    public function __construct(){
+        return $this->middleware('auth')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +21,7 @@ class PollResponseController extends Controller
     public function index()
     {
         //
+        return view('polls_page')->with(['polls' => Poll::latest()->paginate(20)]);
     }
 
     /**
@@ -26,10 +29,19 @@ class PollResponseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($question)
     {
         //
-        return view('poll_respond_form')->with(['polls' => Poll::all()]);
+    }
+
+    public function takePoll($question = null){
+        if($question){
+            $question = str_replace(['-', '):'], [' ', '?'], $question);
+            $poll = Poll::where('question', "{$question}")->first();
+        }else{
+            $poll = Poll::latest()->paginate(1);
+        }
+        return view('poll_page')->with(['poll' =>$poll, 'computed' => $this->computedResponse($poll[0])]);
     }
 
     /**
@@ -41,15 +53,18 @@ class PollResponseController extends Controller
     public function store(Request $request)
     {
         //
+        $user = auth()->user();
         $response = new PollResponse;
         $validated = $request->validate([
-            'poll_id' => 'required|numeric',
+            'poll_id' => Rule::unique('poll_responses')->where(function ($query) {
+                return $query->where('user_id', auth()->user()->id);
+            }),
             'response_id' => 'required|numeric',
         ]);
         $response->poll_id = $validated['poll_id'];
         $response->response_key = $validated['response_id'];
-        $user = auth()->user();
         $user->pollResponses()->save($response);
+        return redirect('polls');
     }
 
     /**
@@ -58,9 +73,11 @@ class PollResponseController extends Controller
      * @param  \App\PollResponse  $pollResponse
      * @return \Illuminate\Http\Response
      */
-    public function show(PollResponse $pollResponse)
+    public function show(PollResponse $response)
     {
         //
+        return $response;
+        //return view('poll_page');
     }
 
     /**
@@ -103,14 +120,34 @@ class PollResponseController extends Controller
         //
     }
 
-    public function computePollPercentages($pollID){
-        $pollOptionsArray = collect(json_decode(Poll::find($pollID)->options));
-        $responsesPercentage = collect();
-        $countTotal = PollResponse::count();
-        foreach($pollOptionsArray as $key => $value){
-            $responsesPercentage[$key] = (PollResponse::where('response_key', "{$key}")->count() / $countTotal)*100;
+    protected function pollResponseTotal($pollID){
+        return PollResponse::where('poll_id', "{$pollID}")->count();
+    }
+    protected function findKeyByValue($array, $value){
+        $result = [];
+        foreach($array as $key => $val){
+            if($val == $value){
+                $result[] = $key;
+            }
         }
-        return $responsesPercentage;
+        return $result;
+    }
+    protected function computedResponse($poll){
+        $pollOptionsArray = collect(json_decode($poll->options));
+        $responsesPercentage = collect();
+        $total = $this->pollResponseTotal($poll->id);
+        if($total){
+            foreach($pollOptionsArray as $key => $value){
+                $responsesPercentage[$pollOptionsArray[$key]] = round((PollResponse::whereRaw('response_key = ? AND poll_id = ?', ["{$key}", "{$poll->id}"])->count() / $total)*100);
+            }
+        }
+        $lead = $this->findKeyByValue($responsesPercentage, $responsesPercentage->max());
+        return
+        [
+            'result' => $responsesPercentage,
+            'total' => $total,
+            'lead' => $lead,
+        ];
 
     }
 }

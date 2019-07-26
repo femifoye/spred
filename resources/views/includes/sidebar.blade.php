@@ -1,17 +1,20 @@
 <section class="sidebar p-t-20">
     <div class="sidebar-inner">
         <div class="sidebar-grid">
+            @guest
             <div class="sidebar-subscribe">
                 <h6 class="sidebar-subscribe-heading">Join the rest of the people receiving new content from us!</h6>
-                <form action="" method="POST" class="sidebar-subscribe-form">
+                <form action="{{route('subscribe')}}" method="POST" class="sidebar-subscribe-form">
+                    @csrf
                     <div class="control-form">
-                        <input type="text" placeholder="Enter Email Address" required>
+                        <input type="text" name="email" placeholder="Enter Email Address" required>
                     </div>
                     <div class="control-form">
                         <button type="submit" value="subscribe" class="sidebar-subscribe-button">Subscribe</button>
                     </div>
                 </form>
             </div>
+            @endguest
             <div class="sidebar-categories sidebar-box">
                 <div class="sidebar-heading">
                     <h6 class="sidebar-heading-h6">Categories</h6>

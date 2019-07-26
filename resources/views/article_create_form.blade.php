@@ -88,9 +88,6 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <script type="text/javascript" charset="utf-8">
-                                            $(prettyPrint);
-                                        </script>
                                     </form>
                                 </div>
                             </div>

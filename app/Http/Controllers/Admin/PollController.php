@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin\Poll;
+use App\Admin\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,7 @@ class PollController extends Controller
     public function index()
     {
         //
+        //
     }
 
     /**
@@ -26,6 +28,7 @@ class PollController extends Controller
     public function create()
     {
         //
+        return view('poll_create_form');
     }
 
     /**
@@ -36,7 +39,18 @@ class PollController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Save new poll to db
+        //$user = auth()->user();
+        $validated = $request->validate([
+            'poll_title' => 'required|string|max:30|unique:polls,question',
+            'poll_options' => 'required|array',
+        ]);
+        $poll = [
+            'question'=> $validated['poll_title'],
+            'options' => json_encode($validated['poll_options'])
+        ];
+        $poll = Poll::create($poll);
+        return redirect('polls')->with(['polls' => Poll::latest()->paginate(20)]);
     }
 
     /**

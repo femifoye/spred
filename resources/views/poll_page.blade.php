@@ -2,16 +2,27 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    @include('includes.head')
     <body>
-    @include('includes.navigation')   
+    @include('includes.navigation')
         <section class="page-section">
             <section class="section-inner">
                 <div class="container">
                     <div class="page-grid">
                         <div class="main-content">
                            <div class="poll-body_single">
-                               <div class="poll-inner_single">
+                                <div class="poll-inner_single">
+                                    <div class="breadcrumb text-secondary bg-light row"><div class="col-11 m-t-5">Polls \ Vote \ {{str_slug(str_limit($poll[0]->question, 20))}}</div>
+                                    <a class="btn btn-primary pull-right" href="{{url('/polls')}}">All</a>
+                                    </div>
+                                    <div></div>
+                                @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <strong>{{__("You've already casted your vote for this poll. Please try another poll")}}</strong>
+                                </div>
+                                @endif
+                                @isset($responded)
+                                @else
                                    <div class="poll-title_single">
-                                       <h3>Who is the better footballer?</h3>
+                                       <h3>{{$poll[0]->question}}</h3>
                                    </div>
                                    <div class="poll-instruction_single">
                                        <p>
@@ -19,62 +30,64 @@
                                        </p>
                                    </div>
                                    <div class="poll-form_single">
-                                       <form action="" class="poll-form">
-                                           <div class="control-form">
-                                                <input type="radio" class="poll-form-radio" name="poll-choice" value="Christiano Ronaldo"><span class="poll-form-option">Christiano Ronaldo</span>
-                                           </div>
-                                           <div class="control-form">
-                                                <input type="radio" class="poll-form-radio" name="poll-choice" value="Lionel Messi"><span class="poll-form-option">Lionel Messi</span>
-                                           </div>
-                                           <div class="control-form">
-                                                <input type="radio" class="poll-form-radio" name="poll-choice" value="Carlos Tevez"><span class="poll-form-option">Carlos Tevez</span>
-                                           </div>
-                                           <div class="control-form poll-buttons">
-                                               <button type="submit" class="btn btn-lg">Vote</button>
-                                               <a href="" class="btn btn-lg poll-results">Results</a>
-                                               <a href="" class="btn btn-lg poll-share">Share</a>
-                                           </div>
+                                        <form method="POST" action="{{route('polls.store')}}" class="poll-form">
+                                            @csrf
+                                            @isset($edit)
+                                            {{@method_field('PUT')}}
+                                            @endisset
+                                            <input type="text" hidden name="poll_id" value="{{$poll[0]->id}}">
+                                            @foreach(json_decode($poll[0]->options) as $key => $option)
+                                            <div class="control-form">
+                                                <input type="radio" class="poll-form-radio" name="response_id" value="{{$key}}"><span class="poll-form-option">{{$option}}</span>
+                                            </div>
+                                            @endforeach
+                                            <button type="submit" class="btn btn-lg btn-secondary">Vote</button>
 
                                         </form>
                                    </div>
-                                   <div class="poll-result_single hide">
+
+                                @endisset
+
+                                    <div class="control-form poll-buttons btn-group">
+
+                                        <a href="" class="btn btn-lg btn-primary poll-results" style="background-color:#0000FF; color:white">Results</a>
+                                        <a href="" class="btn btn-lg poll-share btn-info">Share</a>
+                                    </div>
+
+                                    <div class="poll-result_single hide">
                                        <div class="poll-result-inner">
                                            <div class="poll-result-header">
                                                <h4>Results</h4>
                                            </div>
                                            <div class="poll-result-body">
+                                               @foreach($computed['result'] as $key => $value)
                                                <div class="poll-result">
                                                    <div class="poll-result-option">
-                                                       <h5>Christiano Ronaldo</h5>
+                                                       <h5>{{$key}}</h5>
                                                    </div>
                                                    <div class="poll-result-value">
-                                                       <h5>30%</h5>
+                                                       <h5>{{$value}}</h5>
                                                    </div>
                                                </div>
-                                               <div class="poll-result">
-                                                   <div class="poll-result-option">
-                                                       <h5>Lionel Messi</h5>
-                                                   </div>
-                                                   <div class="poll-result-value">
-                                                       <h5>32%</h5>
-                                                   </div>
-                                               </div>
-                                               <div class="poll-result">
-                                                   <div class="poll-result-option">
-                                                       <h5>Carlos Tevez</h5>
-                                                   </div>
-                                                   <div class="poll-result-value">
-                                                       <h5>38%</h5>
-                                                   </div>
-                                               </div>
+                                               @endforeach
                                                <div class="poll-comment">
-                                                   <p>According to other users, <span class="poll-winner">Carlos Tevez</span> is leading this poll</span></p>
+                                                    @if($computed['total'])
+                                                        <p>According to all users vote, <span class="poll-winner">
+                                                        @foreach($computed['lead'] as $lead)
+                                                        {{$lead}}@if($loop->remaining > 1){{__(',')}}
+                                                        @elseif($loop->remaining > 0)
+                                                        {{__('&')}}
+                                                        @endif
+                                                        @endforeach
+                                                        </span> @if(count($computed['lead']) > 1) are @else is @endif leading this poll</span></p>
+
+                                                    @endif
                                                     <div class="poll-total-votes">
-                                                        <h4>Total Votes: 234</h4>
+                                                        <h4>Total Votes: {{$computed['total']}}</h4>
                                                     </div>
                                                 </div>
                                                <div class="poll-result-close">
-                                                   <button class="btn btn-lg btn-center poll-result-close">Close Result</button>
+                                                   <button class="btn btn-lg btn-danger btn-center poll-result-close">Close Result</button>
                                                </div>
                                            </div>
                                        </div>
@@ -83,6 +96,7 @@
                                        <!-- <h4>POLL DISQUS COMMENTS GO HERE</h4> -->
                                    </div>
                                </div>
+                               <div style="margin:30px auto !important">{{$poll->links()}}</div>
                            </div>
                         </div> <!-- MAIN CONTENT -->
                         @include('includes.sidebar')
@@ -90,7 +104,7 @@
                 </div>
             </section>
         </section>
-   
-    @include('includes.footer')   
+
+    @include('includes.footer')
     </body>
 </html>
