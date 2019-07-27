@@ -41,6 +41,12 @@
                                             </div>
                                         </div>
                                         <div class="control-form">
+                                            <div class="poll-label">
+                                                <label for="poll_featured_image">Choose Featured Image</label>
+                                            </div>
+                                            <input type="file" name="poll_featured_image" id="poll_featured_image">
+                                        </div>
+                                        <div class="control-form">
                                             <button type="submit" class="btn btn-success">Publish Poll</button>
                                         </div>
                                     </form>

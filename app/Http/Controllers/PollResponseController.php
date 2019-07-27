@@ -31,7 +31,7 @@ class PollResponseController extends Controller
      */
     public function create($question)
     {
-        //
+        
     }
 
     public function takePoll($question = null){

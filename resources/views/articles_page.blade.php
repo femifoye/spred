@@ -53,7 +53,7 @@
                                     <div class="article-excerpt p-s-10">
 
                                         <p>
-                                        {{str_limit(strip_tags($article->content), 50)}}... <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}">Read More</a>
+                                        {{str_limit(strip_tags($article->content), 50)}} <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}" class="blue-link">Read More</a>
                                         </p>
                                     </div>
                                     <div class="article-category">

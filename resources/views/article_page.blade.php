@@ -11,20 +11,29 @@
                             <div class="btn-group breadcrumb">
                                 <a class="btn btn-secondary" href="{{route('articles.create')}}">Publish Article</a>
                             </div>
-                            <div class="article-wrap">
+                            <div class="article-wrap text-center">
+                                <div class="article-category__single">
+                                    <a href="{{route('sort', str_slug($article->category->name))}}">
+                                        <h6>{{strtoupper($article->category->name)}}</h6>
+                                    </a>
+                                </div>
+                                <div class="article_full-title text-center font-bold">
+                                    <h4>{{$article->title}}</h4>
+                                </div>
                                 <div class="article_full-featured-image">
                                     <img src="{{Storage::url($article->featured_image)}}" alt="{{str_limit($article->title, 38)}}">
                                 </div>
-                                <div class="article_full-title text-center">
-                                    <h4>{{$article->title}}</h4>
-                                </div>
                                 <div class="article_full-info">
                                     <div class="article_full-author">
-                                        <h6>BY: {{$article->creator->name}}</h6>
+                                        <h6>Article by: {{$article->creator->name}}
+                                            <span>
+                                                <div class="article_full-date">
+                                                    <h6>{{strftime("%d %b %Y",strtotime($article->created_at))}}</h6>
+                                                </div>
+                                            </span>
+                                        </h6>
                                     </div>
-                                    <div class="article_full-date">
-                                        <h6>{{$article->created_at}}</h6>
-                                    </div>
+                                    
                                 </div>
                                 <div class="article_full-body">
                                     {!!html_entity_decode($article->content)!!}

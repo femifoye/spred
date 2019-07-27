@@ -9,9 +9,8 @@
                     <div class="page-grid">
                         <div class="main-content">
                             <div class="all-polls">
-
                                 <div class="polls-wrap">
-                                    <div class="polls-introduction">
+                                    <div class="polls-introduction text-center">
                                         <h5>
                                             Find out if others share the same opinions as you do.
                                             Take exciting polls and share with your friends.
