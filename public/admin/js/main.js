@@ -3,8 +3,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let adminMenu = document.querySelector('.page-mobile-header-flex');
     let pageBody = document.getElementsByTagName('body');
     let optionAddCat = document.getElementById('category');
+    let optionAddForum = document.getElementById('forum');
     if(optionAddCat) {
         let optionAddCatArr = [].slice.call(optionAddCat);
+    }
+    if(optionAddForum) {
+        let optionAddForumArr = [].slice.call(optionAddForum);
     }
 
     adminMenuBtn.addEventListener('click', (e) => {
@@ -24,6 +28,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         optionAddCat.addEventListener('change', () => {
             if(optionAddCat.value === 'null') {
                 window.location = '/admin/categories/create';
+            }
+        })
+    }
+    if(optionAddForum) {
+        optionAddForum.addEventListener('change', () => {
+            if(optionAddForum.value === 'null') {
+                window.location = '/admin/forums/create';
             }
         })
     }

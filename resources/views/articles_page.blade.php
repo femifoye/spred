@@ -15,7 +15,9 @@
                                         <div class="col-10">
                                             <div class="row input-group">
                                                 <input name="seek" required type="text" placeholder="Search for an article here" class="form-control">
-                                                <input class="btn btn-success" value="Search" type="submit">
+                                                <div class="input-group-append">
+                                                    <input class="btn btn-success" value="Search" type="submit">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -44,8 +46,9 @@
                                 @foreach($articles as $article)
                                 <div class="article-thumb">
                                     <div class="article-featured-image">
-                                        <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}"><img src="{{Storage::url($article->featured_image)}}" alt=""></a>
-
+                                        <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}">
+                                            <img src="{{Storage::url($article->featured_image)}}" alt="{{str_limit(str_slug($article->featured_image),15)}}">
+                                        </a>
                                     </div>
                                     <div class="article-thumb-title">
                                         <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}"><h4>{{$article->title}}</h4></a>
@@ -53,8 +56,9 @@
                                     <div class="article-excerpt p-s-10">
 
                                         <p>
-                                        {{str_limit(strip_tags($article->content), 50)}}... <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}">Read More</a>
+                                        {{str_limit(strip_tags($article->content), 50)}} <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}" class="blue-link">Read More</a>
                                         </p>
+                                        <span class="badge badge-primary"><small class="lead">{{$article->comments()->count()}} comments</small></span>
                                     </div>
                                     <div class="article-category">
                                         <a href="{{route('sort', str_slug($article->category->name))}}">

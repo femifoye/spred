@@ -6,6 +6,7 @@ use App\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\CommentController;
 
 class ArticleController extends Controller
 {
@@ -49,12 +50,14 @@ class ArticleController extends Controller
             'title' => 'required|string|unique:articles|max:150',
             'content' => 'required|string|unique:articles',
             'category_id' => 'required|numeric',
+            'forum_id' => 'required|numeric|min:1',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
         $article = new Article;
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
+        $article->forum_id = $validated['forum_id'];
         Auth::user()->articleCreator()->save($article);
         if($request['featured_image']){
             $image = $validated['featured_image'];
@@ -63,7 +66,7 @@ class ArticleController extends Controller
             $article->save();
         }
 
-        return redirect()->route('single.article', [str_slug($article->title), $article->id])->with(['article' => $article, 'message' => 'article was uploaded successfully']);
+        return redirect()->route('articles.show', $article)->with(['message' => 'article was uploaded successfully']);
     }
 
     /**
@@ -116,12 +119,14 @@ class ArticleController extends Controller
             'title' => 'required|string|unique:articles,title,'.$articleID.',id|max:150',
             'content' => 'required|string|unique:articles,content,'.$articleID.',id',
             'category_id' => 'required|numeric|min:1',
+            'forum_id' => 'required|numeric|min:1',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
 
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
+        $article->forum_id = $validated['forum_id'];
         //Delete the old image
         if($request->hasFile('featured_image')){
             if(Storage::exists($article->featured_image)){
@@ -158,9 +163,11 @@ class ArticleController extends Controller
             $string = $param;
         }
         $articles = Article::join('categories', 'articles.category_id', 'categories.id')
+                        ->join('forums', 'articles.forum_id', 'forums.id')
                         ->where('title', 'like', "%{$string}%")
                         ->orWhere('content', 'like', "%{$string}%")
-                        ->orWhere('categories.name', $string)->get();
+                        ->orWhere('categories.name', 'like', "%{$string}%")
+                        ->orWhere('forums.name', 'like', "%{$string}%")->get();
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';
         }else{
@@ -172,13 +179,22 @@ class ArticleController extends Controller
     //Search for part of title string or part of content string
     public function sort($param){
         $string = str_replace('-', ' ',$param);
-        $articles = Article::join('categories', 'articles.category_id', '=', 'categories.id')->where('categories.name', $string)->get();
+        $articles = Article::join('categories', 'articles.category_id', '=', 'categories.id')
+                            ->join('forums', 'articles.forum_id', '=', 'forums.id')
+                            ->where('categories.name', $string)
+                            ->orWhere('forums.name', $string)->get();
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';
         }else{
             $message = null;
         }
         return view('articles_page')->with(['articles' => $articles, 'message'=>$message]);
+    }
+
+    public function comment(Request $request, Article $article){
+        $commentController = new CommentController;
+        $commentController->store($request, $article);
+        return redirect()->route('articles.show', $article);
     }
 
 }

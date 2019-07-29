@@ -17,7 +17,8 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->longText('content');
-            $table->string('category_id');
+            $table->integer('category_id')->unsigned();
+            $table->integer('forum_id')->unsigned();
             $table->string('featured_image')->nullable();
             $table->string('creator_type');
             $table->string('creator_id');

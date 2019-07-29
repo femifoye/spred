@@ -9,9 +9,8 @@
                     <div class="page-grid">
                         <div class="main-content">
                             <div class="all-polls">
-
                                 <div class="polls-wrap">
-                                    <div class="polls-introduction">
+                                    <div class="polls-introduction text-center">
                                         <h5>
                                             Find out if others share the same opinions as you do.
                                             Take exciting polls and share with your friends.
@@ -22,7 +21,7 @@
                                         @foreach($polls as $poll)
                                         <div class="poll">
                                             <div class="poll-image">
-                                                <img src="{{asset("images/poll-illustration-2.jpg")}}" alt="str_limit($poll->question, 10)">
+                                                <img src="@isset($poll->featured_image){{Storage::url($poll->featured_image)}}@else{{__('images/poll-illustration-2.jpg')}}@endisset" alt="str_limit($poll->question, 10)">
                                                 <div class="poll-vote hide">
                                                     <a href="{{url('/polls/single/vote/'.strtolower(str_replace([' ', '?'], ['-', ':):'], $poll->question)))}}" class="btn btn-poll abs-center">Take Poll</a>
                                                 </div>
@@ -38,7 +37,7 @@
                                         @foreach($popularPolls as $popularPoll)
                                         <div class="poll">
                                             <div class="poll-image">
-                                                <img src="{{asset("images/poll-illustration-2.jpg")}}" alt="">
+                                                <img src="@isset($popularPoll->featured_image){{Storage::url($popularPoll->featured_image)}}@else{{__('images/poll-illustration-2.jpg')}}@endisset" alt="">
                                                 <div class="poll-vote hide">
                                                     <a href="{{url('/polls/single/vote/'.strtolower(str_replace([' ', '?'], ['-', ':):'], $popularPoll->question)))}}" class="btn btn-poll abs-center">Take Poll</a>
                                                 </div>

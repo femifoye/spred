@@ -65,6 +65,21 @@
                                             @enderror
                                         </div>
                                         <div class="control-form">
+                                            <select id="forum" type="text" class="form-control @error('category') is-invalid @enderror" name="forum_id" required autocomplete="forum">
+                                                <option value="null" hidden>Choose Forum</option>
+                                                <option disabled value=null>Choose Forum</option>
+                                                @foreach($forums as $forum)
+                                                <option @isset($article) @if($article->forum_id == $forum->id) selected @endif @endisset value="{{$forum->id}}">{{$forum->name}}</option>
+                                                @endforeach
+                                                <option value="null" class="option-add-forum" data-linked="true"><a href="{{route('forums.create')}}">+ Add New Forum</a></option>
+                                            </select>
+                                            @error('category')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="control-form">
                                             <textarea id="content" type="text" class="form-control @error('password') is-invalid @enderror" name="content" autocomplete="content" placeholder="Enter article body here">@isset($edit){{ $article->content}}@endisset</textarea>
                                             @error('content')
                                                 <span class="invalid-feedback" role="alert">

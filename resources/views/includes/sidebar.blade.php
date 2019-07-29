@@ -17,6 +17,22 @@
             @endguest
             <div class="sidebar-categories sidebar-box">
                 <div class="sidebar-heading">
+                    <h6 class="sidebar-heading-h6">Forums</h6>
+                </div>
+                <div class="sidebar-categories-group">
+                    <ul class="sidebar-categories-ul">
+                        @isset($forums)
+                        @foreach($forums as $forum)
+                        <li>
+                            <a href="{{route('sort', str_slug($forum->name))}}">{{title_case($forum->name)}}</a>
+                        </li>
+                        @endforeach
+                        @endisset
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-categories sidebar-box">
+                <div class="sidebar-heading">
                     <h6 class="sidebar-heading-h6">Categories</h6>
                 </div>
                 <div class="sidebar-categories-group">

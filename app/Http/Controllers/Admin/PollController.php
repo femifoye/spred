@@ -17,7 +17,6 @@ class PollController extends Controller
     public function index()
     {
         //
-        //
     }
 
     /**
@@ -44,12 +43,19 @@ class PollController extends Controller
         $validated = $request->validate([
             'poll_title' => 'required|string|max:30|unique:polls,question',
             'poll_options' => 'required|array',
+            'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
         $poll = [
             'question'=> $validated['poll_title'],
             'options' => json_encode($validated['poll_options'])
         ];
         $poll = Poll::create($poll);
+        if($request['featured_image']){
+            $image = $validated['featured_image'];
+            $image_url = $image->store('public/images');
+            $poll->featured_image = $image_url;
+            $poll->save();
+        }
         return redirect('polls')->with(['polls' => Poll::latest()->paginate(20)]);
     }
 
@@ -62,6 +68,7 @@ class PollController extends Controller
     public function show(Poll $poll)
     {
         //
+        return view('poll_create_form')->with(['poll' => $poll, 'edite' => true]);
     }
 
     /**
@@ -73,6 +80,7 @@ class PollController extends Controller
     public function edit(Poll $poll)
     {
         //
+        return view('poll_create_form')->with(['poll' => $poll, 'edite' => true]);
     }
 
     /**
@@ -85,6 +93,20 @@ class PollController extends Controller
     public function update(Request $request, Poll $poll)
     {
         //
+        $validated = $request->validate([
+            'poll_title' => 'required|string|max:30|unique:polls,question,'.$poll->id.',id',
+            'poll_options' => 'required|array',
+            'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
+        ]);
+        $poll->question = $validated['poll_title'];
+        $poll->options = json_encode($validated['poll_options']);
+        if($request['featured_image']){
+            $image = $validated['featured_image'];
+            $image_url = $image->store('public/images');
+            $poll->featured_image = $image_url;
+            $poll->save();
+        }
+        return redirect('polls')->with(['polls' => Poll::latest()->paginate(20)]);
     }
 
     /**
@@ -96,5 +118,6 @@ class PollController extends Controller
     public function destroy(Poll $poll)
     {
         //
+        $poll->delete();
     }
 }

@@ -34,7 +34,7 @@
         <section class="articles-featured">
             <div class="section-container">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading font-bold">
                         <h3>Featured Articles</h3>
                     </div>
                     <div class="section-body">
@@ -60,131 +60,10 @@
                                         <p>{{str_limit(strip_tags($article->content), 50)}}</p>
                                     </div>
                                     <div class="article-item-date">
-                                        <h4>{{$article->created_at}}</h4>
+                                        <h6>{{strftime("%d %b %Y",strtotime($article->created_at))}}</h6>
                                     </div>
                                 </div>
                                 @endforeach
-                                <!-- <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 6th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 7th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 8th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 9th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 10th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 11th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 12th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 13th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 14th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 15th</h4>
-                                    </div>
-                                </div>
-                                <div class="article-item">
-                                    <div class="article-item-image">
-                                        <img src="{{asset("images/fa-image.png")}}" alt="">
-                                    </div>
-                                    <div class="article-item-text">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde illum voluptatem facere.</p>
-                                    </div>
-                                    <div class="article-item-date">
-                                        <h4>July 16th</h4>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -197,7 +76,7 @@
         <section class="featured-videos">
            <div class="section-container">
                <div class="section-inner">
-                   <div class="section-heading white-heading">
+                   <div class="section-heading white-heading font-bold">
                        <h3>Featured Videos</h3>
                    </div>
                    <div class="section-body">
@@ -228,7 +107,7 @@
         <section class="featured-polls">
             <div class="section-container">
                 <div class="section-inner">
-                    <div class="section-heading">
+                    <div class="section-heading font-bold">
                         <h3>Featured Polls</h3>
                     </div>
                     <div class="section-body">

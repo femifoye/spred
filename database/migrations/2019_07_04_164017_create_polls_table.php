@@ -17,6 +17,7 @@ class CreatePollsTable extends Migration
             $table->bigIncrements('id');
             $table->string('question');
             $table->string('options');  //options should be in JSON format
+            $table->string('featured_image')->nullable();
             $table->timestamps();
         });
     }

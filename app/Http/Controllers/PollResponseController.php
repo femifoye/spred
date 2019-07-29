@@ -34,7 +34,7 @@ class PollResponseController extends Controller
      */
     public function create($question)
     {
-        //
+
     }
 
     public function takePoll($question = null){
@@ -160,7 +160,7 @@ class PollResponseController extends Controller
         $totalResponses = PollResponse::count();
         $popular = collect();
         foreach(PollResponse::all() as $pollResponse){
-            if($this->pollResponseTotal($pollResponse->poll_id) > $totalResponses/$totalUniqueResponses){
+            if($this->pollResponseTotal($pollResponse->poll_id) >1 && $this->pollResponseTotal($pollResponse->poll_id) > $totalResponses/$totalUniqueResponses){
                 $popular[] = $pollResponse->poll()->first();
             }
         }

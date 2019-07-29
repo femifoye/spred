@@ -52,6 +52,7 @@ class ForumController extends Controller
             $forum->featured_image = $image_url;
             $forum->save();
         }
+        return redirect()->route('articles.index');
     }
 
     /**
