@@ -11,7 +11,7 @@ use Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass;
 class PollResponseController extends Controller
 {
     public function __construct(){
-        return $this->middleware('auth')->except(['index', 'show']);
+        return $this->middleware('auth')->except(['index', 'show', 'popularPolls']);
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +21,10 @@ class PollResponseController extends Controller
     public function index()
     {
         //
-        return view('polls_page')->with(['polls' => Poll::latest()->paginate(20)]);
+        return view('polls_page')->with([
+            'polls' => Poll::latest()->paginate(20),
+            'popularPolls' => $this->popularPolls(),
+        ]);
     }
 
     /**
@@ -36,12 +39,13 @@ class PollResponseController extends Controller
 
     public function takePoll($question = null){
         if($question){
-            $question = str_replace(['-', '):'], [' ', '?'], $question);
+            $question = str_replace(['-', ':):'], [' ', '?'], $question);
             $poll = Poll::where('question', "{$question}")->first();
+            return view('poll_single')->with(['poll' =>$poll, 'computed' => $this->computedResponse($poll)]);
         }else{
             $poll = Poll::latest()->paginate(1);
+            return view('poll_page')->with(['poll' =>$poll, 'computed' => $this->computedResponse($poll[0])]);
         }
-        return view('poll_page')->with(['poll' =>$poll, 'computed' => $this->computedResponse($poll[0])]);
     }
 
     /**
@@ -149,5 +153,17 @@ class PollResponseController extends Controller
             'lead' => $lead,
         ];
 
+    }
+
+    public function popularPolls(){
+        $totalUniqueResponses = PollResponse::all()->unique('poll_id')->count();
+        $totalResponses = PollResponse::count();
+        $popular = collect();
+        foreach(PollResponse::all() as $pollResponse){
+            if($this->pollResponseTotal($pollResponse->poll_id) > $totalResponses/$totalUniqueResponses){
+                $popular[] = $pollResponse->poll()->first();
+            }
+        }
+        return $popular->unique()->values()->all();
     }
 }

@@ -16,9 +16,10 @@ class CreateForumsTable extends Migration
         Schema::create('forums', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('forumable_type')->unsigned();
-            $table->string('forumable_id');
-            $table->enum('approval', ["accepted", "denied"]);
+            $table->string('featured_image')->nullable();
+            $table->string('creator_type');
+            $table->integer('creator_id')->unsigned();
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
     }

@@ -10,7 +10,8 @@
                         <div class="main-content">
                            <div class="poll-body_single">
                                 <div class="poll-inner_single">
-                                    <div class="breadcrumb text-secondary bg-light row"><div class="col-11 m-t-5">Polls \ Vote \ {{str_slug(str_limit($poll[0]->question, 20))}}</div>
+                                    <div class="breadcrumb text-secondary bg-light row"><div class="col-11 m-t-5">Polls \ Vote \ {{str_slug(str_limit($poll->question, 20))}}</div>
+                                    <a class="btn btn-primary pull-right" href="{{route('slide-polls')}}">All</a>
                                     </div>
                                     <div></div>
                                 @if($errors->any())
@@ -21,7 +22,7 @@
                                 @isset($responded)
                                 @else
                                    <div class="poll-title_single">
-                                       <h3>{{$poll[0]->question}}</h3>
+                                       <h3>{{$poll->question}}</h3>
                                    </div>
                                    <div class="poll-instruction_single">
                                        <p>
@@ -34,14 +35,13 @@
                                             @isset($edit)
                                             {{@method_field('PUT')}}
                                             @endisset
-                                            <input type="text" hidden name="poll_id" value="{{$poll[0]->id}}">
-                                            @foreach(json_decode($poll[0]->options) as $key => $option)
+                                            <input type="text" hidden name="poll_id" value="{{$poll->id}}">
+                                            @foreach(json_decode($poll->options) as $key => $option)
                                             <div class="control-form">
                                                 <input type="radio" class="poll-form-radio" name="response_id" value="{{$key}}"><span class="poll-form-option">{{$option}}</span>
                                             </div>
                                             @endforeach
                                             <button type="submit" class="btn btn-lg btn-secondary">Vote</button>
-
                                         </form>
                                    </div>
 
@@ -95,7 +95,6 @@
                                        <!-- <h4>POLL DISQUS COMMENTS GO HERE</h4> -->
                                    </div>
                                </div>
-                               <div style="margin:30px auto !important">{{$poll->links()}}</div>
                            </div>
                         </div> <!-- MAIN CONTENT -->
                         @include('includes.sidebar')

@@ -9,7 +9,9 @@ body {
     position: relative;
     height: 100%;
 }
-
+.page-section{
+    margin-bottom: 10%;
+}
 h1 {
     font-size: 2.5rem;
 }
@@ -597,7 +599,7 @@ input[type=radio] {
     margin: 40px 20px;
 }
 
-.poll-result-inner { 
+.poll-result-inner {
     background-color: black;
     padding: 30px;
     color: white;
@@ -778,6 +780,25 @@ input[type=radio] {
 }
 .m-t-30{
     padding-top: 30px;
+}
+
+.m-b-5{
+    padding-bottom: 5px;
+}
+.m-b-10{
+    padding-bottom: 10px;
+}
+.m-b-15{
+    padding-bottom: 15px;
+}
+.m-b-20{
+    padding-bottom: 20px;
+}
+.m-b-25{
+    padding-bottom: 25px;
+}
+.m-b-30{
+    padding-bottom: 30px;
 }
 
 .p-l-5{

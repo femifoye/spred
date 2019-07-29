@@ -55,14 +55,12 @@ class ArticleController extends Controller
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
+        Auth::user()->articleCreator()->save($article);
         if($request['featured_image']){
-            Auth::user()->articleCreator()->save($article);
             $image = $validated['featured_image'];
             $image_url = $image->store('public/images');
             $article->featured_image = $image_url;
             $article->save();
-        }else{
-            Auth::user()->articleCreator()->save($article);
         }
 
         return redirect()->route('single.article', [str_slug($article->title), $article->id])->with(['article' => $article, 'message' => 'article was uploaded successfully']);

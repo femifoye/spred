@@ -45,4 +45,8 @@ class User extends Authenticatable
         return $this->hasMany('App\PollResponse');
     }
 
+    public function forumCreator(){
+        return $this->morphMany('App\Forum', 'creator');
+    }
+
 }

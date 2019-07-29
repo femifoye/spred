@@ -21,7 +21,8 @@ Route::get('/admi/add-article', function () {
 });
 
 // USER ROUTES
-Route::get('/polls/slide/vote', 'PollResponseController@takePoll');
+Route::get('/polls/single/vote/{slug}', 'PollResponseController@takePoll');
+Route::get('/polls/slide/vote', 'PollResponseController@takePoll')->name('slide-polls');
 Route::resource('/polls', 'PollResponseController');
 
 Route::resource('/articles', 'ArticleController');
@@ -29,7 +30,7 @@ Route::get('/articles/view/{slug}/{id}', 'ArticleController@single')->name('sing
 Route::post('articles/search', 'ArticleController@search')->name('search');
 Route::get('article/post', 'ArticleController@create')->name('create');
 Route::get('articles/sort/{sort}', 'ArticleController@sort')->name('sort');
-Route::resource('/forum', 'ForumController');
+Route::resource('/forums', 'ForumController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -43,4 +44,4 @@ Route::get('thanks-for-subscribing', 'SubscriptionController@thanks');
 //Test Route
 //Route::post('/respond-to-poll', 'PollResponseController@store')->name('respond_to_poll');
 //Route::get('/respond-to-poll', 'PollResponseController@create');
-//Route::get('/poll-count/{id}', 'PollResponseController@computePollPercentages');
+//Route::get('/popular-poll', 'PollResponseController@popularPolls');

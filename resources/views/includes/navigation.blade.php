@@ -30,7 +30,7 @@
                             <li class="menu-list-item"><a href="{{url('/articles')}}">Articles</a></li>
                             <li class="menu-list-item"><a href="{{url('/videos')}}">Videos</li>
                             <li class="menu-list-item"><a href="{{url('/forum')}}">Forums</a></li>
-                            <li class="menu-list-item"><a href="{{url('/poll')}}">Polls</a></li>
+                            <li class="menu-list-item"><a href="{{route('slide-polls')}}">Take Polls</a></li>
                         </ul>
                     </div>
                 </div>
