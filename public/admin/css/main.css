@@ -89,6 +89,8 @@ li {
     cursor: pointer;
 }
 
+
+
 .dropdown-btn:focus {
     background-color: #1d1d1d;
 }
@@ -123,6 +125,25 @@ button:focus {
 
 .content-header {
     text-align: center;
+}
+
+/* =============================================================
+                       DASHBOARD
+============================================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2em;
+    margin: 20px 0;
+}
+
+.dashboard-gi {
+    padding: 100px;
+    background-color: lightpink;
+    background-image: linear-gradient( 109.6deg,  rgba(185,212,242,1) 11.2%, rgba(244,210,226,1) 100.3% );
+    border-radius: 10px;
+    box-shadow: 6px 7px 12px rgba(189, 189, 189, 0.9);
 }
 
 .article-form-wrap {

@@ -11,7 +11,6 @@
                             <div class="breadcrumb">
                                 <a class="btn btn-secondary" href="{{route('articles.create')}}">Publish Article</a>
                             </div>
-                            <div class="p-l-20"><h4 class="d-block text-secondary">Forum: <span class="text-success">{{$article->forum->name}}</span></h4></div>
                             <hr>
                             <div class="clearfix"></div>
                             <div class="article-wrap text-center">
@@ -44,7 +43,7 @@
 
                                 <div class="comment col-9 offset-1 m-b-20" id="comment">
                                     <h4>Comments <span><small class="badge badge-warning">{{$article->comments()->get()->count()}}</small></span></h4>
-                                @foreach($article->comments()->get() as $comment)
+                                    @foreach($article->comments()->get() as $comment)
                                     <div class="row align-items-center m-b-20">
                                         <div class="col-3">
                                             <img src="" class="thumbnail thumb-nail" alt="">

@@ -50,6 +50,42 @@
                                                 @enderror
                                             </div>
 
+                                            <label for="forum_category" class="col-md-4 col-form-label text-md-right">Select Category</label>
+
+                                            <div class="col-md-6 m-b-10">
+                                                <select name="forum_category" id="forum_category" class="form-control" required>
+                                                    <option value="null">Add Categories</option>
+                                                    <option value="">Category 1</option>
+                                                </select>
+                                                @error('forum')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <label for="forum_tags" class="col-md-4 col-form-label text-md-right">Enter Tags</label>
+
+                                            <div class="col-md-6 m-b-10">
+                                                <input type="text" name="forum_tags" class="form-control" id="forum_tags" placeholder="Enter tags separated by a comma">
+                                                @error('forum')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <label for="forum_details" class="col-md-4 col-form-label text-md-right">Enter Topic Details</label>
+
+                                            <div class="col-md-6 m-b-10">
+                                                <textarea name="forum_details" id="forum_details" cols="30" rows="10" class="form-control" required></textarea>
+                                                @error('forum')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
                                             <label for="featured_image" class="col-md-4 col-form-label text-md-right">{{ __('Featured Image') }}</label>
 
                                                 <div class="col-md-6 custom-file">

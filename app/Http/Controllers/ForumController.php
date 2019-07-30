@@ -15,8 +15,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //
-        return Forum::where('approved', false)->get();
+        return view('forum_page');
     }
 
     /**
@@ -112,5 +111,9 @@ class ForumController extends Controller
     {
         //
         $forum->delete();
+    }
+
+    public function single($slug, $id){
+        return view('forum_page_single');
     }
 }

@@ -78,11 +78,79 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    pollResultButton.addEventListener('click', (event) => {
-      toggleResult();    
-    });
-    pollCloseButton.addEventListener('click', (event) => {
-        toggleResult();    
+    if(pollResultButton) {
+        pollResultButton.addEventListener('click', (event) => {
+            toggleResult();    
+          });
+    }
+    if(pollCloseButton) {
+        pollCloseButton.addEventListener('click', (event) => {
+            toggleResult();    
+        })
+    }
+    
+    
+
+    //FORUM PAGE BACKGROUND SECTION TILE
+    let forumContent = [].slice.call(document.getElementsByClassName('forum-body_content'));
+    console.log(forumContent);
+    let count = 0;
+    forumContent.forEach((content) => {
+        let checkCount = count / 2;
+        if(Number.isInteger(checkCount)){
+            content.classList.add('forum_grey_bg');
+        }
+        count++
     })
 
+    //FORUM PAGE CATEGORY WRAP TOGGLE
+    let toggleCat = document.querySelector('.filter_category');
+    let catWrapper = document.querySelector('.forum_categories_wrap');
+    toggleCat.addEventListener('click', () => {
+        catWrapper.classList.toggle('hide');
+    })
+
+    //FORUM PAGE MODAL TOGGLE
+    let forumReplyBtn = document.querySelector('.forum-reply-button_btn');
+    let forumCloseBtn = document.querySelector('.forum-reply-button-close');
+    let forumReplyModal = document.querySelector('.forum-reply-modal-inner');
+    let forumAddBtn = document.querySelector('.forum-add-button');
+    let forumAddModal = document.querySelector('.forum-add-modal-inner');
+    let forumAddCloseBtn = document.querySelector('.forum-add-button-close');
+    let toggleReplyModal = () => {
+        forumReplyModal.classList.toggle('hide');
+    }
+    let toggleAddModal = () => {
+        forumAddModal.classList.toggle('hide');
+    }
+    if(forumReplyBtn) {
+        forumReplyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleReplyModal();
+        })
+    }
+
+    if(forumCloseBtn) {
+        forumCloseBtn.addEventListener('click', () => {
+            toggleReplyModal();
+        })
+    }
+
+    if(forumAddBtn) {
+        forumAddBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleAddModal();
+        })
+    }
+
+    if(forumAddCloseBtn) {
+        forumAddCloseBtn.addEventListener('click', () => {
+            toggleAddModal();
+        })
+
+    }
+    
+    
+   
+    
 })
