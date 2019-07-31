@@ -66,7 +66,7 @@ class ArticleController extends Controller
             $article->save();
         }
 
-        return redirect()->route('articles.show', $article)->with(['message' => 'article was uploaded successfully']);
+        return redirect()->route('single.article', [strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was uploaded successfully']);
     }
 
     /**
@@ -78,6 +78,7 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         //
+        return $article;
         $related = Article::where('category_id', '=', $article->category_id)
                             ->whereNotIn('id', [$article->id])->paginate(10);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
@@ -85,7 +86,8 @@ class ArticleController extends Controller
     public function single(Article $article, $slug='', $id)
     {
         //
-        $str_unslug = str_replace('-', ' ', $slug);
+        //return
+        $str_unslug = str_replace(['-', '::', ':.', '.:'], [' ', '?', '/', '\\'], $slug);
         $article = Article::where('title', '=', "{$str_unslug}")->first();
         $related = Article::where('category_id', '=', "{$article->category_id}")
                         ->whereNotIn('id', [$article->id])->paginate(10);
@@ -137,7 +139,7 @@ class ArticleController extends Controller
             $article->featured_image = $image_url;
         }
         $article->save();
-        return redirect()->route('single.article', [str_slug($article->title), $article->id])->with(['article' => $article, 'message' => 'article was updated successfully']);
+        return redirect()->route('single.article', [strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was updated successfully']);
     }
 
     /**
@@ -167,7 +169,9 @@ class ArticleController extends Controller
                         ->where('title', 'like', "%{$string}%")
                         ->orWhere('content', 'like', "%{$string}%")
                         ->orWhere('categories.name', 'like', "%{$string}%")
-                        ->orWhere('forums.name', 'like', "%{$string}%")->get();
+                        ->orWhere('forums.name', 'like', "%{$string}%")
+                        ->select('articles.id', 'articles.title', 'articles.content', 'articles.featured_image', 'category_id')
+                        ->get();
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';
         }else{
@@ -179,10 +183,13 @@ class ArticleController extends Controller
     //Search for part of title string or part of content string
     public function sort($param){
         $string = str_replace('-', ' ',$param);
-        $articles = Article::join('categories', 'articles.category_id', '=', 'categories.id')
-                            ->join('forums', 'articles.forum_id', '=', 'forums.id')
+        //return
+        $articles = Article::join('categories', 'categories.id', 'articles.category_id')
+                            ->join('forums', 'forums.id', 'articles.forum_id')
                             ->where('categories.name', $string)
-                            ->orWhere('forums.name', $string)->get();
+                            ->orWhere('forums.name', $string)
+                            ->select('articles.id', 'articles.title', 'articles.content', 'articles.featured_image', 'category_id')
+                            ->get();
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';
         }else{

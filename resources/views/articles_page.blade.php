@@ -46,17 +46,17 @@
                                 @foreach($articles as $article)
                                 <div class="article-thumb">
                                     <div class="article-featured-image">
-                                        <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}">
-                                            <img src="{{Storage::url($article->featured_image)}}" alt="{{str_limit(str_slug($article->featured_image),15)}}">
+                                        <a href="{{route('single.article', [strtolower(str_replace([' ', '?', '/', '\\'], ['-', '::', ':.', '.:'], $article->title)), $article->id])}}">
+                                            <img src="{{Storage::url($article->featured_image)}}" alt="{{str_limit(str_slug($article->featured_image),35)}}">
                                         </a>
                                     </div>
                                     <div class="article-thumb-title">
-                                        <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}"><h4>{{$article->title}}</h4></a>
+                                        <a href="{{route('single.article', [strtolower(str_replace([' ', '?', '/', '\\'], ['-', '::', ':.', '.:'], $article->title)), $article->id])}}"><h4>{{$article->title}}</h4></a>
                                     </div>
                                     <div class="article-excerpt p-s-10">
 
                                         <p>
-                                        {{str_limit(strip_tags($article->content), 50)}} <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}" class="blue-link">Read More</a>
+                                        {{str_limit(strip_tags($article->content), 50)}} <a href="{{route('single.article', [strtolower(str_replace([' ', '?', '/', '\\'], ['-', '::', ':.', '.:'], $article->title)), $article->id])}}" class="blue-link">Read More</a>
                                         </p>
                                         <span class="badge badge-primary"><small class="lead">{{$article->comments()->count()}} comments</small></span>
                                     </div>

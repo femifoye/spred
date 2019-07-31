@@ -11,6 +11,9 @@
                             <div class="breadcrumb">
                                 <a class="btn btn-secondary" href="{{route('articles.create')}}">Publish Article</a>
                             </div>
+                            @if(session('success'))
+                            <div class="alert alert-success">{{session('success')}}</div>
+                            @endif
                             <hr>
                             <div class="clearfix"></div>
                             <div class="article-wrap text-center">
