@@ -985,6 +985,66 @@ input[type=radio] {
 }
 
 /* =============================================================
+                        VIDEOS
+============================================================= */
+
+.videos-header {
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+.videos-wrap {
+    background-color: white;
+}
+
+.vd-featured-video-box iframe{
+    width: 100%;
+    height: 500px;
+}
+
+.vd-featured-video-title {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.vd-more-videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.vd-more-videos-wrap {
+    padding: 20px 10px;
+    margin: 10px 0;
+}
+
+.vd-video {
+    margin: 0 0 60px 0;
+}
+
+.vd-video-play {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.vd-btn-play {
+    background-color: #4148c2;
+    color: white;
+}
+
+.vd-video-box iframe {
+    width: 300px;
+    height: auto;
+}
+
+.vd-video-title {
+    max-width: 300px;
+    width: 100%;
+}
+
+/* =============================================================
                         FLOATING CHAT
 ============================================================= */
 

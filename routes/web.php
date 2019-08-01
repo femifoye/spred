@@ -36,6 +36,8 @@ Auth::routes();
 Route::resource('/forums', 'ForumController')->names('forums');
 Route::get('forums/view/{slug}/{id}', 'ForumController@single')->name('single.forum');
 
+Route::resource('/videos', 'VideoController')->names('videos');
+
 Route::get('/home/', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@landing')->name('landing');
 Route::post('/subscribe/', 'SubscriptionController@store')->name('subscribe');
