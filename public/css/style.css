@@ -984,6 +984,91 @@ input[type=radio] {
     justify-content: center;
 }
 
+/* =============================================================
+                        FLOATING CHAT
+============================================================= */
+
+.fc-floating-chat {
+    position: fixed;
+    bottom: 15px;
+    right: 0;
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    background: url('../images/chat-bg.png');
+}
+
+.fc-floating-chat p {
+    font-size: .85rem;
+}
+
+.fc-chat-conv {
+    height: 400px;
+    max-height: 500px;
+    
+}
+
+.chat-bubble {
+    padding: 10px 10px 2px;
+    border-radius: 10px;
+    margin: 5px 0 10px 0;
+    line-height: 0;
+}
+
+.others-bubble {
+    background-color: #dadada;
+}
+
+.user-bubble {
+    background-color: #8c90d4;
+    color: black;
+}
+
+.fc-chat-header {
+    background-color: #3f47be;
+    padding: 5px 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fc-chat-header fa {
+    font-size: 1em;
+}
+
+.fc-chat-body {
+    padding: 5px 10px;
+}
+
+.chat-bubble-username {
+    color: #3f47be;
+}
+
+.signup-message {
+    background-color: #FFBABA;
+    padding: 15px 0 2px 0;
+    color: #D8000C;
+}
+
+.signup-message a {
+    color: #D8000C;
+}
+
+.floating-chat-toggle {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+}
+.fc-toggle-icon {
+    padding: 20px;
+    background-color: #4148c2;
+    border-radius: 100%;
+}
+
+
+
 
 /* =============================================================
                         SIDEBAR

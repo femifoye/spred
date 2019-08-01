@@ -169,6 +169,7 @@
         <!-- <div class="flex-center position-ref full-height">
             <h2>Spred Test View</h2>
         </div> -->
+        @include('includes.floating-chat')
 
     @include('includes.footer')
 
