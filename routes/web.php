@@ -16,6 +16,7 @@ Route::resource('/admin/categories', 'Admin\CategoryController');
 Route::resource('admin/forums', 'Admin\ForumController')->names('adm_forums');
 Route::resource('/admin/polls/', 'Admin\PollController')->names('adm_polls');
 Route::resource('/admin/dashboard', 'Admin\HomeController')->names('adm_home');
+Route::resource('/admin/videos', 'Admin\VideoController')->names('adm.videos');
 Route::get('/admin/home', function () {
     return view('admin-home');
 });
@@ -37,6 +38,7 @@ Route::resource('/forums', 'ForumController')->names('forums');
 Route::get('forums/view/{slug}/{id}', 'ForumController@single')->name('single.forum');
 
 Route::resource('/videos', 'VideoController')->names('videos');
+Route::get('/videos/view/{slug}/{id}', 'VideoController@single')->name('single.video');
 
 Route::get('/home/', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@landing')->name('landing');

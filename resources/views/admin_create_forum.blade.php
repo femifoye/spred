@@ -85,14 +85,6 @@
                                                     </span>
                                                 @enderror
                                             </div>
-
-                                            <label for="featured_image" class="col-md-4 col-form-label text-md-right">{{ __('Featured Image') }}</label>
-
-                                                <div class="col-md-6 custom-file">
-                                                    <input id="featured_image" type="file" class="custom-file-input" name="featured_image">
-                                                    <label class="custom-file-label" for="customFile">
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-md-6 offset-md-4">

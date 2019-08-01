@@ -81,4 +81,8 @@ class VideoController extends Controller
     {
         //
     }
+
+    public function single($slug, $id){
+        return view('video_single');
+    }
 }
