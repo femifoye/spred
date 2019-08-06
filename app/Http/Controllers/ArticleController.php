@@ -170,7 +170,7 @@ class ArticleController extends Controller
                         ->orWhere('content', 'like', "%{$string}%")
                         ->orWhere('categories.name', 'like', "%{$string}%")
                         ->orWhere('forums.name', 'like', "%{$string}%")
-                        ->select('articles.id', 'articles.title', 'articles.content', 'articles.featured_image', 'category_id')
+                        ->select('articles.*')
                         ->get();
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';
@@ -188,7 +188,7 @@ class ArticleController extends Controller
                             ->join('forums', 'forums.id', 'articles.forum_id')
                             ->where('categories.name', $string)
                             ->orWhere('forums.name', $string)
-                            ->select('articles.id', 'articles.title', 'articles.content', 'articles.featured_image', 'category_id')
+                            ->select('articles.*' )
                             ->get();
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';

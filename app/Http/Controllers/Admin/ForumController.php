@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Forum;
 
 class ForumController extends Controller
 {
@@ -15,7 +16,6 @@ class ForumController extends Controller
     public function index()
     {
         return Forum::where('approved', false)->get();
-
     }
 
     /**
