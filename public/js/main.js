@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuBars = [].slice.call(document.getElementsByClassName('menu-bar'));
     let menuListItem = [].slice.call(document.getElementsByClassName('menu-list-item'));
 
+    let toggleHide = (el) => {
+        el.classList.toggle('hide');
+    }
+
     //EVENT LISTENERS
     menuButton.addEventListener('click', () => {
 
@@ -106,9 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //FORUM PAGE CATEGORY WRAP TOGGLE
     let toggleCat = document.querySelector('.filter_category');
     let catWrapper = document.querySelector('.forum_categories_wrap');
-    toggleCat.addEventListener('click', () => {
-        catWrapper.classList.toggle('hide');
-    })
+    if(toggleCat) {
+        toggleCat.addEventListener('click', () => {
+            toggleHide(catWrapper);
+        })
+    }
+    
 
     //FORUM PAGE MODAL TOGGLE
     let forumReplyBtn = document.querySelector('.forum-reply-button_btn');
@@ -118,10 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let forumAddModal = document.querySelector('.forum-add-modal-inner');
     let forumAddCloseBtn = document.querySelector('.forum-add-button-close');
     let toggleReplyModal = () => {
-        forumReplyModal.classList.toggle('hide');
+        toggleHide(forumReplyModal)
     }
     let toggleAddModal = () => {
-        forumAddModal.classList.toggle('hide');
+        toggleHide(forumAddModal);
     }
     if(forumReplyBtn) {
         forumReplyBtn.addEventListener('click', (e) => {
@@ -149,6 +156,22 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
     }
+
+    //FLOATING CHAT TOGGLE
+    let fcToggle = document.querySelector('.floating-chat-toggle');
+    let floatingChat = document.querySelector('.fc-floating-chat');
+    let fcClose = document.querySelector('.fc-close');
+    let toggleChat = () => {
+        toggleHide(fcToggle);
+        toggleHide(floatingChat)
+    }
+     fcToggle.addEventListener('click', () => {
+        toggleChat();
+    });
+    fcClose.addEventListener('click', () => {
+        toggleChat();
+    })
+    
     
     
    
