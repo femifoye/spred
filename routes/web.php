@@ -52,8 +52,5 @@ Route::get('/chats', 'ChatController@index');
 Route::post('/chats', 'ChatController@store')->name('chats.store');
 
 //Test Route
-Route::get('/relationships', function(){
-    return App\Article::latest()->paginate(6)->find(5)->category->name;
-});
 //Route::get('/respond-to-poll', 'PollResponseController@create');
 //Route::get('/popular-poll', 'PollResponseController@popularPolls');

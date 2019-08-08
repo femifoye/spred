@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
+    public function __construct(){
+        return $this->middleware('auth')->except('index');
+    }
     /**
      * Display a listing of the resource.
      *
