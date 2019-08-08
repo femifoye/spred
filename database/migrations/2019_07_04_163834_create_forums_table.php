@@ -15,7 +15,10 @@ class CreateForumsTable extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('title');
+            $table->string('category_id');
+            $table->string('tags');
+            $table->longText('body');
             $table->string('featured_image')->nullable();
             $table->string('creator_type');
             $table->integer('creator_id')->unsigned();

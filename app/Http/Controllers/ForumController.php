@@ -15,7 +15,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forum_page');
+        return view('forum_page')->with(['forums'=>Forum::latest()->paginate(15)]);
     }
 
     /**
@@ -39,19 +39,27 @@ class ForumController extends Controller
     {
         //
         $validated = $request->validate([
-            'name' => 'required|string|unique:forums',
-            'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
+            'forum_topic_title' => 'required|string|unique:forums,title',
+            'forum_add_category' => 'required|string',
+            'forum_add_tags' => 'required|string',
+            'forum_add_body' => 'required|string'
+            //'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
         $forum = new Forum;
-        $forum->name = $validated['name'];
+        $forum->title = $validated['forum_topic_title'];
+        $forum->category_id = $validated['forum_add_category'];
+        $forum->tags = json_encode(explode(',', preg_replace(['/,\s+/','/\s+,/'], [',',','], $validated['forum_add_tags'])));
+        $forum->body = $validated['forum_add_body'];
         Auth::user()->forumCreator()->save($forum);
+        /*
         if($request['featured_image']){
             $image = $validated['featured_image'];
             $image_url = $image->store('public/images');
             $forum->featured_image = $image_url;
             $forum->save();
         }
-        return redirect()->route('articles.index');
+        */
+        return redirect()->route('forums.show', $forum);
     }
 
     /**
@@ -63,6 +71,7 @@ class ForumController extends Controller
     public function show(Forum $forum)
     {
         //
+        return view('forum_page_single')->with('forum', $forum);
     }
 
     /**
@@ -74,6 +83,7 @@ class ForumController extends Controller
     public function edit(Forum $forum)
     {
         //
+        $this->authorize('update', $forum);
         return view('create_forum')->with(['forum' => $forum, 'edit'=>true]);
     }
 
@@ -87,6 +97,7 @@ class ForumController extends Controller
     public function update(Request $request, Forum $forum)
     {
         //
+        $this->authorize('update', $forum);
         $validated = $request->validate([
             'name' => 'required|string|unique:forums',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
@@ -110,10 +121,12 @@ class ForumController extends Controller
     public function destroy(Forum $forum)
     {
         //
+        $this->authorize('delete', $forum);
         $forum->delete();
     }
 
-    public function single($slug, $id){
-        return view('forum_page_single');
+    public function single(Forum $forum, $slug){
+        //$forum = Forum::find($id);
+        return view('forum_page_single')->with('forum', $forum);
     }
 }

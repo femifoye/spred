@@ -49,4 +49,11 @@ class User extends Authenticatable
         return $this->morphMany('App\Forum', 'creator');
     }
 
+    public function chats(){
+        return $this->hasMany('App\Chat');
+    }
+
+    public function videos(){
+        return $this->hasMany('App\Video');
+    }
 }

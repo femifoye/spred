@@ -15,44 +15,49 @@
                 </form>
             </div>
             @endguest
+
+            {{--
+                @isset($forums)
             <div class="sidebar-categories sidebar-box">
                 <div class="sidebar-heading">
                     <h6 class="sidebar-heading-h6">Forums</h6>
                 </div>
                 <div class="sidebar-categories-group">
                     <ul class="sidebar-categories-ul">
-                        @isset($forums)
+
                         @foreach($forums as $forum)
                         <li>
                             <a href="{{route('sort', str_slug($forum->name))}}">{{title_case($forum->name)}}</a>
                         </li>
                         @endforeach
-                        @endisset
+
                     </ul>
                 </div>
             </div>
+            @endisset
+            --}}
+
+            @isset($categories)
             <div class="sidebar-categories sidebar-box">
                 <div class="sidebar-heading">
                     <h6 class="sidebar-heading-h6">Categories</h6>
                 </div>
                 <div class="sidebar-categories-group">
                     <ul class="sidebar-categories-ul">
-                        @isset($categories)
                         @foreach($categories as $category)
                         <li>
                             <a href="{{route('sort', str_slug($category->name))}}">{{title_case($category->name)}}</a>
                         </li>
                         @endforeach
-                        @endisset
                     </ul>
                 </div>
             </div>
+            @endisset
             <div class="sidebar-popular-posts sidebar-box">
                 <div class="sidebar-heading">
                     <h6 class="sidebar-heading-h6">Popular Posts</h6>
                 </div>
-
-            <ul class="sidebar-popular-post-ul">
+                <ul class="sidebar-popular-post-ul">
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
                     <li>Lorem ipsum dolor, sit amet consectetur.</li>
@@ -60,9 +65,8 @@
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing.</li>
                     <li>Lorem ipsum dolor, sit amet consectetur.</li>
                     <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-            </ul>
+                </ul>
             </div>
         </div>
     </div>
-
 </section> <!-- PAGE SIDE BAR -->

@@ -8,58 +8,76 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                        
+                            @if($errors->any())
                             <div class="alert alert-danger">
-                                <ul>  
-                                        <li></li>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
                                 </ul>
-                            </div>                  
-                            <div class="alert alert-success"><p></p></div>
+                            </div>
+                            @endif
                             <div class="card">
-                                <div class="card-header"></div>
+                            @if(@isset($video))
+                                @php $requestRoute = 'videos.update';
+                                    $id = $video->id;
+                                    $process = 'Edit Video';
+                                    $action = 'Update Video';
+                                    $method = 'PUT';
+                                @endphp
+                            @else
+                                @php $requestRoute = 'videos.store';
+                                    $id = '';
+                                    $action = 'Add Video';
+                                    $process = $action;
+                                    $method = 'POST';
+                                @endphp
+                            @endif
+                                <div class="card-header">{{$process}}</div>
 
                                 <div class="card-body">
-                                    <form method="POST" action="" enctype="multipart/form-data">
+                                    <form method="{{$method}}" action="{{route($requestRoute)}}" enctype="multipart/form-data">
+                                    @csrf
                                        <div class="control-form">
-                                           <input 
+                                           <input
                                                 type="text"
                                                 class="form-control"
                                                 name="video_title"
                                                 id="video_title"
+                                                value="@isset($video)){{$video->title}}@endisset"
                                                 placeholder="Enter video title"
                                                 required
                                             >
                                        </div>
                                        <div class="control-form">
-                                           <input 
-                                                type="text" 
-                                                class="form-control" 
+                                           <input
+                                                type="text"
+                                                class="form-control"
                                                 id="video_embed_link"
                                                 name="video_embed_link"
+                                                value="@isset($video)){{$video->url}}@endisset"
                                                 placeholder="Enter Youtube Embed link"
                                                 required
                                             >
-                                       </div>
-                                       <div class="control-form">
-                                           <textarea 
-                                                name="" 
-                                                id="video_body" 
+                                        </div>
+                                        <div class="control-form">
+                                            <textarea
+                                                id="video_body"
                                                 name="video_body"
                                                 placeholder="Enter video description"
-                                                cols="30" 
-                                                rows="10" 
+                                                cols="30"
+                                                rows="10"
                                                 class="form-control"
-                                            >
-                                            </textarea>
-                                       </div>
-                                       <div class="control-form">
-                                        <div class="col-md-6 offset-md-4">
+                                            >@isset($video)){{$video->title}}@endisset</textarea>
+                                        </div>
+                                        <div class="control-form">
+                                            <div class="text-center">
                                                 <button type="submit" class="btn btn-primary">
-                                                    Submit
+                                                    {{$action}}
                                                 </button>
                                             </div>
                                        </div>
-                                         
+
                                     </form>
                                 </div>
                             </div>
@@ -100,7 +118,6 @@
         console.error( error );
         } );
     })
-
  </script>
     @include('includes.admin-footer');
     <!-- CK EDITOR 5 -->

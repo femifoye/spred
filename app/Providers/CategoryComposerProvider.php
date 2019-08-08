@@ -5,10 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Admin\Category;
-use App\Forum;
-use App\Comment;
 
-class ArticleComposerProvider extends ServiceProvider
+class CategoryComposerProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -30,15 +28,11 @@ class ArticleComposerProvider extends ServiceProvider
         //
         View::composer(
             [
-                'articles_page',
-                'article_page',
-                'article_create_form',
-                'includes.sidebar',
+                'includes.forum-modals',
             ],
             function($view){
                 $view->with([
                     'categories' => Category::all(),
-                    'forums' => Forum::all(),
                 ]);
             }
         );

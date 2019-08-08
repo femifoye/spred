@@ -8,8 +8,11 @@
                 <ul>
                     <li>
                         <ul class="menu-hide-on-mobile">
-                            <li>View Website</li>
-                            <li>Logout</li>
+                            <li><a class="btn" href="{{url('/')}}">View Website</a></li>
+                            <li class="btn" onclick="event.preventDefault(); document.getElementById('logout-action').submit()">Logout</li>
+                            <form id="logout-action" action="{{route('logout')}}" method="POST" hidden style="display:none">
+                                @csrf
+                            </form>
                         </ul>
                     </li>
                     <li>
@@ -23,11 +26,11 @@
             </div>
         </div>
         <div class="page-mobile-header-flex show-on-mobile hide">
-            @include('includes.admin-sidebar-menu') 
+            @include('includes.admin-sidebar-menu')
         </div>
     </div>
 </div>
 <div class="page-content-grid">
     <div class="page-side-nav hide-on-mobile">
-        @include('includes.admin-sidebar-menu') 
+        @include('includes.admin-sidebar-menu')
     </div>

@@ -38,29 +38,27 @@
                                                             <h6><i class="fa fa-eye forum-icon"></i><span class="subscr">121</span></h6>
                                                         </div>
                                                         <div class="fb-headers-replies fb-header-icon">
-                                                            <h6><i class="fa fa-reply forum-icon"></i><span class="subscr">5</span></h6>
+                                                            <h6><i class="fa fa-reply forum-icon"></i><span class="subscr">{{$forum->comments()->get()->count()}} Repl</span></h6>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="fb-content-body-wrap">
                                                 <article class="fb-content-body">
                                                     <div class="forum-title_single">
-                                                        <h4>Summarize the last book you read in one paragraph</h4>
+                                                        <h4>{{$forum->title}}</h4>
                                                         <a href=""><i class="fa fa-heart-o forum_like" style="font-size: 1.8em"></i></a>
-                                                        
+
                                                     </div>
                                                     <div class="forum-body-detail">
                                                         <p>
-                                                            I created this topic to have an idea what the members of this
-                                                            community are reading. In addition to that, i think this is a great way
-                                                            to find new titles to read. Please reply with a brief summary
-                                                            of the last book you read.
+                                                        {{$forum->body}}
                                                         </p>
                                                     </div>
                                                 </article>
                                                 <div class="forum-replies">
+                                                @foreach($forum->comments()->get() as $comment)
                                                     <div class="forum-reply">
                                                         <div class="forum-reply-dots">
                                                             <div class="forum-reply-dot"></div>
@@ -73,83 +71,41 @@
                                                                     <img src="{{asset("images/avatar.jpg")}}" alt="">
                                                                 </div>
                                                                 <div class="fb-headers-name fb-header">
-                                                                    <h5>Kaffy</h5>
+                                                                    <h5>{{$comment->user()->first()->name}}</h5>
                                                                 </div>
                                                                 <div class="fb-headers-time fb-header">
-                                                                    <h6>10h</h6>
+                                                                    <h6>{{$comment->created_at}}</h6>
                                                                 </div>
                                                             </div>
                                                             <div class="forum-reply-details">
                                                                 <p>
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                                                    Ipsa natus culpa, neque amet, architecto tempora consequatur 
-                                                                    illum voluptas modi veritatis ducimus, eos sit quas omnis? 
-                                                                    Nulla quasi quisquam quaerat id?
+                                                                    {{$comment->body}}
                                                                 </p>
-                                                            </div> 
-                                                        </div>
-                                                         
-                                                    </div>
-                                                    <div class="forum-reply">
-                                                        <div class="forum-reply-dots">
-                                                            <div class="forum-reply-dot"></div>
-                                                            <div class="forum-reply-dot"></div>
-                                                            <div class="forum-reply-dot"></div>
-                                                        </div>
-                                                        <div class="forum-reply-body">
-                                                            <div class="fb-reply-icons">
-                                                                <div class="fb-headers-img">
-                                                                    <img src="{{asset("images/avatar.jpg")}}" alt="">
-                                                                </div>
-                                                                <div class="fb-headers-name fb-header">
-                                                                    <h5>Kenneth</h5>
-                                                                </div>
-                                                                <div class="fb-headers-time fb-header">
-                                                                    <h6>2d</h6>
-                                                                </div>
                                                             </div>
-                                                            <div class="forum-reply-details">
-                                                                <p>
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                                                    Ipsa natus culpa, neque amet, architecto tempora consequatur 
-                                                                    illum voluptas modi veritatis ducimus, eos sit quas omnis? 
-                                                                    Nulla quasi quisquam quaerat id?
-                                                                </p>
-                                                            </div> 
                                                         </div>
-                                                         
+
                                                     </div>
-                                                    <div class="forum-reply">
-                                                        <div class="forum-reply-dots">
-                                                            <div class="forum-reply-dot"></div>
-                                                            <div class="forum-reply-dot"></div>
-                                                            <div class="forum-reply-dot"></div>
-                                                        </div>
-                                                        <div class="forum-reply-body">
-                                                            <div class="fb-reply-icons">
-                                                                <div class="fb-headers-img">
-                                                                    <img src="{{asset("images/avatar.jpg")}}" alt="">
-                                                                </div>
-                                                                <div class="fb-headers-name fb-header">
-                                                                    <h5>Samuel</h5>
-                                                                </div>
-                                                                <div class="fb-headers-time fb-header">
-                                                                    <h6>3d</h6>
-                                                                </div>
+                                                    @endforeach
+                                                    @if($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                    @endif
+                                                    <div class="m-t-30">
+                                                        <form class="row justify-content-center" action="{{route('forum_comment', $forum)}}" method="POST">
+                                                            @csrf
+                                                            <textarea rows="4" class="form-control col-sm-10" name="comment"></textarea>
+                                                            <div class="align-self-end p-l-10">
+                                                                <input type="submit" class="btn btn-primary">
                                                             </div>
-                                                            <div class="forum-reply-details">
-                                                                <p>
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                                                    Ipsa natus culpa, neque amet, architecto tempora consequatur 
-                                                                    illum voluptas modi veritatis ducimus, eos sit quas omnis? 
-                                                                    Nulla quasi quisquam quaerat id?
-                                                                </p>
-                                                            </div> 
-                                                        </div>
-                                                         
+                                                        </form>
                                                     </div>
+
                                                 </div>
-                                            
                                             </div>
                                         </div>
                                         <div class="forum-reply-button">

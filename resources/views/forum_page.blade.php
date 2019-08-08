@@ -41,115 +41,30 @@
                                         <h6 class="form-body_header">Posted</h6>
                                     </div>
                                     <div class="forum-body_content_wrap">
+                                        @foreach($forums as $forum)
                                         <div class="forum-body_content forum-grid">
                                             <div class="fb_content_topic">
-                                                <p>Summarize the last book you read in one paragraph</p>
+                                                <p><a href="{{route('single.forum', [$forum->id, str_slug($forum->title)])}}">{{$forum->body}}</a></p>
                                                 <div class="fb_tags">
-                                                    <div class="fb_tag">Books</div>
-                                                    <div class="fb_tag">Literature</div>
+                                                    @foreach(json_decode($forum->tags) as $tag)
+                                                    <div class="fb_tag">{{$tag}}</div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div class="fb_content_category">
-                                                <p>Lifestyle</p>
+                                                <p>{{$forum->category->name}}</p>
                                             </div>
                                             <div class="fb_content_replies">
-                                                <p>26</p>
+                                                <p>{{$forum->comments->count()}}</p>
                                             </div>
                                             <div class="fb_content_views">
-                                                <p>114</p>
+                                                <p>{{rand(300, 500)}}</p>
                                             </div>
                                             <div class="fb_content_posted">
-                                                <p>11m</p>
+                                                <p>{{$forum->created_at}}</p>
                                             </div>
                                         </div>
-                                        <div class="forum-body_content forum-grid">
-                                            <div class="fb_content_topic">
-                                                <p>What does your ideal vacation look like</p>
-                                                <div class="fb_tags">
-                                                    <div class="fb_tag">Travel</div>
-                                                    <div class="fb_tag">Tourism</div>
-                                                    <div class="fb_tag">Adventure</div>
-                                                </div>
-                                            </div>
-                                            <div class="fb_content_category">
-                                                <p>Lifestyle</p>
-                                            </div>
-                                            <div class="fb_content_replies">
-                                                <p>34</p>
-                                            </div>
-                                            <div class="fb_content_views">
-                                                <p>256</p>
-                                            </div>
-                                            <div class="fb_content_posted">
-                                                <p>2d</p>
-                                            </div>
-                                        </div>
-                                        <div class="forum-body_content forum-grid">
-                                            <div class="fb_content_topic">
-                                                <p>Long term effects of Nigerias dependence on oil</p>
-                                                <div class="fb_tags">
-                                                    <div class="fb_tag">Nigeria</div>
-                                                    <div class="fb_tag">Oil</div>
-                                                    <div class="fb_tag">Africa</div>
-                                                </div>
-                                            </div>
-                                            <div class="fb_content_category">
-                                                <p>Politics</p>
-                                            </div>
-                                            <div class="fb_content_replies">
-                                                <p>58</p>
-                                            </div>
-                                            <div class="fb_content_views">
-                                                <p>453</p>
-                                            </div>
-                                            <div class="fb_content_posted">
-                                                <p>2d</p>
-                                            </div>
-                                        </div>
-                                        <div class="forum-body_content forum-grid">
-                                            <div class="fb_content_topic">
-                                                <p>Productivity Hack: How to win at adulting</p>
-                                                <div class="fb_tags">
-                                                    <div class="fb_tag">Productivity</div>
-                                                    <div class="fb_tag">Adulting</div>
-                                                </div>
-                                            </div>
-                                            <div class="fb_content_category">
-                                                <p>Business</p>
-                                            </div>
-                                            <div class="fb_content_replies">
-                                                <p>20</p>
-                                            </div>
-                                            <div class="fb_content_views">
-                                                <p>121</p>
-                                            </div>
-                                            <div class="fb_content_posted">
-                                                <p>4d</p>
-                                            </div>
-                                        </div>
-                                        <div class="forum-body_content forum-grid">
-                                            <div class="fb_content_topic">
-                                                <p>When life imitates art and other stories</p>
-                                                <div class="fb_tags">
-                                                    <div class="fb_tag">Books</div>
-                                                    <div class="fb_tag">Writing</div>
-                                                    <div class="fb_tag">Art</div>
-                                                </div>
-                                            </div>
-                                            <div class="fb_content_category">
-                                                <p>Literature</p>
-                                            </div>
-                                            <div class="fb_content_replies">
-                                                <p>36</p>
-                                            </div>
-                                            <div class="fb_content_views">
-                                                <p>165</p>
-                                            </div>
-                                            <div class="fb_content_posted">
-                                                <p>7d</p>
-                                            </div>
-                                        </div>
-                                        
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

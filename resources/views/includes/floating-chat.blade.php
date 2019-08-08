@@ -44,14 +44,15 @@
                             </p>
                         </div>
                     </div>
-                
+
                 </div>
                 <!-- show this form only if user is signed up -->
+                @auth('web')
                 <div class="fc-chat-form">
                     <form action="" method="POST">
                         <div class="control-form">
-                            <input 
-                                type="text" 
+                            <input
+                                type="text"
                                 class="form-control chat-bubble-input"
                                 name="chat_bubble_input"
                                 id="chat_bubble_input"
@@ -60,15 +61,18 @@
                         </div>
                     </form>
                 </div>
+                @endauth
                 <!-- show this if user is not signed up -->
+                @guest
                 <div class="fc-chat-notauth">
                     <div class="signup-message">
-                        <p class="text-center"><span class="signup-link"><a href="">Sign up</a></span> to chat</p>
+                        <p class="text-center"><span class="signup-link"><a href="{{url('/register')}}">Sign up</a></span> to chat</p>
                     </div>
                 </div>
+                @endguest
             </div>
             <div class="fc-chat-footer">
-            
+
             </div>
         </div>
     </div>

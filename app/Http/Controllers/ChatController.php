@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
@@ -15,6 +17,14 @@ class ChatController extends Controller
     public function index()
     {
         //
+        $chats = Chat::with('user')->get();
+        $chatUser = [];
+        foreach($chats as $chat){
+            $chatCol = ['user'=>$chat->user->name, 'chat' => $chat->body];
+            $chatUser[] = $chatCol;
+        }
+        //$chats = $chats;//Try to get a collection of [[user_name=>wieo, comment_body=>eowpoie], [...], ...]
+        return response()->json($chatUser);
     }
 
     /**
@@ -25,6 +35,7 @@ class ChatController extends Controller
     public function create()
     {
         //
+        return view('test.chat_form');
     }
 
     /**
@@ -36,6 +47,15 @@ class ChatController extends Controller
     public function store(Request $request)
     {
         //
+        $chat = new Chat;
+        $validated = $request->validate([
+            'chat' => 'required|string|max:250'
+        ]);
+        $chat->body = $validated['chat'];
+        $chat = auth()->user()->chats()->save($chat);
+        $col = $chat::with('user')->first();
+        $chatObj = ['user'=> $col->user->name, 'chat'=> $chat->body];
+        return response()->json($chatObj);
     }
 
     /**

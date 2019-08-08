@@ -22,7 +22,7 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::latest()->paginate(5);
+        $articles = Article::with('category')->latest()->paginate(15);
         return view('articles_page')->with(['articles' => $articles]);
     }
 
@@ -50,14 +50,14 @@ class ArticleController extends Controller
             'title' => 'required|string|unique:articles|max:150',
             'content' => 'required|string|unique:articles',
             'category_id' => 'required|numeric',
-            'forum_id' => 'required|numeric|min:1',
+            //'forum_id' => 'required|numeric|min:1',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
         $article = new Article;
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
-        $article->forum_id = $validated['forum_id'];
+        //$article->forum_id = $validated['forum_id'];
         Auth::user()->articleCreator()->save($article);
         if($request['featured_image']){
             $image = $validated['featured_image'];
@@ -66,7 +66,7 @@ class ArticleController extends Controller
             $article->save();
         }
 
-        return redirect()->route('single.article', [strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was uploaded successfully']);
+        return redirect()->route('single.article', [$article, strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was uploaded successfully']);
     }
 
     /**
@@ -78,17 +78,16 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         //
-        return $article;
         $related = Article::where('category_id', '=', $article->category_id)
                             ->whereNotIn('id', [$article->id])->paginate(10);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
     }
-    public function single(Article $article, $slug='', $id)
+    public function single(Article $article, $slug)
     {
         //
         //return
-        $str_unslug = str_replace(['-', '::', ':.', '.:'], [' ', '?', '/', '\\'], $slug);
-        $article = Article::where('title', '=', "{$str_unslug}")->first();
+        //$str_unslug = str_replace(['-', '::', ':.', '.:'], [' ', '?', '/', '\\'], $slug);
+        //$article = Article::where('title', '=', "{$str_unslug}")->first();
         $related = Article::where('category_id', '=', "{$article->category_id}")
                         ->whereNotIn('id', [$article->id])->paginate(10);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
@@ -103,6 +102,7 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         //
+        $this->authorize('update', $article);
         return view('article_create_form')->with(['article'=>$article, 'edit'=>true]);
     }
 
@@ -116,19 +116,20 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         //
+        $this->authorize('update', $article);
         $articleID = $article->id;
         $validated = $request->validate([
             'title' => 'required|string|unique:articles,title,'.$articleID.',id|max:150',
             'content' => 'required|string|unique:articles,content,'.$articleID.',id',
             'category_id' => 'required|numeric|min:1',
-            'forum_id' => 'required|numeric|min:1',
+            //'forum_id' => 'required|numeric|min:1',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
 
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
-        $article->forum_id = $validated['forum_id'];
+        //$article->forum_id = $validated['forum_id'];
         //Delete the old image
         if($request->hasFile('featured_image')){
             if(Storage::exists($article->featured_image)){
@@ -151,6 +152,7 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+        $this->authorize('delete', $article);
         Storage::delete($article->featured_image);
         $article->delete();
         $articles = Article::paginate(20);
@@ -165,11 +167,9 @@ class ArticleController extends Controller
             $string = $param;
         }
         $articles = Article::join('categories', 'articles.category_id', 'categories.id')
-                        ->join('forums', 'articles.forum_id', 'forums.id')
                         ->where('title', 'like', "%{$string}%")
                         ->orWhere('content', 'like', "%{$string}%")
                         ->orWhere('categories.name', 'like', "%{$string}%")
-                        ->orWhere('forums.name', 'like', "%{$string}%")
                         ->select('articles.*')
                         ->get();
         if($articles->isEmpty()){
@@ -185,9 +185,7 @@ class ArticleController extends Controller
         $string = str_replace('-', ' ',$param);
         //return
         $articles = Article::join('categories', 'categories.id', 'articles.category_id')
-                            ->join('forums', 'forums.id', 'articles.forum_id')
                             ->where('categories.name', $string)
-                            ->orWhere('forums.name', $string)
                             ->select('articles.*' )
                             ->get();
         if($articles->isEmpty()){
@@ -197,11 +195,4 @@ class ArticleController extends Controller
         }
         return view('articles_page')->with(['articles' => $articles, 'message'=>$message]);
     }
-
-    public function comment(Request $request, Article $article){
-        $commentController = new CommentController;
-        $commentController->store($request, $article);
-        return redirect()->route('articles.show', $article);
-    }
-
 }

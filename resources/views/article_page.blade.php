@@ -56,7 +56,7 @@
                                             <p>{{$comment->body}}</p>
                                         </div>
                                     </div>
-                                @endforeach
+                                    @endforeach
                                 @if($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
@@ -66,7 +66,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                    <form class="row justify-content-center" action="{{route('comment', $article)}}" method="POST">
+                                    <form class="row justify-content-center" action="{{route('article_comment', $article)}}" method="POST">
                                         @csrf
                                         <textarea rows="4" class="form-control col-sm-10" name="comment"></textarea>
                                         <div class="align-self-end p-l-10">
@@ -76,9 +76,12 @@
                                 </div>
 
                                 <div class="breadcrumb">
-                                @auth
-                                    <div><a href="{{route('articles.edit', $article->id)}}"><div class="btn btn-primary">Edit</div></a></div>
-                                    <div style="margin:0px 20px 0px 10px">
+                                <div class="d-block"><a class="btn btn-dark" href="{{route('articles.index')}}">View All</a></div>
+                                @can('update', $article)
+                                    <div style="margin:0px 5px 0px 20px"><a href="{{route('articles.edit', $article->id)}}"><div class="btn btn-primary">Edit</div></a></div>
+                                @endcan
+                                @can('delete', $article)
+                                    <div style="margin:0px 20px 0px 5px">
                                         <a
                                             onclick="event.preventDefault();
                                                 document.getElementById('delete_article').submit();"
@@ -90,8 +93,8 @@
                                             {{@method_field("DELETE")}}
                                         </form>
                                     </div>
-                                @endauth
-                                    <div class="d-block m-auto"><a class="btn btn-secondary" href="{{route('articles.index')}}">View All</a></div>
+                                @endcan
+
                                 </div>
                             </div>
                             @isset($related)
@@ -108,7 +111,7 @@
                                                 <img src="{{Storage::url($article->featured_image)}}" alt="">
                                             </div>
                                             <div class="more-content-title">
-                                                <h6><a href="{{route('single.article', [str_slug($article->title), $article->id])}}">{{$article->title}}</a></h6>
+                                                <h6><a href="{{route('single.article', [$article, str_slug($article->title)])}}">{{$article->title}}</a></h6>
                                             </div>
                                         </div>
                                         @endforeach

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Article;
+use App\Admin\Poll;
+use App\Forum;
+use App\Video;
 
 class HomeController extends Controller
 {
@@ -14,7 +18,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin_dashboard');
+        $articles_count = Article::count();
+        $polls_count = Poll::count();
+        $forums_count = Forum::count();
+        $videos_count = Video::count();
+        return view('admins.admin_dashboard')->with([
+            'videos_count' => $videos_count,
+            'forums_count' => $forums_count,
+            'articles_count' => $articles_count,
+            'polls_count' => $polls_count
+        ]);
     }
 
     /**

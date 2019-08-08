@@ -22,7 +22,7 @@
                         </div>
                         <div class="get-started-image">
                             <div class="image-container">
-                                <img src="{{asset("images/spred-illustration.jpg")}}" alt="">
+                                <img src="{{asset('images/spred-illustration.jpg')}}" alt="">
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                 @foreach($articles as $article)
                                 <div class="article-item">
                                     <div class="article-item-image">
-                                    <a href="{{route('single.article', [str_replace(' ', '-', $article->title), $article->id])}}">
+                                    <a href="{{route('single.article', [$article, str_slug($article->title), $article->id])}}">
                                         <img src="{{Storage::url($article->featured_image)}}" alt="{{str_limit($article->title, 38)}}">
                                     </a>
 
@@ -82,14 +82,14 @@
                    <div class="section-body">
                        <div class="featured-video-grid">
                            <div class="video-container-lg">
-                           <iframe width="560" height="315" src="https://www.youtube.com/embed/InIeez-2WIs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                           <iframe width="560" height="315" src="@isset($videos[0]){{url($videos[0]->url)}}@endisset" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                            </div>
                            <div class="video-container-md-fx">
                                <div class="video-container-md">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BxHLZMeb7-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="@isset($videos[1]){{url($videos[1]->url)}}@endisset" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                </div>
                                <div class="video-container-md">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/BxHLZMeb7-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="@isset($videos[2]){{url($videos[2]->url)}}@endisset" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                </div>
                            </div>
                        </div>
@@ -113,44 +113,22 @@
                     <div class="section-body">
                         <div class="section-polls-grid">
                             <div class="section-polls">
-                               <div class="section-poll">
+                                @foreach($polls as $poll)
+                                <div class="section-poll">
                                    <div class="section-poll-image">
-                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
+                                        <img style="max-width:220px; min-height:300px; max-height:300px" src="@isset($poll->featured_image){{Storage::url($poll->featured_image)}}@else{{asset('images/poll-illustration.jpg')}}@endisset" alt="">
                                    </div>
                                    <div class="section-poll-title">
-                                       <h6>Messi Vs Ronaldo. Who is Better</h6>
+                                       <h6>{{$poll->question}}</h6>
                                    </div>
-                               </div>
-                               <div class="section-poll">
-                                   <div class="section-poll-image">
-                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
-                                   </div>
-                                   <div class="section-poll-title">
-                                       <h6>Who will win in a fight? Batman or Ironman</h6>
-                                   </div>
-                               </div>
-                               <div class="section-poll">
-                                   <div class="section-poll-image">
-                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
-                                   </div>
-                                   <div class="section-poll-title">
-                                       <h6>Best city in Nigeria? Lagos Vs Abuja</h6>
-                                   </div>
-                               </div>
-                               <div class="section-poll">
-                                   <div class="section-poll-image">
-                                        <img src="{{asset("images/poll-illustration.jpg")}}" alt="">
-                                   </div>
-                                   <div class="section-poll-title">
-                                       <h6>Naija Jollof or Ghana Jollof. U decide!</h6>
-                                   </div>
-                               </div>
+                                </div>
+                                @endforeach
                             </div>
                             <div class="section-polls-explore-more">
                                 <p>Want to know if you share the same opinions as the majority? Take some
                                     of our polls and share with your friends!
                                 </p>
-                                <h6 class="blue-link">Explore More >></h6>
+                                <h6 class="blue-link"><a href="{{url('polls')}}">Explore More >></a></h6>
                             </div>
                         </div>
                     </div>
