@@ -66,9 +66,9 @@ class CommentController extends Controller
         if ($comment->commentable_type == 'App\Article') {
             return redirect()->route('single.article', [$commentable, str_slug($commentable->title)]);
         }elseif ($comment->commentable_type == 'App\Forum') {
-            return redirect()->route('forum_single', [$commentable, $commentable->id]);;
+            return redirect()->route('single.forum', [$commentable, $commentable->id]);;
         }elseif ($comment->commentable_type == 'App\Forum') {
-            return redirect()->route('video_single', [$commentable, $commentable->id]);
+            return redirect()->route('single.video', [$commentable, $commentable->id]);
         }
         return redirect()->route('home');
     }

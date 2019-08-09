@@ -41,13 +41,22 @@
                                         <h6 class="form-body_header">Posted</h6>
                                     </div>
                                     <div class="forum-body_content_wrap">
+                                        @if($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
                                         @foreach($forums as $forum)
                                         <div class="forum-body_content forum-grid">
                                             <div class="fb_content_topic">
-                                                <p><a href="{{route('single.forum', [$forum->id, str_slug($forum->title)])}}">{{$forum->body}}</a></p>
+                                                <p><a href="{{route('single.forum', [$forum->id, str_slug($forum->title)])}}">{{$forum->title}}</a></p>
                                                 <div class="fb_tags">
                                                     @foreach(json_decode($forum->tags) as $tag)
-                                                    <div class="fb_tag">{{$tag}}</div>
+                                                    <div class="badge badge-primary m-l-10 m-r-10 p-a-5">{{$tag}}</div>
                                                     @endforeach
                                                 </div>
                                             </div>
