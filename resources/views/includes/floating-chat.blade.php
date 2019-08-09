@@ -46,10 +46,19 @@
                     </div>
 
                 </div>
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <!-- show this form only if user is signed up -->
                 @auth('web')
                 <div class="fc-chat-form">
-                    <form action="" method="POST">
+                    <form action="" method="POST" id="floating_chat_form">
                         <div class="control-form">
                             <input
                                 type="text"

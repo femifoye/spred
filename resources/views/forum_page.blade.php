@@ -44,7 +44,7 @@
                                         @foreach($forums as $forum)
                                         <div class="forum-body_content forum-grid">
                                             <div class="fb_content_topic">
-                                                <p><a href="{{route('single.forum', [$forum->id, str_slug($forum->title)])}}">{{$forum->body}}</a></p>
+                                                <p><a href="{{route('single.forum', [$forum->id, str_slug($forum->title)])}}">{{$forum->title}}</a></p>
                                                 <div class="fb_tags">
                                                     @foreach(json_decode($forum->tags) as $tag)
                                                     <div class="fb_tag">{{$tag}}</div>

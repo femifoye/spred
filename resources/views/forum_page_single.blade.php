@@ -28,7 +28,8 @@
                                                 </div>
                                                 <div class="fb-headers-rgt">
                                                     <div class="fb-headers-category">
-                                                        <h6>Business</h6>
+
+                                                        <h6>{{$forum->category->name}}</h6>
                                                     </div>
                                                     <div class="fb-headers-stats">
                                                         <div class="fb-headers-liked fb-header-icon">
