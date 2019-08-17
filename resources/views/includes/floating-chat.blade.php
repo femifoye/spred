@@ -14,36 +14,7 @@
             </div>
             <div class="fc-chat-body">
                 <div class="fc-chat-conv">
-                    <!-- this is the chat bubble for others in the conversation -->
-                    <div class="fc-chat-bubble">
-                        <div class="chat-bubble others-bubble">
-                            <p>
-                                <span class="chat-bubble-username">joerich: </span>
-                                Hello guys! Who's here?
-                            </p>
-                        </div>
-                        <div class="chat-bubble others-bubble">
-                            <p>
-                                <span class="chat-bubble-username">johndoe: </span>
-                                Hello @joerich, Who else is here?
-                            </p>
-                        </div>
-                        <div class="chat-bubble others-bubble">
-                            <p>
-                                <span class="chat-bubble-username">annafay: </span>
-                                Hello guys, how's it going?
-                            </p>
-                        </div>
-                    </div>
-                    <!-- this is the chat bubble for the user -->
-                    <div class="fc-chat-bubble-user">
-                        <div class="chat-bubble user-bubble">
-                            <p>
-                                <span class="chat-bubble-username-user">user: </span>
-                                this is the users message
-                            </p>
-                        </div>
-                    </div>
+                    <!-- chat bubbles will be go here -->
 
                 </div>
                 @if($errors->any())

@@ -157,23 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    //FLOATING CHAT TOGGLE
-    let fcToggle = document.querySelector('.floating-chat-toggle');
-    let floatingChat = document.querySelector('.fc-floating-chat');
-    let fcClose = document.querySelector('.fc-close');
-    let toggleChat = () => {
-        toggleHide(fcToggle);
-        toggleHide(floatingChat)
-    }
-     fcToggle.addEventListener('click', () => {
-        toggleChat();
-    });
-    fcClose.addEventListener('click', () => {
-        toggleChat();
-    })
     
-    
-    
-   
+  
     
 })

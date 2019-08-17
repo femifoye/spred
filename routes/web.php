@@ -51,6 +51,9 @@ Route::get('/chats/create', 'ChatController@create');
 Route::get('/chats', 'ChatController@index');
 Route::post('/chats', 'ChatController@store')->name('chats.store');
 
+// UTILITY ROUTES
+Route::get('/user', 'UtilController@getUser')->name('util.getUser');
+
 //Test Route
 //Route::get('/respond-to-poll', 'PollResponseController@create');
 //Route::get('/popular-poll', 'PollResponseController@popularPolls');

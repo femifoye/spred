@@ -7,6 +7,7 @@ use App\Video;
 use App\Admin\Poll;
 
 
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -44,6 +45,7 @@ class HomeController extends Controller
         $articles = Article::latest()->get()->random($Articlelength)->all();
         $videos = Video::latest()->get()->random($vidLen)->all();
         $polls = Poll::latest()->get()->random($pollLen)->all();
-        return view('landing_page')->with(['articles' => $articles, 'videos'=>$videos, 'polls'=>$polls]);
+        
+        return view('landing_page', compact('user'))->with(['articles' => $articles, 'videos'=>$videos, 'polls'=>$polls]);
     }
 }

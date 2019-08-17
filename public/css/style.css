@@ -1092,6 +1092,7 @@ input[type=radio] {
 .fc-chat-conv {
     height: 400px;
     max-height: 500px;
+    overflow: auto;
 
 }
 
@@ -1099,7 +1100,6 @@ input[type=radio] {
     padding: 10px 10px 2px;
     border-radius: 10px;
     margin: 5px 0 10px 0;
-    line-height: 0;
 }
 
 .others-bubble {
