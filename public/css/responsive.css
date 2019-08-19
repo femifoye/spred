@@ -1,4 +1,27 @@
 @media screen and (min-width: 320px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.9rem;
+    }
+    
+    h3 {
+        font-size: 1.6rem;
+    }
+    
+    h4 {
+        font-size: 1.3rem;
+    }
+    
+    h5 {
+        font-size: 1.0rem;
+    }
+    
+    h6 {
+        font-size: 0.7rem;
+    }
     /* =============================================================
                         ARTICLES
 ============================================================= */
@@ -46,14 +69,73 @@
         width: auto;
         padding: 20px;
     }
-  }
-  @media screen and (min-width: 480px) {
-  
-  }
-  @media screen and (min-width: 576px) {
-  
-  }
-  @media screen and (min-width: 768px) {
+
+    /* =============================================================
+                        FORUMS
+============================================================= */
+
+    .forum-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        text-align: center;
+    }
+
+    .fb_content_topic {
+        grid-column: 1 / -1;
+        display: unset;
+    }
+
+    .forum-body_headers {
+        display: none;
+    }
+
+    .fb_tags {
+        display: none;
+    }
+
+    .forum-filter {
+        display: none;
+    }
+
+    .forum-add-modal-form {
+        width: 90%;
+    }
+
+    .forum-body-content  {
+        grid-column: 1 / -1;
+    }
+}
+@media screen and (min-width: 480px) {
+
+}
+@media screen and (min-width: 576px) {
+
+}
+@media screen and (min-width: 768px) {
+
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    h3 {
+        font-size: 1.9rem;
+    }
+    
+    h4 {
+        font-size: 1.6rem;
+    }
+    
+    h5 {
+        font-size: 1.3rem;
+    }
+    
+    h6 {
+        font-size: 1rem;
+    }
 
     .page-grid {
         grid-template-columns: 66% 34%;
@@ -67,7 +149,7 @@
         flex-wrap: wrap;
     }
 
-   
+
 
     .subscribe-form {
         display: flex;
@@ -75,20 +157,28 @@
         justify-content: center;
     }
 
-/* =============================================================
+    /* =============================================================
                         POLLS
-============================================================= */
+    ============================================================= */
 
     .polls-introduction  {
         width: 400px;
         margin: 10px auto;
         padding: 20px 0;
     }
-  }
-  @media screen and (min-width: 992px) {
+
     /* =============================================================
-                        ARTICLES
+                        FORUMS
     ============================================================= */
+
+    .forum-add-modal-form {
+        width: 70%;
+    }
+}
+@media screen and (min-width: 992px) {
+/* =============================================================
+                    ARTICLES
+============================================================= */
     .article-thumb {
         width: unset;
     }
@@ -110,19 +200,54 @@
     {
         width: 300px;
     }
-  
-  }
-
-  @media screen and (min-width: 1200px) {
-    /* =============================================================
-                        ARTICLES
+        /* =============================================================
+                        FORUMS
     ============================================================= */
-    .article-thumb {
-        margin: 0 15px 15px 0;
+
+    .forum-grid {
+        display: grid;
+        grid-template-columns: 40% repeat(auto-fit, minmax(100px, 1fr));
+        text-align: unset;
     }
 
-    
-  
-  }
+    .fb_content_topic {
+        grid-column: unset;
+        display: flex;
+    }
+
+    .forum-body_headers {
+        padding: 20px 0;
+        display: grid;
+    }
+
+    .fb_tags {
+        display: block;
+    }
+
+    .forum-filter {
+        display: flex;
+    }
+
+    .forum-add-modal-form {
+        width: 50%;
+    }
+
+    .forum-body-content  {
+        grid-column: unset;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+/* =============================================================
+                    ARTICLES
+============================================================= */
+.article-thumb {
+    margin: 0 15px 15px 0;
+}
+
+
+
+}
   
   

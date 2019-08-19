@@ -53,24 +53,37 @@
                                         @foreach($forums as $forum)
                                         <div class="forum-body_content forum-grid">
                                             <div class="fb_content_topic">
-                                                <p><a href="{{route('single.forum', [$forum->id, str_slug($forum->title)])}}">{{$forum->title}}</a></p>
-                                                <div class="fb_tags">
-                                                    @foreach(json_decode($forum->tags) as $tag)
-                                                    <div class="badge badge-primary m-l-10 m-r-10 p-a-5">{{$tag}}</div>
-                                                    @endforeach
+                                                <div class="fb_content_avatar">
+                                                    <img src="{{asset("images/avatar.jpg")}}" alt="">
                                                 </div>
+                                                <div class="fb_title_details">
+                                                    <div class="fb_content_user">
+                                                        <h6 class="text-upper bluetext">Bola Ahmed</h6>
+                                                    </div>
+                                                    <div class="fb_content_title">
+                                                        <p><a href="{{route('single.forum', [$forum->id, str_slug($forum->title)])}}">{{$forum->title}}</a></p>
+                                                        <div class="fb_tags">
+                                                            @foreach(json_decode($forum->tags) as $tag)
+                                                                @if($loop->index < 3)
+                                                                    <div class="badge badge-primary m-l-10 m-r-10 p-a-5">{{$tag}}</div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                             <div class="fb_content_category">
                                                 <p>{{$forum->category->name}}</p>
                                             </div>
                                             <div class="fb_content_replies">
-                                                <p>{{$forum->comments->count()}}</p>
+                                                <p><span class="show-on-mobile"><i class="fa fa-reply forum-icon"></i></span>{{$forum->comments->count()}}</p>
                                             </div>
                                             <div class="fb_content_views">
-                                                <p>{{rand(300, 500)}}</p>
+                                                <p><span class="show-on-mobile"><i class="fa fa-eye forum-icon"></i></span>{{rand(300, 500)}}</p>
                                             </div>
                                             <div class="fb_content_posted">
-                                                <p>{{$forum->created_at}}</p>
+                                                <p class="format_date">{{$forum->created_at}}</p>
                                             </div>
                                         </div>
                                         @endforeach

@@ -157,6 +157,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    // MOMENT JS
+    let forumDates = [].slice.call(document.getElementsByClassName('format_date'));
+    forumDates.forEach((date) => {
+        let fullDate = date.innerHTML
+        let alteredDate = moment(fullDate).fromNow(true);
+        date.innerHTML = alteredDate;
+    })
+
     
   
     

@@ -23,7 +23,7 @@ body a:hover {
     color: unset;
 }
 
-h1 {
+/* h1 {
     font-size: 2.5rem;
 }
 
@@ -45,7 +45,7 @@ h5 {
 
 h6 {
     font-size: 1rem;
-}
+} */
 
 p {
     font-size: .975rem;
@@ -67,8 +67,13 @@ p {
     font-family: 'helvetica_black', sans-serif;
 }
 
-.blue-link {
+.blue-link,
+.bluetext {
     color: #424ac6;
+}
+
+.text-upper {
+    text-transform: uppercase;  
 }
 
 .page-grid {
@@ -788,7 +793,6 @@ input[type=radio] {
 
 .fb_tags {
     display: flex;
-    margin: 2.5em 0 0 0;
 }
 
 .fb_tag  {
@@ -982,6 +986,18 @@ input[type=radio] {
 
 .forum-reply-button-submit {
     justify-content: center;
+}
+
+.fb_content_avatar img {
+    border-radius: 100%;
+}
+
+.fb_content_avatar {
+    margin: 0 20px 0 0;
+}
+
+.fb_content_topic {
+    display: flex;  
 }
 
 /* =============================================================

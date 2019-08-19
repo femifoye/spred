@@ -65,7 +65,7 @@
                                                        <h5>{{$key}}</h5>
                                                    </div>
                                                    <div class="poll-result-value">
-                                                       <h5>{{$value}}</h5>
+                                                       <h5>{{$value}}<span>%</span></h5>
                                                    </div>
                                                </div>
                                                @endforeach

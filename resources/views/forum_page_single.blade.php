@@ -23,7 +23,7 @@
                                                         <h5>Bolaji</h5>
                                                     </div>
                                                     <div class="fb-headers-time fb-header">
-                                                        <h6>10h</h6>
+                                                        <h6 class="format_date">{{$forum->created_at}}</h6>
                                                     </div>
                                                 </div>
                                                 <div class="fb-headers-rgt">
@@ -75,7 +75,7 @@
                                                                     <h5>{{$comment->user()->first()->name}}</h5>
                                                                 </div>
                                                                 <div class="fb-headers-time fb-header">
-                                                                    <h6>{{$comment->created_at}}</h6>
+                                                                    <h6 class="format_date">{{$comment->created_at}}</h6>
                                                                 </div>
                                                             </div>
                                                             <div class="forum-reply-details">
@@ -101,7 +101,7 @@
                                                             @csrf
                                                             <textarea rows="4" class="form-control col-sm-10" name="comment"></textarea>
                                                             <div class="align-self-end p-l-10">
-                                                                <input type="submit" class="btn btn-primary">
+                                                                <button type="submit" class="btn btn-primary">Reply</button>
                                                             </div>
                                                         </form>
                                                     </div>
