@@ -25,7 +25,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('admin_create_forum');
+        return view('admins/admin_create_forum');
     }
 
     /**

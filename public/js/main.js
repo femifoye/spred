@@ -10,16 +10,48 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.toggle('hide');
     }
 
+    let clickOut = (modalClass, el, hideMethod, addEvent, ev) => {
+        let workLoad = (e) => {
+            if(e.path[0].classList.contains(modalClass)) {
+                switch(hideMethod) {
+                    case "toggle":
+                        el.classList.toggle('hide');
+                        break;
+                    case "changeStyle":
+                        el.style.display = "none";
+                        break;                        
+                }
+            }
+        }
+        if(addEvent === true) {
+            let modalOut = document.querySelector("."+modalClass);
+            modalOut.addEventListener('click', (event) => {
+                workLoad(event);      
+            })
+        } else {
+            workLoad(ev);
+        }
+        
+    }
+
+
     //EVENT LISTENERS
     menuButton.addEventListener('click', () => {
-
         menuFullScreen.style.display = "block";
         setTimeout(() => {
             menuClose.style.display = "block";
-        }, 1000)
-
+        }, 1000) 
+        clickOut('menu-fscreen', menuFullScreen, "changeStyle", true, null);
     })
-     menuClose.addEventListener('click', () => {
+
+    //CLOSE MENU BY CLICKING OUTSIDE IT
+    // function clickOut(modalClass, el) {
+    //     let modalOut = document.querySelector(modalClass);
+    //     modalOut.addEventListener('click', () => {
+    //         console.log('clicked out');
+    //     })
+    // }
+      menuClose.addEventListener('click', () => {
         menuFullScreen.style.display = "none";
     })
     menuListItem.forEach((item) => {
@@ -125,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let forumAddModal = document.querySelector('.forum-add-modal-inner');
     let forumAddCloseBtn = document.querySelector('.forum-add-button-close');
     let toggleReplyModal = () => {
-        toggleHide(forumReplyModal)
+        toggleHide(forumReplyModal);
     }
     let toggleAddModal = () => {
         toggleHide(forumAddModal);
@@ -134,6 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
         forumReplyBtn.addEventListener('click', (e) => {
             e.preventDefault();
             toggleReplyModal();
+            
+        })
+        forumReplyModal.addEventListener('click', (event) => {
+            clickOut('forum-reply-modal-inner', forumReplyModal, "toggle", false, event);
         })
     }
 
@@ -147,6 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
         forumAddBtn.addEventListener('click', (e) => {
             e.preventDefault();
             toggleAddModal();
+        })
+        forumAddModal.addEventListener('click', (event) => {
+            clickOut('forum-add-modal-inner', forumAddModal, "toggle", false, event);
         })
     }
 

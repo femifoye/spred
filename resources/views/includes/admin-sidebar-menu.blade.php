@@ -21,7 +21,7 @@
                         <h3 class="nav-lbl">Forums</h3>
                     </button>
                     <div class="dropdown-menu drop-menu">
-                        <div class="dropdown-item">New Forum</div>
+                        <a href="/admin/forums/create"><div class="dropdown-item">New Forum</div></a> 
                         <div class="dropdown-item">View Forums</div>
                     </div>
                 </div> 
@@ -32,7 +32,7 @@
                         <h3 class="nav-lbl">Polls</h3>
                     </button>
                     <div class="dropdown-menu drop-menu">
-                        <div class="dropdown-item">New Poll</div>
+                        <a href="/admin/polls/create"><div class="dropdown-item">New Poll</div></a> 
                         <div class="dropdown-item">View Polls</div>
                     </div>
                 </div> 
