@@ -2,13 +2,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let leftControl = document.querySelector('.fa-arrow-left');
     let rightControl = document.querySelector('.fa-arrow-right');
     let articleItems = [].slice.call(document.getElementsByClassName('article-item'));
+    let articleActive;
 
-    let articleActive = () => {
-        let articlesToShow = 4;
-        for(let i = 0; i <= articlesToShow - 1; i++){
-            articleItems[i].classList.add('article-active');
+    if(articleItems) {
+        let articleActive = () => {
+            let articlesToShow = 4;
+            for(let i = 0; i <= articlesToShow - 1; i++){
+                articleItems[i].classList.add('article-active');
+            }
         }
     }
+    
 
     let addDataIndex = () => {
         let articlesLength = articleItems.length;
@@ -19,6 +23,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     addDataIndex();
     articleActive();
+    
 
     let checkArticles = () => {
         if(articleItems.length <= 0 ) {

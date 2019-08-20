@@ -7,35 +7,40 @@ let chatInput = document.getElementById('chat_bubble_input');
 let chatUser = sessionStorage.getItem('username');
 let chatBubble = document.querySelector('.fc-chat-conv');
 
-//FLOATING CHAT TOGGLE
-let toggleHide = (el) => {
-    el.classList.toggle('hide');
-}
-
-let fcToggle = document.querySelector('.floating-chat-toggle');
-let fcClose = document.querySelector('.fc-close');
-let toggleChat = () => {
-    toggleHide(fcToggle);
-    toggleHide(floatingChat)
-}
- fcToggle.addEventListener('click', () => {
-    toggleChat();
-    getChats();
-});
-fcClose.addEventListener('click', () => {
-    toggleChat();
-})
-
-
-chatInput.addEventListener('keypress', (e) => {
-    
-    if(e.which === 13) {
-        let chatInputValue = chatInput.value;
-        e.preventDefault();
-        postChat(chatInputValue);
+if(floatingChat) {
+    //FLOATING CHAT TOGGLE
+    let toggleHide = (el) => {
+        el.classList.toggle('hide');
     }
-   
-})
+
+    let fcToggle = document.querySelector('.floating-chat-toggle');
+    let fcClose = document.querySelector('.fc-close');
+    let toggleChat = () => {
+        toggleHide(fcToggle);
+        toggleHide(floatingChat)
+    }
+    fcToggle.addEventListener('click', () => {
+        toggleChat();
+        getChats();
+    });
+    fcClose.addEventListener('click', () => {
+        toggleChat();
+    })
+}
+
+
+if(chatInput) {
+    chatInput.addEventListener('keypress', (e) => {
+    
+        if(e.which === 13) {
+            let chatInputValue = chatInput.value;
+            e.preventDefault();
+            postChat(chatInputValue);
+        }
+       
+    })
+}
+
 
 function clearInput() {
     chatInput.value = "";   

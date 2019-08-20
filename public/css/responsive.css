@@ -1,6 +1,6 @@
 @media screen and (min-width: 320px) {
     h1 {
-        font-size: 2.2rem;
+        font-size: 2.25rem;
     }
     
     h2 {
@@ -21,6 +21,32 @@
     
     h6 {
         font-size: 0.7rem;
+    }
+
+    .get-started-image {
+        display: none;
+    }
+
+    .section-polls {
+        grid-column: 1/-1;
+    }
+
+    .floating-chat-toggle {
+        display: none;
+    }
+
+    .section-padding {
+        padding: 20px 0;   
+    }
+
+    .section-polls {
+        display: block;
+        justify-content: unset;
+        margin: 0 auto;
+    }
+
+    .section-heading {
+        text-align: center;
     }
     /* =============================================================
                         ARTICLES
@@ -110,6 +136,8 @@
 }
 @media screen and (min-width: 576px) {
 
+    
+
 }
 @media screen and (min-width: 768px) {
 
@@ -135,6 +163,22 @@
     
     h6 {
         font-size: 1rem;
+    }
+
+    
+
+    .section-polls {
+        grid-column: unset;
+    }
+
+    .section-polls {
+        display: flex;
+        justify-content: space-around;
+        margin: unset;
+    }
+
+    .section-heading {
+        text-align: unset;
     }
 
     .page-grid {
@@ -174,8 +218,21 @@
     .forum-add-modal-form {
         width: 70%;
     }
+
+    
 }
 @media screen and (min-width: 992px) {
+    .floating-chat-toggle {
+        display: block;
+    }
+
+    .get-started-image {
+        display: block;
+    }
+
+    /* .section-padding {
+        padding: unset   
+    } */
 /* =============================================================
                     ARTICLES
 ============================================================= */
