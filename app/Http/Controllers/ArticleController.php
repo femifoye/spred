@@ -37,6 +37,11 @@ class ArticleController extends Controller
         return view('article_create_form');
     }
 
+    public function adminView() {
+        $articles = Article::with('category')->latest()->paginate(15);
+        return view('admins/admin_view_articles')->with(['articles' => $articles]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

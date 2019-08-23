@@ -23,6 +23,15 @@ body a:hover {
     color: unset;
 }
 
+#site_logo {
+    width: auto;
+    height: 50px;
+}
+
+.site-logo {
+    margin-left: 30px;
+}
+
 /* h1 {
     font-size: 2.5rem;
 }
@@ -215,6 +224,16 @@ p {
 .menu-close-bar-2 {
     transform: rotate(135deg);
     position: absolute;
+}
+
+.site-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    margin-bottom: 0;
 }
 /* .bar-2:hover,
 .bar-3:hover {

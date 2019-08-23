@@ -28,6 +28,9 @@
         margin: 20px 0;
     }
    
+    .av-grid {
+        grid-template-columns: 40% 1fr 1fr;
+    }
 }
 @media screen and (min-width: 480px) {
     .navigation-item {
@@ -80,12 +83,31 @@
         margin: 20px 0;
     }
 
+    .admin-view-wrap {
+        width: 84%;
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and (min-width: 885px) {
+
+    .admin-view-wrap {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+
 }
 @media screen and (min-width: 992px) {
 
     .navigation-wrap {
         width: 100%;
         padding-right: 20px;
+    }
+
+    .av-grid {
+        grid-template-columns: 50% 1fr 1fr;
     }
 
 

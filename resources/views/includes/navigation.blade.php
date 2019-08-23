@@ -4,9 +4,15 @@
                     <div class="nav-container">
                         <div class="nav-flex">
                             <div class="site-logo">
-                                <h2>SPRED</h2>
+                                <a href="/"><img src="{{asset('images/spred-logo.png')}}" id="site_logo" alt="Spred Interactive">
+</a>
                             </div>
                             <nav class="site-navigation">
+                                <ul class="nav-links">
+                                    <li class="nav-link">Login</li>
+                                    <li class="nav-link">Logout</li>
+                                    <li class="nav-link">My Profile</li>
+                                </ul>
                                 <div class="menu-button">
                                     <div class="menu-bar bar-1"></div>
                                     <div class="menu-bar bar-2"></div>

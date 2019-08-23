@@ -27,6 +27,10 @@ class VideoController extends Controller
         return view('video_create_form');
     }
 
+    public function adminView() {
+        return('admins/admin_view_videos');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

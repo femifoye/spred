@@ -13,10 +13,10 @@ class ForumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return Forum::where('approved', false)->get();
-    }
+    // public function index()
+    // {
+    //     return Forum::where('approved', false)->get();
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -26,6 +26,10 @@ class ForumController extends Controller
     public function create()
     {
         return view('admins/admin_create_forum');
+    }
+
+    public function adminView() {
+        return view('admins/admin_view_forum');
     }
 
     /**

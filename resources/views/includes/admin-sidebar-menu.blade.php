@@ -11,7 +11,8 @@
                     </button>
                     <div class="dropdown-menu drop-menu">
                         <a href="/articles/create"><div class="dropdown-item">New Article</div></a>
-                        <div class="dropdown-item">View Articles</div>
+                        <a href="/admin/articles/view"><div class="dropdown-item">View Articles</div></a>
+                        
                     </div>
                 </div>
             </li>
@@ -22,7 +23,7 @@
                     </button>
                     <div class="dropdown-menu drop-menu">
                         <a href="/admin/forums/create"><div class="dropdown-item">New Forum</div></a> 
-                        <div class="dropdown-item">View Forums</div>
+                        <a href="/admin/forums/view"><div class="dropdown-item">View Forums</div></a>  
                     </div>
                 </div> 
             </li>
@@ -33,7 +34,7 @@
                     </button>
                     <div class="dropdown-menu drop-menu">
                         <a href="/admin/polls/create"><div class="dropdown-item">New Poll</div></a> 
-                        <div class="dropdown-item">View Polls</div>
+                        <a href="/admin/polls/view"><div class="dropdown-item">View Polls</div></a>
                     </div>
                 </div> 
             </li>
