@@ -30,6 +30,10 @@ class PollController extends Controller
         return view('poll_create_form');
     }
 
+    public function adminView() {
+        return view('admins/admin_view_polls');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

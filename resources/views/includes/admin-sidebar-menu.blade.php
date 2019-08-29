@@ -2,7 +2,7 @@
     <nav class="navigation">
         <ul class="navigation-list">
             <li class="navigation-item">
-                <h3 class="nav-lbl">Dashboard</h3>
+                <a href="/admin/dashboard"><h3 class="nav-lbl">Dashboard</h3></a>
             </li>
             <li class="navigation-item">
                 <div class="dropdown">

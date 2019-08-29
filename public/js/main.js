@@ -56,10 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     menuListItem.forEach((item) => {
         item.addEventListener('mouseenter', () => {
-            item.classList.add('bg-invert');
+            setTimeout(()=> {
+                item.classList.add('bg-invert');
+            }, 200);
+            
         })
         item.addEventListener('mouseleave', () => {
-            item.classList.remove('bg-invert');
+            setTimeout(()=> {
+                item.classList.remove('bg-invert');
+            }, 200);
         })
     })
 

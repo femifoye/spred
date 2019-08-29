@@ -9,8 +9,14 @@
                             </div>
                             <nav class="site-navigation">
                                 <ul class="nav-links">
-                                    <li class="nav-link">Login</li>
-                                    <li class="nav-link">Logout</li>
+                                    @if(!auth()->user())
+                                    <li class="nav-link"> <a href="{{url('/login')}}">Login</a></li>
+                                    @else
+                                    <li class="btn" onclick="event.preventDefault(); document.getElementById('user-logout-action').submit()">Logout</li>
+                                    <form id="user-logout-action" action="{{route('logout')}}" method="POST" hidden style="display:none">
+                                        @csrf
+                                    </form>
+                                    @endif
                                     <li class="nav-link">My Profile</li>
                                 </ul>
                                 <div class="menu-button">

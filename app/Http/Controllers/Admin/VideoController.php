@@ -28,7 +28,7 @@ class VideoController extends Controller
     }
 
     public function adminView() {
-        return('admins/admin_view_videos');
+        return view('admins/admin_view_videos');
     }
 
     /**

@@ -18,10 +18,10 @@ Route::resource('/admin/polls/', 'Admin\PollController')->names('adm_polls');
 Route::resource('/admin/dashboard', 'Admin\HomeController')->names('adm_home');
 Route::resource('/admin/videos', 'Admin\VideoController')->names('adm.videos');
 
-Route::get('/admin/articles/view', 'Admin\ForumController@adminView');
-// Route::get('/admin/forums/view', 'Admin\ForumController@adminV');
-// Route::get('/admin/videos/view', 'Admin\VideoController@adminView');
-// Route::get('/admin/polls/view', 'Admin\PollsController@adminView');
+Route::get('/admin/articles/view', 'ArticleController@adminView');
+Route::get('/admin/forums/view', 'Admin\ForumController@adminView');
+Route::get('/admin/videos/view', 'Admin\VideoController@adminView');
+Route::get('/admin/polls/view', 'Admin\PollController@adminView');
 
 // USER ROUTES
 Route::get('/polls/single/vote/{slug}/', 'PollResponseController@takePoll');

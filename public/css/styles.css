@@ -1439,6 +1439,31 @@ input[type=radio] {
         font-size: 0.7rem;
     }
 
+    .menu-close {
+        right: 15%;
+        position: absolute;
+        top: 10%;
+        display: none;
+    }
+
+    .menu-bar-white {
+        background-color: white;
+        padding: 3px;
+        width: 30px;
+    }
+
+    .menu-fscreen-wrap {
+        width: 100%;
+    }
+
+    .site-navigation ul li {
+        font-size: 0.9em;
+    }
+
+    .site-navigation ul {
+        padding: 0;
+    }
+
     .get-started-image {
         display: none;
     }
@@ -1579,6 +1604,28 @@ input[type=radio] {
     
     h6 {
         font-size: 1rem;
+    }
+
+    .menu-close {
+        right: 10%;
+        position: absolute;
+        top: 15%;
+        width: 23px;
+        display: none;
+    }
+
+    .menu-bar-white {
+        background-color: white;
+        padding: 3px;
+        width: 23px;
+    }
+
+    .menu-fscreen-wrap {
+        width: 50%;
+    }
+
+    .site-navigation ul li {
+        font-size: 1em;
     }
 
     
