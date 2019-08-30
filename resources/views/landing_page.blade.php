@@ -3,8 +3,8 @@
    @include('includes.head')
     <body>
     @include('includes.navigation')
-
-        <section class="section-padding section--white get-started">
+    <section class="page-section">
+        <section class="page-section section-padding section--white get-started">
             <div class="container">
                 <div class="section-inner">
                     <div class="section-flex">
@@ -148,6 +148,9 @@
             <h2>Spred Test View</h2>
         </div> -->
         @include('includes.floating-chat')
+        @include('includes.forum-modals')
+    </section>
+        
 
     @include('includes.footer')
 

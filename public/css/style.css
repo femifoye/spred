@@ -107,6 +107,10 @@ p {
                         NAVIGATION
 ============================================================= */
 
+#navigation {
+    position: relative;
+}
+
 .nav-container {
     margin: 0 auto;
     padding: 10px 10px;
@@ -234,6 +238,44 @@ p {
 
 .nav-links {
     margin-bottom: 0;
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 1%;
+    background-color: white;
+    color: #949494;
+    font-size: .9em;
+    border: 1px solid #e6e6e6;
+    padding: 20px 10px;
+}
+
+.user-dropdown-menu-create {
+    border-bottom: 1px solid #ccc9c9;
+    padding: 0 0 20px 0;
+}
+
+.udm-create-header {
+    text-align: center;
+    color: #4048c0;
+}
+
+.udm-create-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.udm-profile-list {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 0 0;
+}
+
+.udm-create-list li,
+.udm-profile-list li {
+    margin: 5px 0;
+    text-align: center;
 }
 /* .bar-2:hover,
 .bar-3:hover {
@@ -877,6 +919,17 @@ input[type=radio] {
 .fb-headers-img img {
     width: 60px;
     height: 60px;
+    border-radius: 100%;
+}
+
+.user-avatar {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.user-avatar img {
+    width: 45px;
+    height: 45px;
     border-radius: 100%;
 }
 

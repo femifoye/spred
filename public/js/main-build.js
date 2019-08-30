@@ -200,6 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuBars = [].slice.call(document.getElementsByClassName('menu-bar'));
     let menuListItem = [].slice.call(document.getElementsByClassName('menu-list-item'));
 
+    //ADD CLASS TO BODY
+    // let body = document.getElementsByTagName('body')
+    // console.log(body);
+
     let toggleHide = (el) => {
         el.classList.toggle('hide');
     }
@@ -261,6 +265,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 200);
         })
     })
+
+    //TOGGLE USER DROPDOWN MENU
+    let userDropdown = document.querySelector('.user-dropdown-menu');
+    let userAvatar = document.querySelector('.user-avatar');
+
+    
+    
+    userAvatar.addEventListener('click', (ev) => {
+        let pageSection = document.querySelector('.page-section');
+        toggleHide(userDropdown);
+        pageSection.addEventListener('click', () => {
+            if(!userDropdown.classList.contains("hide")){
+                toggleHide(userDropdown);
+            }
+        })
+
+    })
+  
+    
+    
 
     //CHANGE IFRAME WIDTH 
     //FOR VIDEO CONTAINER IN LANDING PAGE
