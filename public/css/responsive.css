@@ -23,6 +23,21 @@
         font-size: 0.7rem;
     }
 
+    .profile-wrap {
+        width: 100%;
+    }
+
+    .profile-inner {
+        padding: 15px;
+    }
+
+    .edit-profile-form {
+        padding: 15px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+
     .menu-close {
         right: 15%;
         position: absolute;
@@ -210,6 +225,20 @@
 
     .site-navigation ul li {
         font-size: 1em;
+    }
+
+    .profile-wrap {
+        width: 70%;
+    }
+
+    .profile-inner {
+        padding: 50px;
+    }
+
+    .edit-profile-form {
+        padding: 50px;
+        width: 75%;
+        margin: 0 auto;
     }
 
     

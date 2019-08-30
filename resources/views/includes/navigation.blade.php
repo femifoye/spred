@@ -31,7 +31,7 @@
                                         <div class="user-dropdown-menu-profile">
                                             <ul class="udm-profile-list">
                                                 <li> <a href="/profile">Profile</a></li>
-                                                <li> <a href="/settings">Settings</a></li>
+                                                <li> <a href="/profile/edit/1">Settings</a></li>
                                                 <li class="btn" onclick="event.preventDefault(); document.getElementById('user-logout-action').submit()">Logout</li>
                                                 <form id="user-logout-action" action="{{route('logout')}}" method="POST" hidden style="display:none">
                                                     @csrf

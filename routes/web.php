@@ -27,6 +27,8 @@ Route::get('/admin/polls/view', 'Admin\PollController@adminView');
 Route::get('/polls/single/vote/{slug}/', 'PollResponseController@takePoll');
 Route::get('/polls/slide/vote/', 'PollResponseController@takePoll')->name('slide-polls');
 Route::resource('/polls', 'PollResponseController');
+Route::get('/profile', 'UserController@profile')->name('user-profile');
+Route::get('/profile/edit/{id}', 'UserController@edit')->name('user-profile-edit');
 
 Route::resource('/articles', 'ArticleController');
 Route::get('/articles/view/{article}/{slug}', 'ArticleController@single')->name('single.article');

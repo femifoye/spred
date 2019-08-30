@@ -11,9 +11,9 @@ body {
     position: relative;
     height: 100%;
 }
-.page-section{
+/* .page-section{
     margin-bottom: 10%;
-}
+} */
 
 body a {
     color: #585454;
@@ -778,6 +778,96 @@ input[type=radio] {
 .btn-center {
     display: flex;
     margin: 0 auto;
+}
+
+/* =============================================================
+                USER PROFILES AND SETTINGS
+============================================================= */
+.profile-wrap {
+    width: 70%;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.profile-inner {
+    padding: 50px;
+}
+
+.profile-id {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+
+.profile-avatar {
+    border-radius: 100%;
+}
+
+.profile-edit {
+    margin: 0 0 20px 0;
+}
+
+.profile-forums,
+.profile-contributions {
+    margin: 30px 0;
+}
+
+.profile-forums-ul {
+    padding: 0;
+}
+
+.profile-forums-li {
+    font-size: 1.1em;
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 3px 1px 4px rgba(224, 224, 224, 0.9);
+}
+
+.profile-replies-li {
+    list-style: none;
+    border-left: 5px solid #267dde;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 15px 0;
+}
+
+.profile-replies-li p {
+    margin: 0;
+}
+
+.profile-replies-subtext p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: #5f5e5e;
+}
+
+.profile-sub-header {
+    margin: 20px 0;
+}
+
+.replied-link {
+    font-size: 0.85em;
+    font-style: italic;
+    color: #267dde;
+}
+
+.replied-link a {
+    color: #267dde;
+}
+
+.edit-profile-wrap {
+    background-color: white;
+    height: 100%;
+}
+
+.edit-profile-form {
+    padding: 50px;
+}
+
+.form-margin {
+    margin: 10px 0;
 }
 
 /* =============================================================
