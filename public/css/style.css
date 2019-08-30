@@ -866,6 +866,11 @@ input[type=radio] {
     padding: 50px;
 }
 
+.btn-edit-profile {
+    display: flex;
+    margin: 0 auto;
+}
+
 .form-margin {
     margin: 10px 0;
 }

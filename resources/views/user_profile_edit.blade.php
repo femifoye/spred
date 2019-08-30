@@ -16,6 +16,7 @@
                                 <textarea name="profile-description" id="profile-description" cols="30" rows="10" placeholder="Enter a brief profile description" class="form-margin form-control"></textarea>
                                 <label for="profile-display-input">Choose a profile picture</label>
                                 <input name="profile-avatar-input" id="profile-display-input" type="file" class="form-margin form-control">
+                                <button type="submit" value="Edit Profile" class="btn btn-primary btn-edit-profile">Edit Profile</button>
                             </form>
                         </div>
                     </div>
