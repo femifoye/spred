@@ -108,7 +108,7 @@ class VideoController extends Controller
         $this->authorize('delete', $video);
     }
 
-    public function single($slug, $id){
-        return view('video_single');
+    public function single(Video $video){
+        return view('video_single')->with('video', $video);
     }
 }

@@ -26,6 +26,7 @@
                                         {{$video->body}}
                                     </article>
                                 </div>
+                                @include('includes.comment-component', ['named_route'=>'video_comment', 'commentable'=>$video])
                             </div>
                         </div> <!-- MAIN CONTENT -->
                         @include('includes.sidebar')

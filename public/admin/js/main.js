@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         controlForm.appendChild(formOption)
         console.log(controlForm)
         pollOptions.appendChild(controlForm)
-        //console.log(pollOptions.children[pollOptions.length - 1])
 
     })
 })

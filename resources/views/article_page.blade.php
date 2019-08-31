@@ -44,36 +44,7 @@
                                     {!!html_entity_decode($article->content)!!}
                                 </div>
 
-                                <div class="comment col-9 offset-1 m-b-20" id="comment">
-                                    <h4>Comments <span><small class="badge badge-warning">{{$article->comments()->get()->count()}}</small></span></h4>
-                                    @foreach($article->comments()->get() as $comment)
-                                    <div class="row align-items-center m-b-20">
-                                        <div class="col-3">
-                                            <img src="" class="thumbnail thumb-nail" alt="">
-                                            <div class="badge badge-secondary pull-left"><small>{{$comment->user()->first()->name}}</small></div>
-                                        </div>
-                                        <div class="bg-light col-9 p-20">
-                                            <p>{{$comment->body}}</p>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                @if($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                    <form class="row justify-content-center" action="{{route('article_comment', $article)}}" method="POST">
-                                        @csrf
-                                        <textarea rows="4" class="form-control col-sm-10" name="comment"></textarea>
-                                        <div class="align-self-end p-l-10">
-                                            <input type="submit" class="btn btn-primary">
-                                        </div>
-                                    </form>
-                                </div>
+                                @include('includes.comment-component', ['named_route' => 'article_comment', 'commentable'=>$article])
 
                                 <div class="breadcrumb">
                                 <div class="d-block"><a class="btn btn-dark" href="{{route('articles.index')}}">View All</a></div>

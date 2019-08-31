@@ -115,11 +115,17 @@
                             <div class="section-polls">
                                 @foreach($polls as $poll)
                                 <div class="section-poll">
-                                   <div class="section-poll-image">
-                                        <img style="max-width:220px; min-height:300px; max-height:300px" src="@isset($poll->featured_image){{Storage::url($poll->featured_image)}}@else{{asset('images/poll-illustration.jpg')}}@endisset" alt="">
-                                   </div>
+                                    <div class="section-poll-image">
+                                        <a href="{{route('vote', [$poll, str_slug($poll->question)])}}">
+                                            <img style="max-width:220px; min-height:300px; max-height:300px" src="@isset($poll->featured_image){{Storage::url($poll->featured_image)}}@else{{asset('images/poll-illustration.jpg')}}@endisset" alt="">
+                                        </a>
+                                    </div>
                                    <div class="section-poll-title">
-                                       <h6>{{$poll->question}}</h6>
+                                        <h6>
+                                            <a href="{{route('vote', [$poll, str_slug($poll->question)])}}">
+                                                {{$poll->question}}
+                                            </a>
+                                        </h6>
                                    </div>
                                 </div>
                                 @endforeach

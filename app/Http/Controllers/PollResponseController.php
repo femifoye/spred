@@ -37,10 +37,10 @@ class PollResponseController extends Controller
 
     }
 
-    public function takePoll($question = null){
+    public function takePoll(Poll $poll, $question = null){
         if($question){
-            $question = str_replace(['-', ':):'], [' ', '?'], $question);
-            $poll = Poll::where('question', "{$question}")->first();
+            // $question = str_replace(['-', ':):'], [' ', '?'], $question);
+            // $poll = Poll::where('question', "{$question}")->first();
             return view('poll_single')->with(['poll' =>$poll, 'computed' => $this->computedResponse($poll)]);
         }else{
             $poll = Poll::latest()->paginate(1);

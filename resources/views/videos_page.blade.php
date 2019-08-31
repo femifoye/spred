@@ -37,7 +37,7 @@
                                                 <h5>{{$video->title}}</h5>
                                             </div>
                                             <div class="vd-video-play">
-                                                <a href="" class="btn vd-btn-play">Play Video</a>
+                                                <a href="{{route('single.video', [$video, str_slug($video->title)])}}" class="btn vd-btn-play">Play Video</a>
                                             </div>
                                         </div>
                                         @endforeach

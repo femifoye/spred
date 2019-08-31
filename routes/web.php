@@ -19,7 +19,7 @@ Route::resource('/admin/dashboard', 'Admin\HomeController')->names('adm_home');
 Route::resource('/admin/videos', 'Admin\VideoController')->names('adm.videos');
 
 // USER ROUTES
-Route::get('/polls/single/vote/{slug}/', 'PollResponseController@takePoll');
+Route::get('/polls/single/vote/{poll}/{slug}/', 'PollResponseController@takePoll')->name('vote');
 Route::get('/polls/slide/vote/', 'PollResponseController@takePoll')->name('slide-polls');
 Route::resource('/polls', 'PollResponseController');
 
@@ -38,7 +38,7 @@ Route::get('/forums/view/{forum}/{slug}', 'ForumController@single')->name('singl
 
 
 Route::resource('/videos', 'VideoController')->names('videos');
-Route::get('/videos/view/{slug}/{id}', 'VideoController@single')->name('single.video');
+Route::get('/videos/view/{video}/{slug}', 'VideoController@single')->name('single.video');
 
 Route::get('/member/', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@landing')->name('landing');
