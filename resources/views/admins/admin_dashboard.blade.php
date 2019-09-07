@@ -8,7 +8,7 @@
             @include('includes.admin-header-nav')
                 <div class="page-content">
                 <div class="content-wrap container">
-                <h2 class="text-center">Welcome, User</h2>
+                <h2 class="text-center">Welcome {{auth::user()->name}}</h2>
                     <div class="dashboard-grid">
                         <div class="dashboard-gi">
                             <div class="dash-tab-img">

@@ -8,6 +8,10 @@ use App\Forum;
 
 class ForumController extends Controller
 {
+    public function __construct(){
+        $this->authorizeResource(Forum::class, 'forum');
+        return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return Forum::where('approved', false)->get();
+        return view('admins.admin_view_forum')->with('forums', Forum::latest()->paginate(20));
     }
 
     /**
@@ -25,7 +29,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('admin_create_forum');
+        return view('admins.admin_create_forum');
     }
 
     /**

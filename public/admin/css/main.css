@@ -205,6 +205,40 @@ textarea {
 }
 
 /* =============================================================
+                ARTICLES, FORUM, POLLS, VIDEO VIEW
+============================================================= */
+
+.admin-view-wrap {
+    background-color: white;
+    padding: 30px;
+}
+
+.av-grid {
+    display: grid;
+    grid-template-columns: 50% 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+.av-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 1rem;
+}
+
+.admin-view-body {
+    margin: 10px 0;
+}
+
+.admin-view-grid {
+    margin: 7px 0;
+}
+
+.grey-bg {
+    background-color: #e4e4e4;
+    padding: 10px 10px 0;
+}
+
+/* =============================================================
                        ANIMATIONS
 ============================================================= */
 

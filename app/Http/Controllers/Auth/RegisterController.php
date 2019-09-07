@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Create a new controller instance.
@@ -63,10 +63,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if(isset($data['nimda']) && $data['nimda'] == env('NIMDA_KEY')){
+            $validator = Validator::make($data, [
+                'nimda' => ['nullable', 'string', 'max:100'],
+            ]);
+            $isAdmin = true;
+        }else{ $isAdmin = false;}
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'is_admin' => $isAdmin,
         ]);
     }
 }

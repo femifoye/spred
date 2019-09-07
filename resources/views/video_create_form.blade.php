@@ -19,14 +19,14 @@
                             @endif
                             <div class="card">
                             @if(@isset($video))
-                                @php $requestRoute = 'videos.update';
-                                    $id = $video->id;
+                                @php $requestRoute = 'admin.videos.update';
+                                    $id = $video;
                                     $process = 'Edit Video';
                                     $action = 'Update Video';
                                     $method = 'PUT';
                                 @endphp
                             @else
-                                @php $requestRoute = 'videos.store';
+                                @php $requestRoute = 'admin.videos.store';
                                     $id = '';
                                     $action = 'Add Video';
                                     $process = $action;
@@ -36,7 +36,8 @@
                                 <div class="card-header">{{$process}}</div>
 
                                 <div class="card-body">
-                                    <form method="{{$method}}" action="{{route($requestRoute)}}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{route($requestRoute, $id)}}" enctype="multipart/form-data">
+                                    @method($method)
                                     @csrf
                                        <div class="control-form">
                                            <input
@@ -44,7 +45,7 @@
                                                 class="form-control"
                                                 name="video_title"
                                                 id="video_title"
-                                                value="@isset($video)){{$video->title}}@endisset"
+                                                value="@isset($video){{$video->title}}@endisset"
                                                 placeholder="Enter video title"
                                                 required
                                             >
@@ -55,7 +56,7 @@
                                                 class="form-control"
                                                 id="video_embed_link"
                                                 name="video_embed_link"
-                                                value="@isset($video)){{$video->url}}@endisset"
+                                                value="@isset($video){{$video->url}}@endisset"
                                                 placeholder="Enter Youtube Embed link"
                                                 required
                                             >
@@ -68,7 +69,15 @@
                                                 cols="30"
                                                 rows="10"
                                                 class="form-control"
-                                            >@isset($video)){{$video->title}}@endisset</textarea>
+                                            >@isset($video){{$video->body}}@endisset</textarea>
+                                        </div>
+                                        <div class="control-form">
+                                            <input
+                                                type="checkbox"
+                                                name="featured_video"
+                                                value=1
+                                                @if(@isset($video->is_featured)) checked @endif
+                                            > <label for="is_featured"> Make this a featured video</label>
                                         </div>
                                         <div class="control-form">
                                             <div class="text-center">

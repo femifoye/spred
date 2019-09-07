@@ -70,7 +70,7 @@ class CommentPolicy
     public function delete(User $user, Comment $comment)
     {
         //
-        return $user->id == $comment->commenter_id;
+        return $user->id == $comment->commenter_id || $user->is_admin;
     }
 
     /**
@@ -83,7 +83,7 @@ class CommentPolicy
     public function restore(User $user, Comment $comment)
     {
         //
-        return $user->id == $comment->commenter_id;
+        return $user->id == $comment->commenter_id || $user->is_admin;
     }
 
     /**
@@ -96,6 +96,6 @@ class CommentPolicy
     public function forceDelete(User $user, Comment $comment)
     {
         //
-        return $user->id == $comment->commenter_id;
+        return $user->id == $comment->commenter_id || $user->is_admin;
     }
 }

@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    public function __construct(){
+        $this->authorizeResource(Category::class, 'category');
+        return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +31,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        $this->authorize('create');
         return view('create_category');
     }
 
@@ -39,6 +44,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $this->authorize('create');
         $validated = $request->validate(['name'=>'required|string|unique:categories|max:25']);
         $category = new Category;
         $category->name = $validated['name'];
@@ -66,6 +72,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        $this->authorize('update', $category);
         return view('create_category')->with(['category'=>$category, 'edit'=>true]);
     }
 
@@ -79,6 +86,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+        $this->authorize('update', $category);
         $validated = $request->validate(['name'=>'required|string|unique:categories|max:25']);
         $category->name = $validated['name'];
         $category->save();
@@ -94,6 +102,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        $this->authorize('delete', $category);
         $category->delete();
         return redirect('/');
     }

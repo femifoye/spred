@@ -1,4 +1,93 @@
 @media screen and (min-width: 320px) {
+    h1 {
+        font-size: 2.25rem;
+    }
+    
+    h2 {
+        font-size: 1.9rem;
+    }
+    
+    h3 {
+        font-size: 1.6rem;
+    }
+    
+    h4 {
+        font-size: 1.3rem;
+    }
+    
+    h5 {
+        font-size: 1.0rem;
+    }
+    
+    h6 {
+        font-size: 0.7rem;
+    }
+
+    .profile-wrap {
+        width: 100%;
+    }
+
+    .profile-inner {
+        padding: 15px;
+    }
+
+    .edit-profile-form {
+        padding: 15px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .menu-close {
+        right: 15%;
+        position: absolute;
+        top: 10%;
+        display: none;
+    }
+
+    .menu-bar-white {
+        background-color: white;
+        padding: 3px;
+        width: 30px;
+    }
+
+    .menu-fscreen-wrap {
+        width: 100%;
+    }
+
+    .site-navigation ul li {
+        font-size: 0.9em;
+    }
+
+    .site-navigation ul {
+        padding: 0;
+    }
+
+    .get-started-image {
+        display: none;
+    }
+
+    .section-polls {
+        grid-column: 1/-1;
+    }
+
+    .floating-chat-toggle {
+        display: none;
+    }
+
+    .section-padding {
+        padding: 20px 0;   
+    }
+
+    .section-polls {
+        display: block;
+        justify-content: unset;
+        margin: 0 auto;
+    }
+
+    .section-heading {
+        text-align: center;
+    }
     /* =============================================================
                         ARTICLES
 ============================================================= */
@@ -46,14 +135,127 @@
         width: auto;
         padding: 20px;
     }
-  }
-  @media screen and (min-width: 480px) {
-  
-  }
-  @media screen and (min-width: 576px) {
-  
-  }
-  @media screen and (min-width: 768px) {
+
+    /* =============================================================
+                        FORUMS
+============================================================= */
+
+    .forum-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        text-align: center;
+    }
+
+    .fb_content_topic {
+        grid-column: 1 / -1;
+        display: unset;
+    }
+
+    .forum-body_headers {
+        display: none;
+    }
+
+    .fb_tags {
+        display: none;
+    }
+
+    .forum-filter {
+        display: none;
+    }
+
+    .forum-add-modal-form {
+        width: 90%;
+    }
+
+    .forum-body-content  {
+        grid-column: 1 / -1;
+    }
+}
+@media screen and (min-width: 480px) {
+
+}
+@media screen and (min-width: 576px) {
+
+    
+
+}
+@media screen and (min-width: 768px) {
+
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    h3 {
+        font-size: 1.9rem;
+    }
+    
+    h4 {
+        font-size: 1.6rem;
+    }
+    
+    h5 {
+        font-size: 1.3rem;
+    }
+    
+    h6 {
+        font-size: 1rem;
+    }
+
+    .menu-close {
+        right: 10%;
+        position: absolute;
+        top: 15%;
+        width: 23px;
+        display: none;
+    }
+
+    .menu-bar-white {
+        background-color: white;
+        padding: 3px;
+        width: 23px;
+    }
+
+    .menu-fscreen-wrap {
+        width: 50%;
+    }
+
+    .site-navigation ul li {
+        font-size: 1em;
+    }
+
+    .profile-wrap {
+        width: 70%;
+    }
+
+    .profile-inner {
+        padding: 50px;
+    }
+
+    .edit-profile-form {
+        padding: 50px;
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    
+
+    .section-polls {
+        grid-column: unset;
+    }
+
+    .section-polls {
+        display: flex;
+        justify-content: space-around;
+        margin: unset;
+    }
+
+    .section-heading {
+        text-align: unset;
+    }
 
     .page-grid {
         grid-template-columns: 66% 34%;
@@ -67,7 +269,7 @@
         flex-wrap: wrap;
     }
 
-   
+
 
     .subscribe-form {
         display: flex;
@@ -75,20 +277,41 @@
         justify-content: center;
     }
 
-/* =============================================================
+    /* =============================================================
                         POLLS
-============================================================= */
+    ============================================================= */
 
     .polls-introduction  {
         width: 400px;
         margin: 10px auto;
         padding: 20px 0;
     }
-  }
-  @media screen and (min-width: 992px) {
+
     /* =============================================================
-                        ARTICLES
+                        FORUMS
     ============================================================= */
+
+    .forum-add-modal-form {
+        width: 70%;
+    }
+
+    
+}
+@media screen and (min-width: 992px) {
+    .floating-chat-toggle {
+        display: block;
+    }
+
+    .get-started-image {
+        display: block;
+    }
+
+    /* .section-padding {
+        padding: unset   
+    } */
+/* =============================================================
+                    ARTICLES
+============================================================= */
     .article-thumb {
         width: unset;
     }
@@ -110,19 +333,54 @@
     {
         width: 300px;
     }
-  
-  }
-
-  @media screen and (min-width: 1200px) {
-    /* =============================================================
-                        ARTICLES
+        /* =============================================================
+                        FORUMS
     ============================================================= */
-    .article-thumb {
-        margin: 0 15px 15px 0;
+
+    .forum-grid {
+        display: grid;
+        grid-template-columns: 40% repeat(auto-fit, minmax(100px, 1fr));
+        text-align: unset;
     }
 
-    
-  
-  }
+    .fb_content_topic {
+        grid-column: unset;
+        display: flex;
+    }
+
+    .forum-body_headers {
+        padding: 20px 0;
+        display: grid;
+    }
+
+    .fb_tags {
+        display: block;
+    }
+
+    .forum-filter {
+        display: flex;
+    }
+
+    .forum-add-modal-form {
+        width: 50%;
+    }
+
+    .forum-body-content  {
+        grid-column: unset;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+/* =============================================================
+                    ARTICLES
+============================================================= */
+.article-thumb {
+    margin: 0 15px 15px 0;
+}
+
+
+
+}
   
   

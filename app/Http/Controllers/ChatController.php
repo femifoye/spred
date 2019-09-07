@@ -20,7 +20,7 @@ class ChatController extends Controller
     public function index()
     {
         //
-        $chats = Chat::with('user')->get();
+        $chats = Chat::with('user')->orderBy('created_at', 'asc')->get();
         $chatUser = [];
         foreach($chats as $chat){
             $chatCol = ['user'=>$chat->user->name, 'chat' => $chat->body];

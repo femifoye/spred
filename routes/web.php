@@ -11,46 +11,50 @@
 |
 */
 
-// ADMIN ROUTES
-Route::resource('/admin/categories', 'Admin\CategoryController');
-Route::resource('admin/forums', 'Admin\ForumController')->names('adm_forums');
-Route::resource('/admin/polls/', 'Admin\PollController')->names('adm_polls');
-Route::resource('/admin/dashboard', 'Admin\HomeController')->names('adm_home');
-Route::resource('/admin/videos', 'Admin\VideoController')->names('adm.videos');
+//VISITORS / General
 
-// USER ROUTES
+Route::get('/', 'HomeController@landing')->name('landing');
 Route::get('/polls/single/vote/{poll}/{slug}/', 'PollResponseController@takePoll')->name('vote');
 Route::get('/polls/slide/vote/', 'PollResponseController@takePoll')->name('slide-polls');
 Route::resource('/polls', 'PollResponseController');
-
 Route::resource('/articles', 'ArticleController');
 Route::get('/articles/view/{article}/{slug}', 'ArticleController@single')->name('single.article');
-Route::post('articles/search/', 'ArticleController@search')->name('search');
-Route::get('/article/post/', 'ArticleController@create')->name('create');
+Route::post('articles/search/', 'ArticleController@search')->name('articles.search');
 Route::get('/articles/sort/{sort}/', 'ArticleController@sort')->name('sort');
+Route::get('/videos', 'VideoController@index')->name('videos');
+Route::get('/videos/view/{video}/{slug}', 'VideoController@single')->name('single.video');
+Route::resource('/forums', 'ForumController')->names('forums');
+Route::get('/forums/view/{forum}/{slug}', 'ForumController@single')->name('single.forum');
+Route::get('/forums/filter/{sort}/', 'ForumController@filter')->name('filter');
+Route::post('/forums/search/', 'ForumController@search')->name('forums.search');
+
+// USER ROUTES
+Route::resource('/profile', 'UserController');
+Route::get('/profile/me/{profile}', 'UserController@profile')->name('profile.me');
 Route::post('/comment/articles/{commentable}', 'CommentController@store')->name('article_comment');
 Route::post('/comment/forums/{commentable}', 'CommentController@store')->name('forum_comment');
 Route::post('/comment/videos/{commentable}', 'CommentController@store')->name('video_comment');
-Auth::routes();
-
-Route::resource('/forums', 'ForumController')->names('forums');
-Route::get('/forums/view/{forum}/{slug}', 'ForumController@single')->name('single.forum');
-
-
-Route::resource('/videos', 'VideoController')->names('videos');
-Route::get('/videos/view/{video}/{slug}', 'VideoController@single')->name('single.video');
-
-Route::get('/member/', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@landing')->name('landing');
+Route::get('/user/home', 'HomeController@index')->name('home');
 Route::post('/subscribe/', 'SubscriptionController@store')->name('subscribe');
 Route::get('/subscribers/', 'SubscriptionController@index');
 Route::get('/thanks-for-subscribing/', 'SubscriptionController@thanks');
-//ADMIN ROUTES
+
 //INTERNAL API
-Route::get('/chats/create', 'ChatController@create');
 Route::get('/chats', 'ChatController@index');
 Route::post('/chats', 'ChatController@store')->name('chats.store');
 
-//Test Route
-//Route::get('/respond-to-poll', 'PollResponseController@create');
-//Route::get('/popular-poll', 'PollResponseController@popularPolls');
+// ADMIN ROUTES
+Route::get('/admin/dashboard', 'Admin\HomeController@index');
+Route::resource('/admin/categories', 'Admin\CategoryController')->names('admin.categories');
+Route::resource('/admin/forums', 'Admin\ForumController')->names('admin.forums');
+Route::resource('/admin/polls', 'Admin\PollController')->names('admin.polls');
+Route::patch('/admin/feature/video/{video}', 'Admin\VideoController@featureVideo')->name('admin.video.featureVideo');
+Route::resource('/admin/videos', 'Admin\VideoController')->names('admin.videos');
+Route::resource('/admin/articles', 'Admin\ArticleController')->names('admin.articles');
+
+Auth::routes();
+Route::get('/test/host', function(){
+    $va = encrypt('user');
+    //     dd("I found you");
+    // }
+});

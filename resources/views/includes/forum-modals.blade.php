@@ -3,13 +3,22 @@
         <div class="forum-reply-modal-inner forum-modal hide">
             @auth
             <div class="forum-reply-modal-form">
-                <form action="" method="POST">
+                <form action="{{route('forum_comment', $forum)}}" method="POST">
+                    @csrf
                     <div class="forum-reply-form-title">
                         <h5 class="text-center">Reply to this topic</h5>
-
                     </div>
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="control-form">
-                        <textarea name="forum-reply-fc" id="forum-reply-fc" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="comment" id="forum-reply-fc" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                     <div class="control-form forum-modal-reply-button">
                         <button type="submit" class="btn btn-lg forum-reply-button-submit">Reply</button>

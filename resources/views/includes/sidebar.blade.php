@@ -53,20 +53,18 @@
                 </div>
             </div>
             @endisset
+            @isset($popularPost)
             <div class="sidebar-popular-posts sidebar-box">
                 <div class="sidebar-heading">
                     <h6 class="sidebar-heading-h6">Popular Posts</h6>
                 </div>
                 <ul class="sidebar-popular-post-ul">
-                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor, sit amet consectetur.</li>
-                    <li>Lorem ipsum dolor, sit amet consectetur.</li>
-                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing.</li>
-                    <li>Lorem ipsum dolor, sit amet consectetur.</li>
-                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</li>
+                    @foreach($popularPost as $article)
+                    <li><a href="{{route('single.article', [$article, str_slug($article->title)])}}">{{$article->title}}</a></li>
+                    @endforeach
                 </ul>
             </div>
+            @endisset
         </div>
     </div>
 </section> <!-- PAGE SIDE BAR -->

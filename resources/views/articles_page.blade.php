@@ -10,7 +10,7 @@
                         <div class=" m-t-20">
                             <div class="breadcrumb row">
                                 <div class="col-12 no-padding">
-                                    <form method="POST" action="{{route('search')}}" class="row">
+                                    <form method="POST" action="{{route('articles.search')}}" class="row">
                                         @csrf
                                         <div class="col-10">
                                             <div class="row input-group">

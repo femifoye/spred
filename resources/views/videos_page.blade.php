@@ -15,10 +15,10 @@
                                 <div class="vd-featured-video-wrap">
                                     <div class="vd-featured-video">
                                         <div class="vd-featured-video-box">
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/iSgXrOsE5hE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <iframe width="560" height="315" src="{{url($featured->url)}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                         <div class="vd-featured-video-title">
-                                            <h4>Davido releases new video for hit single Blow My Mind</h4>
+                                            <h4>{{$featured->title}}</h4>
                                         </div>
                                     </div>
                                 </div>

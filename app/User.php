@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -56,4 +56,13 @@ class User extends Authenticatable
     public function videos(){
         return $this->hasMany('App\Video');
     }
+
+    public function comments(){
+        return $this->hasMany('App\Comment', 'commenter_id');
+    }
+
+    public function profile(){
+        return $this->hasOne('App\UsersProfile');
+    }
+
 }

@@ -8,9 +8,14 @@ use App\Article;
 use App\Admin\Poll;
 use App\Forum;
 use App\Video;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public function __construct(){
+        return $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,16 +23,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles_count = Article::count();
-        $polls_count = Poll::count();
-        $forums_count = Forum::count();
-        $videos_count = Video::count();
-        return view('admins.admin_dashboard')->with([
-            'videos_count' => $videos_count,
-            'forums_count' => $forums_count,
-            'articles_count' => $articles_count,
-            'polls_count' => $polls_count
-        ]);
+        if(!Auth::user()->is_admin){
+            return redirect('/');
+        }else{
+            $articles_count = Article::count();
+            $polls_count = Poll::count();
+            $forums_count = Forum::count();
+            $videos_count = Video::count();
+            return view('admins.admin_dashboard')->with([
+                'videos_count' => $videos_count,
+                'forums_count' => $forums_count,
+                'articles_count' => $articles_count,
+                'polls_count' => $polls_count
+            ]);
+        }
     }
 
     /**

@@ -16,7 +16,11 @@
                                     <div></div>
                                 @if($errors->any())
                                 <div class="alert alert-danger">
-                                    <strong>{{__("You've already casted your vote for this poll. Please try another poll")}}</strong>
+                                    <p>{{__("You've already casted your vote for this poll. Please try another poll")}}</p>
+                                </div>
+                                @elseif(Session::has('success'))
+                                <div class="alert alert-success">
+                                    <h5>{{Session::get('success')}}</h5>
                                 </div>
                                 @endif
                                 @isset($responded)
@@ -65,7 +69,7 @@
                                                        <h5>{{$key}}</h5>
                                                    </div>
                                                    <div class="poll-result-value">
-                                                       <h5>{{$value}}</h5>
+                                                       <h5>{{$value}}%</h5>
                                                    </div>
                                                </div>
                                                @endforeach

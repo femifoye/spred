@@ -19,6 +19,7 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->string('body');
             $table->string('url');
+            $table->boolean('is_featured')->default(0)->nullable();
             $table->timestamps();
         });
     }

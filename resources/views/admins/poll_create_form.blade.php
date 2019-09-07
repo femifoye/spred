@@ -20,13 +20,13 @@
 
                             <div class="card">
                             @if(@isset($poll))
-                                @php $requestRoute = 'adm_polls.update';
+                                @php $requestRoute = 'admin.polls.update';
                                     $id = $poll->id;
                                     $process = 'Edit Poll';
                                     $action = 'Update Poll';
                                 @endphp
                             @else
-                                @php $requestRoute = 'adm_polls.store';
+                                @php $requestRoute = 'admin.polls.store';
                                     $id = '';
                                     $action = 'Add Poll';
                                     $process = $action;

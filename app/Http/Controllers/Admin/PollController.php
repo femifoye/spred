@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin\Poll;
-use App\Admin\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PollController extends Controller
 {
+    public function __construct(){
+        //
+        $this->authorizeResource(Poll::class, 'poll');
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +21,7 @@ class PollController extends Controller
     public function index()
     {
         //
+        return view('admins.admin_view_polls')->with('polls', Poll::latest()->paginate(10));
     }
 
     /**
@@ -68,7 +73,6 @@ class PollController extends Controller
     public function show(Poll $poll)
     {
         //
-        return view('poll_create_form')->with(['poll' => $poll, 'edite' => true]);
     }
 
     /**
@@ -119,5 +123,6 @@ class PollController extends Controller
     {
         //
         $poll->delete();
+        return redirect()->route('admin.polls.index');
     }
 }

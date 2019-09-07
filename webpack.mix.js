@@ -11,5 +11,25 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+// mix.js('resources/js/app.js', 'public/js')
+//     .sass('resources/sass/app.scss', 'public/css');
+
+mix.styles(
+    [
+        'public/css/app.css',
+        'public/css/style.css',
+        'public/css/responsive.css'
+    ],
+    'public/css/styles.css'
+)
+
+mix.scripts(
+    [
+        'public/js/app.js',
+        'public/js/carousel.js',
+        'public/js/chatajax.js',
+        'public/js/main.js',
+        'public/js/util.js'
+    ],
+    'public/js/main-build.js'
+)

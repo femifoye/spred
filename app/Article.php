@@ -23,4 +23,8 @@ class Article extends Model
     public function forum(){
         return $this->belongsTo('App\Forum', 'forum_id');
     }
+
+    public function views(){
+        return $this->morphMany('App\View', 'viewable');
+    }
 }

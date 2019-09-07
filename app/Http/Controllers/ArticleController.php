@@ -22,7 +22,7 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::with('category')->latest()->paginate(15);
+        $articles = Article::with('category')->latest()->paginate(10);
         return view('articles_page')->with(['articles' => $articles]);
     }
 
@@ -31,11 +31,12 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-        return view('article_create_form');
-    }
+    // public function create()
+    // {
+    //     //
+    //     $this->authorize('create');
+    //     return view('article_create_form');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -43,31 +44,32 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-        $validated = $request->validate([
-            'title' => 'required|string|unique:articles|max:150',
-            'content' => 'required|string|unique:articles',
-            'category_id' => 'required|numeric',
-            //'forum_id' => 'required|numeric|min:1',
-            'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
-        ]);
-        $article = new Article;
-        $article->title = $validated['title'];
-        $article->content = $validated['content'];
-        $article->category_id = $validated['category_id'];
-        //$article->forum_id = $validated['forum_id'];
-        Auth::user()->articleCreator()->save($article);
-        if($request['featured_image']){
-            $image = $validated['featured_image'];
-            $image_url = $image->store('public/images');
-            $article->featured_image = $image_url;
-            $article->save();
-        }
+    // public function store(Request $request)
+    // {
+    //     //
+    //     $this->authorize('create');
+    //     $validated = $request->validate([
+    //         'title' => 'required|string|unique:articles|max:150',
+    //         'content' => 'required|string|unique:articles',
+    //         'category_id' => 'required|numeric',
+    //         //'forum_id' => 'required|numeric|min:1',
+    //         'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
+    //     ]);
+    //     $article = new Article;
+    //     $article->title = $validated['title'];
+    //     $article->content = $validated['content'];
+    //     $article->category_id = $validated['category_id'];
+    //     //$article->forum_id = $validated['forum_id'];
+    //     Auth::user()->articleCreator()->save($article);
+    //     if($request->hasFile('featured_image')){
+    //         $image = $validated['featured_image'];
+    //         $image_url = $image->store('public/images');
+    //         $article->featured_image = $image_url;
+    //         $article->save();
+    //     }
 
-        return redirect()->route('single.article', [$article, strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was uploaded successfully']);
-    }
+    //     return redirect()->route('single.article', [$article, strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was uploaded successfully']);
+    // }
 
     /**
      * Display the specified resource.
@@ -80,80 +82,84 @@ class ArticleController extends Controller
         //
         $related = Article::where('category_id', '=', $article->category_id)
                             ->whereNotIn('id', [$article->id])->paginate(10);
+        $viewController = new ViewController;
+        $viewController()->incrementViews($article);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
     }
     public function single(Article $article, $slug)
     {
         $related = Article::where('category_id', '=', "{$article->category_id}")
                         ->whereNotIn('id', [$article->id])->paginate(10);
+        $viewController = new ViewController;
+        $viewController->incrementViews($article);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Article $article)
-    {
-        //
-        $this->authorize('update', $article);
-        return view('article_create_form')->with(['article'=>$article, 'edit'=>true]);
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  \App\Article  $article
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit(Article $article)
+    // {
+    //     //
+    //     $this->authorize('update', $article);
+    //     return view('article_create_form')->with(['article'=>$article, 'edit'=>true]);
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Article $article)
-    {
-        //
-        $this->authorize('update', $article);
-        $articleID = $article->id;
-        $validated = $request->validate([
-            'title' => 'required|string|unique:articles,title,'.$articleID.',id|max:150',
-            'content' => 'required|string|unique:articles,content,'.$articleID.',id',
-            'category_id' => 'required|numeric|min:1',
-            //'forum_id' => 'required|numeric|min:1',
-            'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
-        ]);
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  \App\Article  $article
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request, Article $article)
+    // {
+    //     //
+    //     $this->authorize('update', $article);
+    //     $articleID = $article->id;
+    //     $validated = $request->validate([
+    //         'title' => 'required|string|unique:articles,title,'.$articleID.',id|max:150',
+    //         'content' => 'required|string|unique:articles,content,'.$articleID.',id',
+    //         'category_id' => 'required|numeric|min:1',
+    //         //'forum_id' => 'required|numeric|min:1',
+    //         'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
+    //     ]);
 
-        $article->title = $validated['title'];
-        $article->content = $validated['content'];
-        $article->category_id = $validated['category_id'];
-        //$article->forum_id = $validated['forum_id'];
-        //Delete the old image
-        if($request->hasFile('featured_image')){
-            if(Storage::exists($article->featured_image)){
-                Storage::delete($article->featured_image);
-            }
-            $image = $validated['featured_image'];
-            $image_url = $image->store('public/images');
-            $article->featured_image = $image_url;
-        }
-        $article->save();
-        return redirect()->route('single.article', [strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was updated successfully']);
-    }
+    //     $article->title = $validated['title'];
+    //     $article->content = $validated['content'];
+    //     $article->category_id = $validated['category_id'];
+    //     //$article->forum_id = $validated['forum_id'];
+    //     //Delete the old image
+    //     if($request->hasFile('featured_image')){
+    //         if(Storage::exists($article->featured_image)){
+    //             Storage::delete($article->featured_image);
+    //         }
+    //         $image = $validated['featured_image'];
+    //         $image_url = $image->store('public/images');
+    //         $article->featured_image = $image_url;
+    //     }
+    //     $article->save();
+    //     return redirect()->route('single.article', [strtolower(str_replace([' ', '?'], ['-', '::'], $article->title)), $article->id])->with(['success' => 'Article was updated successfully']);
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Article $article)
-    {
-        //
-        $this->authorize('delete', $article);
-        Storage::delete($article->featured_image);
-        $article->delete();
-        $articles = Article::paginate(20);
-        return redirect()->route('articles.index')->with(['articles' => $articles]);
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  \App\Article  $article
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy(Article $article)
+    // {
+    //     //
+    //     $this->authorize('delete', $article);
+    //     Storage::delete($article->featured_image);
+    //     $article->delete();
+    //     $articles = Article::paginate(20);
+    //     return redirect()->route('articles.index')->with(['articles' => $articles]);
+    // }
 
     //Search for part of title string or part of content string
     public function search(Request $request, $param=null){
@@ -167,7 +173,7 @@ class ArticleController extends Controller
                         ->orWhere('content', 'like', "%{$string}%")
                         ->orWhere('categories.name', 'like', "%{$string}%")
                         ->select('articles.*')
-                        ->get();
+                        ->latest()->paginate(10);
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';
         }else{
@@ -183,7 +189,7 @@ class ArticleController extends Controller
         $articles = Article::join('categories', 'categories.id', 'articles.category_id')
                             ->where('categories.name', $string)
                             ->select('articles.*' )
-                            ->get();
+                            ->latest()->paginate(10);
         if($articles->isEmpty()){
             $message = 'No result was found for that search query';
         }else{

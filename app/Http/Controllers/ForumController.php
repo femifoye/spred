@@ -15,7 +15,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forum_page')->with(['forums'=>Forum::latest()->paginate(15)]);
+        return view('forum_page')->with(['forums'=>Forum::latest()->paginate(10)]);
     }
 
     /**
@@ -127,6 +127,32 @@ class ForumController extends Controller
 
     public function single(Forum $forum, $slug){
         //$forum = Forum::find($id);
+        $forum->views = $forum->views + 1;
+        $forum->save();
         return view('forum_page_single')->with('forum', $forum);
+    }
+
+    public function search(Request $request){
+        $validated = $request->validate(['seek' => 'required|string']);
+        $param = $validated['seek'];
+        return $this->filter($param);
+    }
+
+    public function filter($param){
+        $string = str_replace('-', ' ',$param);
+        //return
+        $forums = Forum::join('categories', 'forums.category_id', 'categories.id')
+                            ->where('title', 'like', "%{$string}%")
+                            ->orWhere('tags', 'like', "%{$string}%")
+                            ->orWhere('body', 'like', "%{$string}%")
+                            ->orWhere('categories.name', $string)
+                            ->select('forums.*' )
+                            ->latest()->paginate(10);
+        if($forums->isEmpty()){
+            $message = 'No result was found for that search query';
+        }else{
+            $message = null;
+        }
+        return view('forum_page')->with(['forums' => $forums, 'message'=>$message]);
     }
 }

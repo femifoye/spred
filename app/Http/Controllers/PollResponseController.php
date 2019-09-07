@@ -67,8 +67,9 @@ class PollResponseController extends Controller
         ]);
         $response->poll_id = $validated['poll_id'];
         $response->response_key = $validated['response_id'];
-        $user->pollResponses()->save($response);
-        return redirect('polls');
+        $savedResponse = $user->pollResponses()->save($response);
+        $poll = $savedResponse->poll()->first();
+        return redirect()->route('vote', [$poll, $poll->question])->with('success', 'Great! '.$user->name.', You have successfully casted your vote');
     }
 
     /**

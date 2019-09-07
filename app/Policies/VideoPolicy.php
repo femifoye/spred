@@ -44,7 +44,7 @@ class VideoPolicy
     public function create(User $user)
     {
         //
-        return true;
+        return $user->is_admin;
     }
 
     /**
@@ -57,7 +57,7 @@ class VideoPolicy
     public function update(User $user, Video $video)
     {
         //
-        return $user->id == $video->user_id;
+        return ($user->id == $video->user_id || $user->is_admin);
     }
 
     /**
@@ -70,7 +70,7 @@ class VideoPolicy
     public function delete(User $user, Video $video)
     {
         //
-        return $user->id == $video->user_id;
+        return $user->id == $video->user_id || $user->is_admin;
     }
 
     /**
@@ -83,7 +83,7 @@ class VideoPolicy
     public function restore(User $user, Video $video)
     {
         //
-        return $user->id == $video->user_id;
+        return $user->id == $video->user_id || $user->is_admin;
     }
 
     /**
@@ -96,6 +96,6 @@ class VideoPolicy
     public function forceDelete(User $user, Video $video)
     {
         //
-        return $user->id == $video->user_id;
+        return $user->id == $video->user_id || $user->is_admin;
     }
 }

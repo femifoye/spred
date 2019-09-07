@@ -3,9 +3,9 @@
    @include('includes.head')
     <body>
     @include('includes.navigation')
-
-        <section class="section--white get-started">
-            <div class="section-container">
+    <section class="page-section">
+        <section class="section-padding section--white get-started">
+            <div class="container">
                 <div class="section-inner">
                     <div class="section-flex">
                         <div class="get-started-wrap">
@@ -17,7 +17,7 @@
                                     across the country. Share articles, contribute to forums and
                                     take polls.
                                 </p>
-                                <button class="btn btn-lg btn-success btn-spred">Get Started</button>
+                                <a href="{{url('/register')}}" class="btn btn-lg btn-success btn-spred">Get Started</a>
                             </div>
                         </div>
                         <div class="get-started-image">
@@ -31,8 +31,8 @@
         </section>
 
         <!-- Articles Section -->
-        <section class="articles-featured">
-            <div class="section-container">
+        <section class="section-padding articles-featured">
+            <div class="container">
                 <div class="section-inner">
                     <div class="section-heading font-bold">
                         <h3>Featured Articles</h3>
@@ -73,8 +73,8 @@
         <!-- Articles Section End -->
 
         <!-- Featured Videos Section -->
-        <section class="featured-videos">
-           <div class="section-container">
+        <section class="section-padding featured-videos">
+           <div class="container">
                <div class="section-inner">
                    <div class="section-heading white-heading font-bold">
                        <h3>Featured Videos</h3>
@@ -104,8 +104,8 @@
 
         <!-- Featured Polls -->
 
-        <section class="featured-polls">
-            <div class="section-container">
+        <section class="section-padding featured-polls">
+            <div class="container">
                 <div class="section-inner">
                     <div class="section-heading font-bold">
                         <h3>Featured Polls</h3>
@@ -154,6 +154,9 @@
             <h2>Spred Test View</h2>
         </div> -->
         @include('includes.floating-chat')
+        {{-- @include('includes.forum-modals') --}}
+    </section>
+
 
     @include('includes.footer')
 

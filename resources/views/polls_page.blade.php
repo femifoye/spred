@@ -23,7 +23,7 @@
                                             <div class="poll-image">
                                                 <img src="@isset($poll->featured_image){{Storage::url($poll->featured_image)}}@else{{__('images/poll-illustration-2.jpg')}}@endisset" alt="str_limit($poll->question, 10)">
                                                 <div class="poll-vote hide">
-                                                    <a href="{{url('/polls/single/vote/'.strtolower(str_replace([' ', '?'], ['-', ':):'], $poll->question)))}}" class="btn btn-poll abs-center">Take Poll</a>
+                                                    <a href="{{route('vote', [$poll, str_slug($poll->question)])}}" class="btn btn-poll abs-center">Take Poll</a>
                                                 </div>
                                             </div>
                                             <div class="poll-title">
@@ -39,7 +39,7 @@
                                             <div class="poll-image">
                                                 <img src="@isset($popularPoll->featured_image){{Storage::url($popularPoll->featured_image)}}@else{{__('images/poll-illustration-2.jpg')}}@endisset" alt="">
                                                 <div class="poll-vote hide">
-                                                    <a href="{{url('/polls/single/vote/'.strtolower(str_replace([' ', '?'], ['-', ':):'], $popularPoll->question)))}}" class="btn btn-poll abs-center">Take Poll</a>
+                                                    <a href="{{route('vote', [$popularPoll, str_slug($popularPoll->question)])}}" class="btn btn-poll abs-center">Take Poll</a>
                                                 </div>
                                             </div>
                                             <div class="poll-title">

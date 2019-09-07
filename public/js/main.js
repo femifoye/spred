@@ -6,30 +6,91 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuBars = [].slice.call(document.getElementsByClassName('menu-bar'));
     let menuListItem = [].slice.call(document.getElementsByClassName('menu-list-item'));
 
+    //ADD CLASS TO BODY
+    // let body = document.getElementsByTagName('body')
+    // console.log(body);
+
     let toggleHide = (el) => {
         el.classList.toggle('hide');
     }
 
+    let clickOut = (modalClass, el, hideMethod, addEvent, ev) => {
+        let workLoad = (e) => {
+            if(e.path[0].classList.contains(modalClass)) {
+                switch(hideMethod) {
+                    case "toggle":
+                        el.classList.toggle('hide');
+                        break;
+                    case "changeStyle":
+                        el.style.display = "none";
+                        break;                        
+                }
+            }
+        }
+        if(addEvent === true) {
+            let modalOut = document.querySelector("."+modalClass);
+            modalOut.addEventListener('click', (event) => {
+                workLoad(event);      
+            })
+        } else {
+            workLoad(ev);
+        }
+        
+    }
+
+
     //EVENT LISTENERS
     menuButton.addEventListener('click', () => {
-
         menuFullScreen.style.display = "block";
         setTimeout(() => {
             menuClose.style.display = "block";
-        }, 1000)
-
+        }, 1000) 
+        clickOut('menu-fscreen', menuFullScreen, "changeStyle", true, null);
     })
-     menuClose.addEventListener('click', () => {
+
+    //CLOSE MENU BY CLICKING OUTSIDE IT
+    // function clickOut(modalClass, el) {
+    //     let modalOut = document.querySelector(modalClass);
+    //     modalOut.addEventListener('click', () => {
+    //         console.log('clicked out');
+    //     })
+    // }
+      menuClose.addEventListener('click', () => {
         menuFullScreen.style.display = "none";
     })
     menuListItem.forEach((item) => {
         item.addEventListener('mouseenter', () => {
-            item.classList.add('bg-invert');
+            setTimeout(()=> {
+                item.classList.add('bg-invert');
+            }, 200);
+            
         })
         item.addEventListener('mouseleave', () => {
-            item.classList.remove('bg-invert');
+            setTimeout(()=> {
+                item.classList.remove('bg-invert');
+            }, 200);
         })
     })
+
+    //TOGGLE USER DROPDOWN MENU
+    let userDropdown = document.querySelector('.user-dropdown-menu');
+    let userAvatar = document.querySelector('.user-avatar');
+
+    
+    
+    userAvatar.addEventListener('click', (ev) => {
+        let pageSection = document.querySelector('.page-section');
+        toggleHide(userDropdown);
+        pageSection.addEventListener('click', () => {
+            if(!userDropdown.classList.contains("hide")){
+                toggleHide(userDropdown);
+            }
+        })
+
+    })
+  
+    
+    
 
     //CHANGE IFRAME WIDTH 
     //FOR VIDEO CONTAINER IN LANDING PAGE
@@ -125,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let forumAddModal = document.querySelector('.forum-add-modal-inner');
     let forumAddCloseBtn = document.querySelector('.forum-add-button-close');
     let toggleReplyModal = () => {
-        toggleHide(forumReplyModal)
+        toggleHide(forumReplyModal);
     }
     let toggleAddModal = () => {
         toggleHide(forumAddModal);
@@ -134,6 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
         forumReplyBtn.addEventListener('click', (e) => {
             e.preventDefault();
             toggleReplyModal();
+            
+        })
+        forumReplyModal.addEventListener('click', (event) => {
+            clickOut('forum-reply-modal-inner', forumReplyModal, "toggle", false, event);
         })
     }
 
@@ -148,6 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             toggleAddModal();
         })
+        forumAddModal.addEventListener('click', (event) => {
+            clickOut('forum-add-modal-inner', forumAddModal, "toggle", false, event);
+        })
     }
 
     if(forumAddCloseBtn) {
@@ -157,23 +225,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    //FLOATING CHAT TOGGLE
-    let fcToggle = document.querySelector('.floating-chat-toggle');
-    let floatingChat = document.querySelector('.fc-floating-chat');
-    let fcClose = document.querySelector('.fc-close');
-    let toggleChat = () => {
-        toggleHide(fcToggle);
-        toggleHide(floatingChat)
-    }
-     fcToggle.addEventListener('click', () => {
-        toggleChat();
-    });
-    fcClose.addEventListener('click', () => {
-        toggleChat();
+    // MOMENT JS
+    let forumDates = [].slice.call(document.getElementsByClassName('format_date'));
+    forumDates.forEach((date) => {
+        let fullDate = date.innerHTML
+        let alteredDate = moment(fullDate).fromNow(true);
+        date.innerHTML = alteredDate;
     })
+
     
-    
-    
-   
+  
     
 })

@@ -57,7 +57,7 @@ class ForumPolicy
     public function update(User $user, Forum $forum)
     {
         //
-        return $user->id == $forum->creator_id;
+        return $user->id == $forum->creator_id || $user->is_admin;
     }
 
     /**
@@ -70,7 +70,7 @@ class ForumPolicy
     public function delete(User $user, Forum $forum)
     {
         //
-        return $user->id == $forum->creator_id;
+        return $user->id == $forum->creator_id || $user->is_admin;
     }
 
     /**
@@ -83,7 +83,7 @@ class ForumPolicy
     public function restore(User $user, Forum $forum)
     {
         //
-        return $user->id == $forum->creator_id;
+        return $user->is_admin;
     }
 
     /**
@@ -96,6 +96,6 @@ class ForumPolicy
     public function forceDelete(User $user, Forum $forum)
     {
         //
-        return $user->id == $forum->creator_id;
+        return $user->id == $forum->creator_id || $user->is_admin;
     }
 }
