@@ -52,7 +52,7 @@
                                                     <option disabled>Choose a category here</option>
                                                     <option hidden>Choose a category here</option>
                                                     @foreach($categories as $category)
-                                                    <option @isset($forum)@if($forum->id == $category->id){{__('selected')}}@endif @endisset value="$category->id">{{$category->name}}</option>
+                                                    <option @isset($forum)@if($forum->id == $category->id){{__('selected')}}@endif @endisset value="{{$category->id}}">{{$category->name}}</option>
                                                     @endforeach
                                                     <option value="null" class="option-add-category" data-linked="true"><a href="{{route('admin.categories.create')}}">+ Add New Category</a></option>
                                                 </select>
