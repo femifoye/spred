@@ -33,7 +33,7 @@ class VideoController extends Controller
     public function create()
     {
         //
-        return view('video_create_form');
+        return view('admins.video_create_form');
     }
 
     /**
@@ -45,7 +45,6 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         //
-        // return $request->is_featured;
         $validated = $request->validate([
             'video_title' => 'required|string|max:100',
             'video_body' => 'required|string',
@@ -64,12 +63,14 @@ class VideoController extends Controller
             $prev_featured_video->is_featured = false;
             $prev_featured_video->save();
             $video->is_featured = $validated['featured_video'];
+        }else{
+            $video->is_featured = $validated['featured_video'];
         }
         $video->title = $validated['video_title'];
         $video->url = $validated['video_embed_link'];
         $video->body = $validated['video_body'];
         auth()->user()->videos()->save($video);
-        return redirect()->route('admin.videos.show', $video);
+        return redirect()->route('admin.videos.index');
     }
 
     /**
@@ -93,7 +94,7 @@ class VideoController extends Controller
     public function edit(Video $video)
     {
         //
-        return view('video_create_form')->with('video', $video);
+        return view('admins.video_create_form')->with('video', $video);
     }
 
     /**

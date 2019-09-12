@@ -30,11 +30,18 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        //
+        //Views incrementor
+        $viewController = new ViewController;
+        $viewController->incrementViews($video);
+
         return view('video_single')->with('video',$video);
     }
 
     public function single(Video $video){
+        //Views Incrementor
+        $viewController = new ViewController;
+        $viewController->incrementViews($video);
+
         return view('video_single')->with('video', $video);
     }
 }

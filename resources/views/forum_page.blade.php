@@ -20,7 +20,7 @@
                                             @foreach($categories as $category)
                                             <h6><a href="{{route('filter', str_slug($category->name))}}">{{title_case($category->name)}}</a></h6>
                                             @endforeach
-                                            <h6><a href="{{route('filter', str_slug($category->name))}}">{{title_case($category->name)}}</a></h6>
+                                            {{-- <h6><a href="{{route('filter', str_slug($category->name))}}">{{title_case($category->name)}}</a></h6> --}}
                                         </div>
                                     </div>
                                     <div class="forum-body_headers forum-grid">
@@ -45,6 +45,7 @@
                                             <div class="text-center"><h4>{{$message}}</h4></div>
                                         </div>
                                         @endif
+                                        @if($forums->count())
                                         @foreach($forums as $forum)
                                         <div class="forum-body_content forum-grid">
                                             <div class="fb_content_topic">
@@ -83,6 +84,9 @@
                                         <div>
                                             {{$forums->links()}}
                                         </div>
+                                        @else
+                                        <div class="jumbotron"><h4 class="text-center text-secondary">No Topic for now, be the first to post a topic</h4></div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

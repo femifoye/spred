@@ -46,7 +46,7 @@ class PollController extends Controller
         //Save new poll to db
         //$user = auth()->user();
         $validated = $request->validate([
-            'poll_title' => 'required|string|max:30|unique:polls,question',
+            'poll_title' => 'required|string|max:100|unique:polls,question',
             'poll_options' => 'required|array',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
@@ -61,7 +61,7 @@ class PollController extends Controller
             $poll->featured_image = $image_url;
             $poll->save();
         }
-        return redirect('polls')->with(['polls' => Poll::latest()->paginate(20)]);
+        return redirect()->route('admin.polls.index');
     }
 
     /**
@@ -98,7 +98,7 @@ class PollController extends Controller
     {
         //
         $validated = $request->validate([
-            'poll_title' => 'required|string|max:30|unique:polls,question,'.$poll->id.',id',
+            'poll_title' => 'required|string|max:100|unique:polls,question,'.$poll->id.',id',
             'poll_options' => 'required|array',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);

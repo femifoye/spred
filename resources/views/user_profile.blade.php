@@ -12,6 +12,9 @@
                                 <div class="profile-id">
                                     <div class="profile-name">
                                         <h4>{{$user->name}}</h4>
+                                        @if($user->is_admin)
+                                        <div class="badge badge-secondary">Admin</div>
+                                        @endif
                                     </div>
                                     <div class="profile-avatar-lg">
                                         @isset($profile->image)

@@ -79,7 +79,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        //Views incrementor
+        $viewController = new ViewController;
+        $viewController->incrementViews($article);
+
         $related = Article::where('category_id', '=', $article->category_id)
                             ->whereNotIn('id', [$article->id])->paginate(10);
         $viewController = new ViewController;
@@ -90,8 +93,10 @@ class ArticleController extends Controller
     {
         $related = Article::where('category_id', '=', "{$article->category_id}")
                         ->whereNotIn('id', [$article->id])->paginate(10);
+        //Views incrementor
         $viewController = new ViewController;
         $viewController->incrementViews($article);
+
         return view('article_page')->with(['article' => $article, 'related' => $related]);
     }
 

@@ -31,7 +31,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                <a class="btn btn-secondary" href="{{route('articles.create')}}">Publish Article</a>
+                                    @can('create')
+                                    <a class="btn btn-secondary" href="{{route('admin.articles.create')}}">Publish Article</a>
+                                    @endcan
                                 </div>
                             </div>
                             <div class="page-heading">
@@ -41,7 +43,8 @@
                             <div class="breadcrumb">
                                 <h4>{{$message}}</h4>
                             </div>
-                            @else
+                            @endisset
+                            @if($articles->count())
                             <div class="all-articles-view">
                                 @foreach($articles as $article)
                                 <div class="article-thumb">
@@ -68,7 +71,9 @@
                                 </div>
                                 @endforeach
                             </div>
-                            @endisset
+                            @else
+                            <div class="jumbotron"><h4 class="text-center text-secondary">No article for now, please check back</h4></div>
+                            @endif
                         </div>
                     </section> <!-- MAIN CONTENT SECTION -->
                     <section class="col-sm-4">

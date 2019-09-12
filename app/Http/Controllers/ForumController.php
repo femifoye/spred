@@ -70,7 +70,10 @@ class ForumController extends Controller
      */
     public function show(Forum $forum)
     {
-        //
+        //Views incrementor
+        $viewController = new ViewController;
+        $viewController->incrementViews($forum);
+
         return view('forum_page_single')->with('forum', $forum);
     }
 
@@ -126,9 +129,10 @@ class ForumController extends Controller
     }
 
     public function single(Forum $forum, $slug){
-        //$forum = Forum::find($id);
-        $forum->views = $forum->views + 1;
-        $forum->save();
+        //Views incrementor
+        $viewController = new ViewController;
+        $viewController->incrementViews($forum);
+
         return view('forum_page_single')->with('forum', $forum);
     }
 

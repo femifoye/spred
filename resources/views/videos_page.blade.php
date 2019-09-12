@@ -12,6 +12,7 @@
                                 <div class="videos-header">
                                     <h4>VIDEOS</h4>
                                 </div>
+                                @isset($featured)
                                 <div class="vd-featured-video-wrap">
                                     <div class="vd-featured-video">
                                         <div class="vd-featured-video-box">
@@ -22,7 +23,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endisset
                                 @isset($videos)
+                                @if($videos->count())
                                 <div class="vd-more-videos-wrap">
                                     <div class="vd-more-videos-header section-heading font-bold">
                                         <h3>Browse Videos</h3>
@@ -40,9 +43,12 @@
                                                 <a href="{{route('single.video', [$video, str_slug($video->title)])}}" class="btn vd-btn-play">Play Video</a>
                                             </div>
                                         </div>
-                                        @endforeach
                                     </div>
+                                    @endforeach
                                 </div>
+                                @else
+                                <div class="jumbotron"><h4 class="text-center text-secondary">No video to display for now. Check back later</h4></div>
+                                @endif
                                 @endisset
                             </div>
                         </div> <!-- MAIN CONTENT -->

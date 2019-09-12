@@ -138,22 +138,25 @@ class PollResponseController extends Controller
         return $result;
     }
     protected function computedResponse($poll){
-        $pollOptionsArray = collect(json_decode($poll->options));
-        $responsesPercentage = collect();
-        $total = $this->pollResponseTotal($poll->id);
-        if($total){
-            foreach($pollOptionsArray as $key => $value){
-                $responsesPercentage[$pollOptionsArray[$key]] = round((PollResponse::whereRaw('response_key = ? AND poll_id = ?', ["{$key}", "{$poll->id}"])->count() / $total)*100);
+        try {
+            $pollOptionsArray = collect(json_decode($poll->options));
+            $responsesPercentage = collect();
+            $total = $this->pollResponseTotal($poll->id);
+            if($total){
+                foreach($pollOptionsArray as $key => $value){
+                    $responsesPercentage[$pollOptionsArray[$key]] = round((PollResponse::whereRaw('response_key = ? AND poll_id = ?', ["{$key}", "{$poll->id}"])->count() / $total)*100);
+                }
             }
+            $lead = $this->findKeyByValue($responsesPercentage, $responsesPercentage->max());
+            return
+            [
+                'result' => $responsesPercentage,
+                'total' => $total,
+                'lead' => $lead,
+            ];
+        } catch (\Throwable $th) {
+            //throw $th;
         }
-        $lead = $this->findKeyByValue($responsesPercentage, $responsesPercentage->max());
-        return
-        [
-            'result' => $responsesPercentage,
-            'total' => $total,
-            'lead' => $lead,
-        ];
-
     }
 
     public function popularPolls(){

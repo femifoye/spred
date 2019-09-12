@@ -82,7 +82,6 @@ class UserController extends Controller
      */
     public function edit(UsersProfile $profile)
     {
-        return 983927;
         return view('user_profile_edit')->with('profile', $profile);
     }
 
@@ -101,15 +100,23 @@ class UserController extends Controller
             'about' => 'nullable|string',
             'image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:1000'
         ]);
-        $profile->about = $validated['about'];
+        if(isset($validated['name'])){
+            auth::user()->name = $validated['name'];
+            auth::user()->save();
+        }
         auth::user()->profile()->save($profile);
         if($request->hasFile('name')){
             if(Storage::exists($profile->image)){
                 Storage::delete($profile->image);
             }
-            $user = auth()->user();
-            $user->name = $validated['name'];
-            $user->save();
+            $image = $validated['image'];
+            $image_url = $image->store('public/images');
+            $profile->image = $image_url;
+            $profile->save();
+        }
+        if(isset($validated['about'])){
+            $profile->about = $validated['about'];
+            $profile->save();
         }
         return redirect()->route('profile.me', $profile);
     }

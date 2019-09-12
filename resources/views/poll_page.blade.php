@@ -6,13 +6,14 @@
         <section class="page-section">
             <section class="section-inner">
                 <div class="container">
+
                     <div class="page-grid">
                         <div class="main-content">
+                        @if($poll->count())
                            <div class="poll-body_single">
                                 <div class="poll-inner_single">
                                     <div class="breadcrumb text-secondary bg-light row"><div class="col-11 m-t-5">Polls \ Vote \ {{str_slug(str_limit($poll[0]->question, 20))}}</div>
                                     </div>
-                                    <div></div>
                                 @if($errors->any())
                                 <div class="alert alert-danger">
                                     <strong>{{__("You've already casted your vote for this poll. Please try another poll")}}</strong>
@@ -97,6 +98,9 @@
                                </div>
                                <div style="margin:30px auto !important">{{$poll->links()}}</div>
                            </div>
+                        @else
+                            <div class="jumbotron"><h4 class="text-center text-secondary">No poll for now, please check back</h4></div>
+                        @endif
                         </div> <!-- MAIN CONTENT -->
                         @include('includes.sidebar')
                     </div>

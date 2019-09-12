@@ -9,13 +9,13 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                         @if(@isset($edit))
-                            @php $requestRoute = 'forums.update';
+                            @php $requestRoute = 'admin.forums.update';
                                 $id = $forum->id;
                                 $process = 'Edit Forum';
                                 $action = 'Update Forum';
                             @endphp
                         @else
-                            @php $requestRoute = 'forums.store';
+                            @php $requestRoute = 'admin.forums.store';
                                 $id = '';
                                 $action = 'Add Forum';
                                 $process = $action;
