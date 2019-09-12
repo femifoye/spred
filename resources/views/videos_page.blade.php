@@ -31,6 +31,7 @@
                                         <h3>Browse Videos</h3>
                                     </div>
                                     @foreach($videos as $video)
+                                    @if($video != $featured)
                                     <div class="vd-more-videos">
                                         <div class="vd-video">
                                             <div class="vd-video-box">
@@ -44,6 +45,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     @endforeach
                                 </div>
                                 @else
