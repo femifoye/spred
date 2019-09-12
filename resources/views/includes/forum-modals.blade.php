@@ -2,6 +2,7 @@
     <div class="forum-reply-modal">
         <div class="forum-reply-modal-inner forum-modal hide">
             @auth
+            @isset($forum)
             <div class="forum-reply-modal-form">
                 <form action="{{route('forum_comment', $forum)}}" method="POST">
                     @csrf
@@ -28,6 +29,7 @@
                 </form>
 
             </div>
+            @endisset
             @else
             <div  class="forum-add-modal-form">
                 <div class="forum-add-topic-title">

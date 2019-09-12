@@ -36,7 +36,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
-        return view('article_create_form');
+        return view('admins.admin-add-article');
     }
 
     /**
@@ -52,14 +52,14 @@ class ArticleController extends Controller
             'title' => 'required|string|unique:articles|max:150',
             'content' => 'required|string|unique:articles',
             'category_id' => 'required|numeric',
-            //'forum_id' => 'required|numeric|min:1',
+            // 'forum_id' => 'required|numeric|min:1',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
         $article = new Article;
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
-        //$article->forum_id = $validated['forum_id'];
+        // $article->forum_id = $validated['forum_id'];
         Auth::user()->articleCreator()->save($article);
         if($request->hasFile('featured_image')){
             $image = $validated['featured_image'];
@@ -85,15 +85,15 @@ class ArticleController extends Controller
         $viewController()->incrementViews($article);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
     }
-    public function single(Article $article, $slug)
-    {
-        $this->authorize('view');
-        $related = Article::where('category_id', '=', "{$article->category_id}")
-                        ->whereNotIn('id', [$article->id])->paginate(10);
-        $viewController = new ViewController;
-        $viewController->incrementViews($article);
-        return view('article_page')->with(['article' => $article, 'related' => $related]);
-    }
+    // public function single(Article $article, $slug)
+    // {
+    //     $this->authorize('view');
+    //     $related = Article::where('category_id', '=', "{$article->category_id}")
+    //                     ->whereNotIn('id', [$article->id])->paginate(10);
+    //     $viewController = new ViewController;
+    //     $viewController->incrementViews($article);
+    //     return view('article_page')->with(['article' => $article, 'related' => $related]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -104,7 +104,7 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         //
-        return view('article_create_form')->with(['article'=>$article, 'edit'=>true]);
+        return view('admins.admin-add-article')->with(['article'=>$article, 'edit'=>true]);
     }
 
     /**
@@ -122,14 +122,14 @@ class ArticleController extends Controller
             'title' => 'required|string|unique:articles,title,'.$articleID.',id|max:150',
             'content' => 'required|string|unique:articles,content,'.$articleID.',id',
             'category_id' => 'required|numeric|min:1',
-            //'forum_id' => 'required|numeric|min:1',
+            // 'forum_id' => 'required|numeric|min:1',
             'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
         ]);
 
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->category_id = $validated['category_id'];
-        //$article->forum_id = $validated['forum_id'];
+        // $article->forum_id = $validated['forum_id'];
         //Delete the old image
         if($request->hasFile('featured_image')){
             if(Storage::exists($article->featured_image)){

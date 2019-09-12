@@ -154,7 +154,7 @@
             <h2>Spred Test View</h2>
         </div> -->
         @include('includes.floating-chat')
-        {{-- @include('includes.forum-modals') --}}
+        @include('includes.forum-modals')
     </section>
 
 

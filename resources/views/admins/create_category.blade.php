@@ -3,19 +3,22 @@
     <section class="admin-page">
         <div class="page-wrap">
             @include('includes.admin-header-nav')
-            
+
             <div class="page-content">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
+                            @if(Session::has('success'))
+                            <div class="alert alert-success"><p class="lead text-center">{{Session::get('success')}}</p></div>
+                            @endif
                         @if(@isset($edit))
-                            @php $requestRoute = 'categories.update';
+                            @php $requestRoute = 'admin.categories.update';
                                 $id = $category->id;
                                 $process = 'Edit Category';
                                 $action = 'Update Category';
                             @endphp
                         @else
-                            @php $requestRoute = 'categories.store';
+                            @php $requestRoute = 'admin.categories.store';
                                 $id = '';
                                 $action = 'Add Category';
                                 $process = $action;
@@ -57,16 +60,16 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </form> 
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>        
-    </section>  
-    @include('includes.admin-footer'); 
+        </div>
+    </section>
+    @include('includes.admin-footer');
 </body>
 </html>
 

@@ -37,6 +37,8 @@ class ArticleComposerProvider extends ServiceProvider
                 'articles_page',
                 'article_page',
                 'article_create_form',
+                'admins.admin_create_forum',
+                'admins.admin-add-article',
                 'includes.sidebar',
                 'forum_page',
                 'forum_page_single'

@@ -7,10 +7,10 @@
         <div class="page-wrap">
             @include('includes.admin-header-nav')
                 <div class="page-content">
-                    
+
                     <div class="admin-view-wrap">
                         <div class="admin-view-heading">
-                            <h5>All Forums - (10)</h5>
+                            <h5>All Forums - ({{$forums->count()}})</h5>
                         </div>
                         <div class="admin-view">
                             <div class="admin-view-header">
@@ -28,71 +28,38 @@
 
                             </div>
                             <div class="admin-view-body">
+                            @foreach($forums as $forum)
                                 <div class="admin-view-grid av-grid">
                                     <div class="av-title">
-                                        <h6>Genesis Cinema</h6>
+                                        <h6>{{$forum->title}}</h6>
                                     </div>
                                     <div class="av-status">
                                         <h6>Published</h6>
                                     </div>
                                     <div class="av-actions">
-                                        <div class="draft-action">
-                                            <h6>Draft</h6>
-                                        </div>
                                         <div class="edit-action">
-                                            <h6>Edit</h6>
+                                            <a class="btn" href="{{route('admin.forums.edit', $forum)}}"><h6>Edit</h6></a>
                                         </div>
                                         <div class="delete-action">
-                                            <h6>Delete</h6>
+                                            <a href="/" class="btn" onclick="event.preventDefault();
+                                                     document.getElementById('delete').submit();"><h6>Delete</h6></a>
+                                            <form id="delete" method='POST' action="{{route('admin.forums.destroy', $forum)}}" style="display:none">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="admin-view-grid av-grid">
-                                    <div class="av-title">
-                                        <h6>Laravel Vs Express</h6>
-                                    </div>
-                                    <div class="av-status">
-                                        <h6>Draft</h6>
-                                    </div>
-                                    <div class="av-actions">
-                                        <div class="draft-action">
-                                            <h6>Publish</h6>
-                                        </div>
-                                        <div class="edit-action">
-                                            <h6>Edit</h6>
-                                        </div>
-                                        <div class="delete-action">
-                                            <h6>Delete</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="admin-view-grid av-grid">
-                                    <div class="av-title">
-                                        <h6>10 Ways to be productive at work</h6>
-                                    </div>
-                                    <div class="av-status">
-                                        <h6>Published</h6>
-                                    </div>
-                                    <div class="av-actions">
-                                        <div class="draft-action">
-                                            <h6>Draft</h6>
-                                        </div>
-                                        <div class="edit-action">
-                                            <h6>Edit</h6>
-                                        </div>
-                                        <div class="delete-action">
-                                            <h6>Delete</h6>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
+                            {{$forums->links()}}
                         </div>
-                        
+
                     </div>
                 </div>
             </div>  <!-- PAGE GRID CONTENT END -->
         </div>
-    </section>  
-    @include('includes.admin-footer'); 
+    </section>
+    @include('includes.admin-footer');
 </body>
 </html>

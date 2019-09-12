@@ -53,8 +53,8 @@ Route::resource('/admin/videos', 'Admin\VideoController')->names('admin.videos')
 Route::resource('/admin/articles', 'Admin\ArticleController')->names('admin.articles');
 
 Auth::routes();
-Route::get('/test/host', function(){
-    $va = encrypt('user');
-    //     dd("I found you");
-    // }
-});
+// Route::get('/test/host', function(){
+//     $va = encrypt('user');
+//     //     dd("I found you");
+//     // }
+// });
