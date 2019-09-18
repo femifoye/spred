@@ -31,7 +31,7 @@ if(floatingChat) {
 
 if(chatInput) {
     chatInput.addEventListener('keypress', (e) => {
-    
+
         if(e.which === 13) {
             let chatInputValue = chatInput.value;
             e.preventDefault();
@@ -94,7 +94,6 @@ function refreshChat() {
          getChats();
     }
 }
-
 
 setInterval(function(){
     refreshChat();

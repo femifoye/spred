@@ -59,11 +59,11 @@ class VideoController extends Controller
         ]);
         $video = new Video;
         $prev_featured_video = Video::where('is_featured', true)->first();
-        if($prev_featured_video && $validated['featured_video']){
+        if($prev_featured_video && isset($validated['featured_video'])){
             $prev_featured_video->is_featured = false;
             $prev_featured_video->save();
             $video->is_featured = $validated['featured_video'];
-        }else{
+        }elseif(isset($validated['featured_video'])){
             $video->is_featured = $validated['featured_video'];
         }
         $video->title = $validated['video_title'];

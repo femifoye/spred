@@ -38,7 +38,7 @@
                                                 <li> <a href="/profile/me/{{str_slug(auth()->user()->name)}}">Profile</a></li>
                                                 <li>
                                                     @isset($profile)
-                                                    <a href="/profile/edit/{{$profile->id}}">Settings</a></li>
+                                                    <a href="{{route('profile.edit', $profile)}}">Settings</a></li>
                                                     @endisset
                                                 <li class="btn" onclick="event.preventDefault(); document.getElementById('user-logout-action').submit()">Logout</li>
                                                 <form id="user-logout-action" action="{{route('logout')}}" method="POST" hidden style="display:none">

@@ -85,8 +85,6 @@ class ArticleController extends Controller
 
         $related = Article::where('category_id', '=', $article->category_id)
                             ->whereNotIn('id', [$article->id])->paginate(10);
-        $viewController = new ViewController;
-        $viewController()->incrementViews($article);
         return view('article_page')->with(['article' => $article, 'related' => $related]);
     }
     public function single(Article $article, $slug)

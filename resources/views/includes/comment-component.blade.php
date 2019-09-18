@@ -9,7 +9,11 @@
         <div class="forum-reply-body">
             <div class="fb-reply-icons">
                 <div class="fb-headers-img">
+                    @if(Storage::url($comment->user()->first()->profile->image))
+                    <img src="{{Storage::url($comment->user()->first()->profile->image)}}" alt="{{$comment->user()->first()->name}} profile photo">
+                    @else
                     <img src="{{asset("images/avatar.jpg")}}" alt="">
+                    @endif
                 </div>
                 <div class="fb-headers-name fb-header">
                     <h5>{{$comment->user()->first()->name}}</h5>

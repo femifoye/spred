@@ -50,7 +50,11 @@
                                         <div class="forum-body_content forum-grid">
                                             <div class="fb_content_topic">
                                                 <div class="fb_content_avatar">
+                                                    @if(Storage::url($forum->creator()->first()->profile->image))
+                                                    <img style="width:50px; height:50px; border-radius:100%" src="{{Storage::url($forum->creator()->first()->profile->image)}}" alt="{{$forum->creator->name}} provatar">
+                                                    @else
                                                     <img src="{{asset("images/avatar.jpg")}}" alt="">
+                                                    @endif
                                                 </div>
                                                 <div class="fb_title_details">
                                                     <div class="fb_content_user">

@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ArticleComposerProvider::class,
         App\Providers\CategoryComposerProvider::class,
+        App\Providers\ProfileComposerProvider::class,
 
     ],
 
