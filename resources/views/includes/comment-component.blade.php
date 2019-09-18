@@ -9,13 +9,14 @@
         <div class="forum-reply-body">
             <div class="fb-reply-icons">
                 <div class="fb-headers-img">
-                    <img src="{{asset("images/avatar.jpg")}}" alt="">
+                    <i class="fa fa-user-circle dummy-user-icon" aria-hidden="true"></i>
                 </div>
                 <div class="fb-headers-name fb-header">
                     <h5>{{$comment->user()->first()->name}}</h5>
                 </div>
                 <div class="fb-headers-time fb-header">
-                    <h6>{{$comment->created_at}}</h6>
+                    <h6>{{strftime("%d %b %Y",strtotime($comment->created_at))}}</h6>
+                    
                 </div>
             </div>
             <div class="forum-reply-details">

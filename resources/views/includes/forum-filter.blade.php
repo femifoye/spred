@@ -14,7 +14,7 @@
             <h6>Most Replies</h6>
         </div>
     </div>
-    <div class="forum-add-button">
+    <div class="forum-add-button-wrap">
         <a href="" class="forum-add-button">+ Add a Topic</a>
     </div>
 </div>

@@ -50,7 +50,7 @@
                                         <div class="forum-body_content forum-grid">
                                             <div class="fb_content_topic">
                                                 <div class="fb_content_avatar">
-                                                    <img src="{{asset("images/avatar.jpg")}}" alt="">
+                                                    <i class="fa fa-user-circle dummy-user-icon" aria-hidden="true"></i>
                                                 </div>
                                                 <div class="fb_title_details">
                                                     <div class="fb_content_user">

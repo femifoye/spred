@@ -376,7 +376,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let forumReplyBtn = document.querySelector('.forum-reply-button_btn');
     let forumCloseBtn = document.querySelector('.forum-reply-button-close');
     let forumReplyModal = document.querySelector('.forum-reply-modal-inner');
-    let forumAddBtn = document.querySelector('.forum-add-button');
+    //let forumAddBtn = document.querySelector('.forum-add-button');
+    let forumAddBtn = [].slice.call(document.getElementsByClassName('forum-add-button'));
     let forumAddModal = document.querySelector('.forum-add-modal-inner');
     let forumAddCloseBtn = document.querySelector('.forum-add-button-close');
     let toggleReplyModal = () => {
@@ -403,9 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if(forumAddBtn) {
-        forumAddBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleAddModal();
+        forumAddBtn.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                console.log('here')
+                e.preventDefault();
+                toggleAddModal();
+            })
         })
         forumAddModal.addEventListener('click', (event) => {
             clickOut('forum-add-modal-inner', forumAddModal, "toggle", false, event);

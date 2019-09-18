@@ -20,7 +20,7 @@
                                         @isset($profile->image)
                                             <img src="{{Storage::url($profile->image)}}" style="width:65px; height:65px; border-radius:100%;" alt="Spred Interactive User Avatar" class="profile-avatar">
                                         @else
-                                            <img src="{{asset("images/avatar.jpg")}}" alt="Spred Interactive User Avatar" class="profile-avatar">
+                                            <i class="fa fa-user-circle dummy-user-icon" aria-hidden="true"></i>
                                         @endisset
                                     </div>
                                 </div>
