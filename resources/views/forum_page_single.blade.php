@@ -38,7 +38,7 @@
                                                             <!-- <h6><i class="fa fa-heart forum-icon"></i><span class="subscr">12</span></h6> -->
                                                         </div>
                                                         <div class="fb-headers-seen fb-header-icon">
-                                                            <h6><i class="fa fa-eye forum-icon"></i><span class="subscr">{{$forum->views}}</span></h6>
+                                                            <h6><i class="fa fa-eye forum-icon"></i><span class="subscr">{{$forum->views->count()}} views</span></h6>
                                                         </div>
                                                         <div class="fb-headers-replies fb-header-icon">
                                                             <h6><i class="fa fa-reply forum-icon"></i><span class="subscr">{{$forum->comments()->get()->count()}} Repl</span></h6>

@@ -44,7 +44,7 @@ class ForumController extends Controller
         //
         $validated = $request->validate([
             'forum_topic_title' => 'required|string|unique:forums,title',
-            'forum_add_category' => 'required|string',
+            'forum_add_category' => 'required|integer',
             'forum_add_tags' => 'required|string',
             'forum_add_body' => 'required|string'
             //'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
@@ -95,7 +95,7 @@ class ForumController extends Controller
 
         $validated = $request->validate([
             'forum_topic_title' => 'required|string|unique:forums,title,'.$forum->id.',id',
-            'forum_add_category' => 'required|string',
+            'forum_add_category' => 'required|integer',
             'forum_add_tags' => 'required|string',
             'forum_add_body' => 'required|string'
             //'featured_image' => 'nullable|mimes:jpg,png,svg,gif,jpeg|max:5000'
