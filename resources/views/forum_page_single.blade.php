@@ -17,7 +17,7 @@
                                             <div class="fb-content-headers">
                                                 <div class="fb-headers-lft">
                                                     <div class="fb-headers-img">
-                                                        <img src="{{asset("images/avatar.jpg")}}" alt="">
+                                                        <i class="fa fa-user-circle dummy-user-icon" aria-hidden="true"></i>
                                                     </div>
                                                     <div class="fb-headers-name fb-header">
                                                         <h5>Bolaji</h5>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div> <!-- MAIN CONTENT -->
-                        @include('includes.forum-modals')
+                        <!-- @include('includes.forum-modals') -->
                     </div>
                 </div>
             </section>

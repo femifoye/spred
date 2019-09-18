@@ -55,6 +55,7 @@
                                                     @else
                                                     <img src="{{asset("images/avatar.jpg")}}" alt="">
                                                     @endif
+                                                    <i class="fa fa-user-circle dummy-user-icon" aria-hidden="true"></i>
                                                 </div>
                                                 <div class="fb_title_details">
                                                     <div class="fb_content_user">

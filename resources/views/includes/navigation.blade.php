@@ -19,7 +19,7 @@
                                 @isset($profile->image)
                                     <img src="{{Storage::url($profile->image)}}" style="max-width:100px; max-height:100px" alt="Spred Interactive User Avatar" class="avatar">
                                 @else
-                                    <img src="{{asset("images/avatar.jpg")}}" alt="Spred Interactive User Avatar" class="avatar">
+                                    <i class="fa fa-user-circle dummy-user-icon" aria-hidden="true"></i>
                                 @endisset
                                 </div>
                                 <div class="user-dropdown-menu hide">

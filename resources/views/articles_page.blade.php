@@ -61,7 +61,7 @@
                                         <p>
                                         {{str_limit(strip_tags($article->content), 50)}} <a href="{{route('single.article', [$article, str_slug($article->title)])}}" class="blue-link">Read More</a>
                                         </p>
-                                        <span class="badge badge-primary"><small class="lead">{{$article->comments()->count()}} comments</small></span>
+                                        <span class="article-comment-icon"><small class="lead"> <i class="fa fa-comments"></i> {{$article->comments()->count()}}</small></span>
                                     </div>
                                     <div class="article-category">
                                         <a href="{{route('sort', str_slug($article->category->name))}}">

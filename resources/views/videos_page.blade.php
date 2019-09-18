@@ -30,23 +30,24 @@
                                     <div class="vd-more-videos-header section-heading font-bold">
                                         <h3>Browse Videos</h3>
                                     </div>
-                                    @foreach($videos as $video)
-                                    @if($video != $featured)
-                                    <div class="vd-more-videos">
-                                        <div class="vd-video">
-                                            <div class="vd-video-box">
-                                                <iframe width="560" height="315" src="{{url($video->url)}}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <div class="vd-more-videos-flex">
+                                        @foreach($videos as $video)
+                                            <div class="vd-more-videos">
+                                                <div class="vd-video">
+                                                    <div class="vd-video-box">
+                                                        <iframe width="560" height="315" src="{{url($video->url)}}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    </div>
+                                                    <div class="vd-video-title">
+                                                        <h5>{{$video->title}}</h5>
+                                                    </div>
+                                                    <div class="vd-video-play">
+                                                        <a href="{{route('single.video', [$video, str_slug($video->title)])}}" class="btn vd-btn-play">Play Video</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="vd-video-title">
-                                                <h5>{{$video->title}}</h5>
-                                            </div>
-                                            <div class="vd-video-play">
-                                                <a href="{{route('single.video', [$video, str_slug($video->title)])}}" class="btn vd-btn-play">Play Video</a>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                    @endif
-                                    @endforeach
+                                    
                                 </div>
                                 @else
                                 <div class="jumbotron"><h4 class="text-center text-secondary">No video to display for now. Check back later</h4></div>
